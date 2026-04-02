@@ -1,2 +1,13 @@
-<h1 class="text-3xl font-bold underline">Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<script lang="ts">
+  import Hero from '$lib/components/Hero.svelte';
+  import FlagsGrid from '$lib/components/FlagsGrid.svelte';
+  import { NATIONS } from '$lib/data/nations.js';
+  import { OPENING_MATCH_DATE, TROPHY_COLORED } from '$lib/config/site.js';
+</script>
+
+<div class="page-wrapper">
+  <main class="layout-shell">
+    <Hero targetDate={OPENING_MATCH_DATE} trophyColored={TROPHY_COLORED} />
+    <FlagsGrid nations={NATIONS} />
+  </main>
+</div>
