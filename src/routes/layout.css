@@ -208,12 +208,24 @@ body {
    ============================================================ */
 
 @keyframes celebrate-jump {
-	0%   { transform: translateY(0)     rotate(0deg)   scale(1);    }
-	20%  { transform: translateY(-14px) rotate(-4deg)  scale(1.07); }
-	40%  { transform: translateY(-6px)  rotate(3deg)   scale(1.04); }
-	60%  { transform: translateY(-16px) rotate(-3deg)  scale(1.08); }
-	80%  { transform: translateY(-4px)  rotate(2deg)   scale(1.03); }
-	100% { transform: translateY(0)     rotate(0deg)   scale(1);    }
+	0% {
+		transform: translateY(0) rotate(0deg) scale(1);
+	}
+	20% {
+		transform: translateY(-14px) rotate(-4deg) scale(1.07);
+	}
+	40% {
+		transform: translateY(-6px) rotate(3deg) scale(1.04);
+	}
+	60% {
+		transform: translateY(-16px) rotate(-3deg) scale(1.08);
+	}
+	80% {
+		transform: translateY(-4px) rotate(2deg) scale(1.03);
+	}
+	100% {
+		transform: translateY(0) rotate(0deg) scale(1);
+	}
 }
 
 .flag-badge.is-celebrating {
