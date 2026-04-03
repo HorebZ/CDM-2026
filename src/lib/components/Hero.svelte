@@ -1,6 +1,6 @@
 <script lang="ts">
   import Counter from './Counter.svelte';
-  import trophyUrl from '$lib/assets/trophy-light.webp';
+  import trophyUrl from '$lib/assets/trophy.png';
   import type { Nation } from '$lib/types/index.js';
 
   interface Props {
