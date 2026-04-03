@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
+
   interface Props {
     targetDate: Date;
   }
@@ -11,11 +13,9 @@
     return Math.max(0, Math.ceil(diffMs / (1000 * 60 * 60 * 24)));
   }
 
-  let days = $state(0);
+  let days = $state(getDaysRemaining(targetDate));
 
-  $effect(() => {
-    days = getDaysRemaining(targetDate);
-
+  onMount(() => {
     const interval = setInterval(() => {
       days = getDaysRemaining(targetDate);
     }, 60 * 1000);
