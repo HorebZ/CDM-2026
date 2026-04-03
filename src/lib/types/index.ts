@@ -19,5 +19,4 @@ export interface Nation {
 
 export interface SiteConfig {
   openingMatchDate: Date;
-  trophyColored: boolean;
 }

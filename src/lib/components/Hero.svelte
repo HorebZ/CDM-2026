@@ -5,11 +5,20 @@
 
   interface Props {
     targetDate: Date;
-    trophyColored?: boolean;
     nations?: Nation[];
   }
 
-  const { targetDate, trophyColored = false, nations = [] }: Props = $props();
+  const { targetDate, nations = [] }: Props = $props();
+
+  function getDaysRemaining(date: Date): number {
+    const now = new Date();
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    const target = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+    const diffMs = target.getTime() - today.getTime();
+    return Math.max(0, Math.round(diffMs / (1000 * 60 * 60 * 24)));
+  }
+
+  const trophyColored = $derived(getDaysRemaining(targetDate) === 0);
 </script>
 
 <section class="hero">
