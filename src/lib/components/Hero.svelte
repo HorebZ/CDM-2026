@@ -1,6 +1,6 @@
 <script lang="ts">
   import Counter from './Counter.svelte';
-  import trophyUrl from '$lib/assets/trophy.svg';
+  import trophyUrl from '$lib/assets/trophy-light.webp';
 
   interface Props {
     targetDate: Date;
