@@ -56,16 +56,19 @@
   function start(ctx: CanvasRenderingContext2D) {
     const particles: Particle[] = [];
     let lastSpawn = 0;
+    let lastColor = '';
+    let lastAlpha = -1;
 
     function loop(ts: number) {
       animationId = requestAnimationFrame(loop);
 
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const w = canvas.width;
+      const h = canvas.height;
+
+      ctx.clearRect(0, 0, w, h);
 
       if (ts - lastSpawn > 40 && particles.length < MAX_PARTICLES) {
-        for (let i = 0; i < 4; i++) {
-          particles.push(createParticle(canvas.width));
-        }
+        for (let i = 0; i < 4; i++) particles.push(createParticle(w));
         lastSpawn = ts;
       }
 
@@ -77,21 +80,35 @@
         p.vy += 0.05;
         p.opacity -= p.fadeSpeed;
 
-        if (p.opacity <= 0 || p.y > canvas.height + 20) {
-          particles.splice(i, 1);
+        if (p.opacity <= 0 || p.y > h + 20) {
+          // swap-pop O(1) au lieu de splice O(n)
+          particles[i] = particles[particles.length - 1];
+          particles.pop();
           continue;
         }
 
-        ctx.globalAlpha = p.opacity;
-        ctx.fillStyle = p.color;
-        ctx.save();
-        ctx.translate(p.x, p.y);
-        ctx.rotate(p.rotation);
+        // ne changer l'état que si la valeur diffère
+        if (p.color !== lastColor) {
+          ctx.fillStyle = p.color;
+          lastColor = p.color;
+        }
+        const alpha = Math.round(p.opacity * 25) / 25;
+        if (alpha !== lastAlpha) {
+          ctx.globalAlpha = alpha;
+          lastAlpha = alpha;
+        }
+
+        // setTransform évite le push/pop du stack canvas (save/restore)
+        const cos = Math.cos(p.rotation);
+        const sin = Math.sin(p.rotation);
+        ctx.setTransform(cos, sin, -sin, cos, p.x, p.y);
         ctx.fillRect(-p.width / 2, -p.height / 2, p.width, p.height);
-        ctx.restore();
       }
 
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
       ctx.globalAlpha = 1;
+      lastColor = '';
+      lastAlpha = -1;
     }
 
     animationId = requestAnimationFrame(loop);
@@ -146,5 +163,6 @@
     height: 100vh;
     pointer-events: none;
     z-index: 9999;
+    will-change: transform;
   }
 </style>
