@@ -163,7 +163,10 @@ body {
 	flex-shrink: 0;
 	position: relative;
 	background: rgba(255, 255, 255, 0.02);
-	transition: border-color 0.3s ease;
+	transition:
+		border-color 0.3s ease,
+		transform 0.2s ease;
+	padding: 0;
 }
 
 .flag-badge::after {
@@ -190,6 +193,104 @@ body {
 
 .flag-badge.is-active img {
 	filter: none;
+}
+
+/* ============================================================
+   TOOLTIP NATION
+   ============================================================ */
+
+.flag-wrapper {
+	position: relative;
+}
+
+.flag-wrapper:hover .flag-badge {
+	transform: scale(1.08);
+	border-color: var(--ring-active);
+}
+
+.flag-tooltip {
+	position: absolute;
+	top: calc(100% + 10px);
+	left: 50%;
+	transform: translateX(-50%);
+	z-index: 100;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	background: #151522;
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	border-radius: 10px;
+	padding: 10px 14px;
+	white-space: nowrap;
+	box-shadow:
+		0 8px 24px rgba(0, 0, 0, 0.5),
+		0 0 0 1px rgba(255, 255, 255, 0.04);
+	animation: tooltipFadeIn 0.5s ease;
+}
+
+.flag-tooltip::before {
+	content: '';
+	position: absolute;
+	bottom: 100%;
+	left: 50%;
+	transform: translateX(-50%);
+	border: 6px solid transparent;
+	border-bottom-color: rgba(255, 255, 255, 0.12);
+}
+
+.flag-tooltip::after {
+	content: '';
+	position: absolute;
+	bottom: 100%;
+	left: 50%;
+	transform: translateX(-50%);
+	border: 5px solid transparent;
+	border-bottom-color: #151522;
+}
+
+@keyframes tooltipFadeIn {
+	from {
+		opacity: 0;
+		transform: translateX(-50%) translateY(4px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(-50%) translateY(0);
+	}
+}
+
+.tooltip-flag {
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	overflow: hidden;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	flex-shrink: 0;
+}
+
+.tooltip-flag img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+
+.tooltip-content {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+}
+
+.tooltip-name {
+	font-size: 13px;
+	font-weight: 700;
+	color: var(--text-primary);
+}
+
+.tooltip-details {
+	font-size: 11px;
+	font-weight: 500;
+	color: var(--text-muted);
 }
 
 /* ============================================================
