@@ -2,6 +2,7 @@
   import { onMount } from 'svelte';
   import type { Nation } from '$lib/types/index.js';
   import { getFlagUrl } from '$lib/config/site.js';
+  import Confetti from './Confetti.svelte';
 
   interface Props {
     targetDate: Date;
@@ -33,7 +34,10 @@
   const showTeamCount = $derived(days <= 8 && enabledNations.length > 1);
   const showSingleFlag = $derived(days <= 8 && enabledNations.length === 1);
   const showDays = $derived(!showTeamCount && !showSingleFlag);
+  const showConfetti = $derived(days === 0 && enabledNations.length === 1);
 </script>
+
+<Confetti active={showConfetti} />
 
 <div class="counter">
   {#if showSingleFlag}
