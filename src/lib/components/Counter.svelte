@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
   import type { Nation } from '$lib/types/index.js';
   import { getFlagUrl } from '$lib/config/site.js';
   import Confetti from './Confetti.svelte';
@@ -11,8 +10,8 @@
 
   const { targetDate, nations = [] }: Props = $props();
 
-  function getDaysRemaining(date: Date): number {
-    const now = new Date();
+  function getDaysRemaining(date: Date, currentTime: number): number {
+    const now = new Date(currentTime);
     const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
     const target = new Date(date.getFullYear(), date.getMonth(), date.getDate());
     const diffMs = target.getTime() - today.getTime();
@@ -20,11 +19,12 @@
     return Math.max(0, Math.round(diffMs / (1000 * 60 * 60 * 24)));
   }
 
-  let days = $state(getDaysRemaining(targetDate));
+  let currentTime = $state(Date.now());
+  const days = $derived(getDaysRemaining(targetDate, currentTime));
 
-  onMount(() => {
+  $effect(() => {
     const interval = setInterval(() => {
-      days = getDaysRemaining(targetDate);
+      currentTime = Date.now();
     }, 60 * 1000);
 
     return () => clearInterval(interval);
