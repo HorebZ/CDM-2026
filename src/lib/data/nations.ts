@@ -68,7 +68,7 @@ export const NATIONS: Record<string, Nation> = {
 		participation: 7,
 		enabled: false
 	},
-	ÉQUATEUR: {
+	EQUATEUR: {
 		code: 'ec',
 		name: 'Équateur',
 		confederation: CONFEDERATIONS.CONMEBOL,

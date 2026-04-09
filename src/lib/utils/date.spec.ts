@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { Temporal } from '@js-temporal/polyfill';
-import { fromLocal } from './date';
+import { fromLocal, isMatchDatePassed } from './date';
 
 describe('fromLocal', () => {
 	it('retourne un ZonedDateTime avec le bon fuseau horaire', () => {
@@ -39,5 +39,19 @@ describe('fromLocal', () => {
 
 	it('lève une erreur pour une date invalide', () => {
 		expect(() => fromLocal('2026-13-99T25:00:00', 'America/Mexico_City')).toThrow();
+	});
+});
+
+describe('isMatchDatePassed', () => {
+	it('retourne true quand la date du match est passée', () => {
+		const now = Temporal.Instant.from('2026-06-11T19:00:01Z');
+
+		expect(isMatchDatePassed('2026-06-11T13:00:00', 'America/Mexico_City', now)).toBe(true);
+	});
+
+	it("retourne false quand la date du match n'est pas encore passée", () => {
+		const now = Temporal.Instant.from('2026-06-11T18:59:59Z');
+
+		expect(isMatchDatePassed('2026-06-11T13:00:00', 'America/Mexico_City', now)).toBe(false);
 	});
 });

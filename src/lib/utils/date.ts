@@ -7,5 +7,61 @@ import { Temporal } from '@js-temporal/polyfill';
  * @param timezone - Fuseau horaire IANA (ex: "America/Mexico_City")
  */
 export function fromLocal(localIso: string, timezone: string): Temporal.ZonedDateTime {
-    return Temporal.ZonedDateTime.from(`${localIso}[${timezone}]`);
+	return Temporal.ZonedDateTime.from(`${localIso}[${timezone}]`);
+}
+
+/**
+ * Indique si la date/heure prévue du match est déjà passée.
+ *
+ * @param localIso - Heure locale du stade au format ISO sans fuseau
+ * @param timezone - Fuseau IANA du stade
+ * @param now - Instant de référence, utile pour les tests
+ */
+export function isMatchDatePassed(
+	localIso: string,
+	timezone: string,
+	now: Temporal.Instant = Temporal.Now.instant()
+): boolean {
+	const matchInstant = fromLocal(localIso, timezone).toInstant();
+
+	return Temporal.Instant.compare(now, matchInstant) > 0;
+}
+
+export interface MatchDates {
+	/** Date/heure dans le fuseau de l'utilisateur */
+	userDate: string;
+	/** Heure locale du stade */
+	stadiumDate: string;
+}
+
+/**
+ * Formate une date de match dans le fuseau de l'utilisateur et dans celui du stade.
+ *
+ * @param localIso - Heure locale du stade au format ISO sans fuseau
+ * @param stadiumTimezone - Fuseau IANA du stade
+ */
+export function getMatchDates(localIso: string, stadiumTimezone: string): MatchDates {
+	const zdt = fromLocal(localIso, stadiumTimezone);
+	const date = new Date(Number(zdt.epochMilliseconds));
+
+	const userTz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+	const userDate = new Intl.DateTimeFormat('fr-FR', {
+		weekday: 'short',
+		day: 'numeric',
+		month: 'short',
+		hour: '2-digit',
+		minute: '2-digit',
+		timeZone: userTz,
+		hour12: false
+	}).format(date);
+
+	const stadiumDate = new Intl.DateTimeFormat('fr-FR', {
+		hour: '2-digit',
+		minute: '2-digit',
+		timeZone: stadiumTimezone,
+		hour12: false
+	}).format(date);
+
+	return { userDate, stadiumDate };
 }

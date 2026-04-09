@@ -40,7 +40,7 @@ export interface Nation {
 
 export interface Match {
 	type: 'group' | 'knockout' | 'quarter' | 'semi' | 'small-final' | 'final';
-	group: 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G' | 'H' | 'I' | 'J' | 'K' | 'L';
+	group?: 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G' | 'H' | 'I' | 'J' | 'K' | 'L';
 	/** Heure locale du stade, format ISO sans fuseau : "YYYY-MM-DDTHH:mm:ss" */
 	localDate: string;
 	stadiumId: StadiumId;

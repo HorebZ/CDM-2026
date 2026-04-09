@@ -2,6 +2,8 @@
 	import Hero from '$lib/components/Hero.svelte';
 	import FlagsGrid from '$lib/components/FlagsGrid.svelte';
 	import SiteInfoBadge from '$lib/components/SiteInfoBadge.svelte';
+	import ScrollChevron from '$lib/components/ScrollChevron.svelte';
+	import MatchesList from '$lib/components/MatchesList.svelte';
 	import { NATIONS } from '$lib/data/nations.js';
 	import { OPENING_MATCH_DATE } from '$lib/config/site.js';
 
@@ -19,10 +21,15 @@
 </script>
 
 <div class="page-wrapper">
-	<main class="layout-shell">
-		<Hero targetDate={OPENING_MATCH_DATE} {nations} />
-		<FlagsGrid {nations} {celebrating} />
-	</main>
+	<section class="hero-screen">
+		<main class="layout-shell">
+			<Hero targetDate={OPENING_MATCH_DATE} {nations} />
+			<FlagsGrid {nations} {celebrating} />
+		</main>
+		<ScrollChevron targetId="matches" />
+	</section>
+
+	<MatchesList />
 
 	<SiteInfoBadge />
 </div>

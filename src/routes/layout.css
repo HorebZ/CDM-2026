@@ -48,9 +48,17 @@ a {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
+}
+
+.hero-screen {
+	position: relative;
+	width: 100%;
 	min-height: 100vh;
-	padding: 44px 24px 52px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 44px 24px 80px;
 }
 
 .layout-shell {
@@ -455,6 +463,291 @@ a {
 }
 
 /* ============================================================
+   CHEVRON SCROLL
+   ============================================================ */
+
+.scroll-chevron {
+	position: absolute;
+	bottom: 28px;
+	left: 50%;
+	transform: translateX(-50%);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 36px;
+	height: 36px;
+	background: transparent;
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	border-radius: 50%;
+	cursor: pointer;
+	color: rgba(255, 255, 255, 0.45);
+	transition:
+		color 0.2s ease,
+		border-color 0.2s ease,
+		transform 0.2s ease;
+	padding: 0;
+	animation: chevron-bounce 2.4s ease-in-out infinite;
+}
+
+.scroll-chevron svg {
+	width: 18px;
+	height: 18px;
+}
+
+.scroll-chevron:hover {
+	color: rgba(255, 255, 255, 0.85);
+	border-color: rgba(255, 255, 255, 0.3);
+}
+
+@keyframes chevron-bounce {
+	0%,
+	100% {
+		transform: translateX(-50%) translateY(0);
+	}
+	50% {
+		transform: translateX(-50%) translateY(5px);
+	}
+}
+
+/* ============================================================
+   LISTE DES MATCHES
+   ============================================================ */
+
+.matches-section {
+	width: 100%;
+	padding: 40px 24px 80px;
+}
+
+.matches-list {
+	width: min(100%, var(--shell-width));
+	margin: 0 auto;
+	list-style: none;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+}
+
+.matches-list-item {
+	border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.matches-list-item:first-child {
+	border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Ligne de match — 3 colonnes : meta | score (centré) | espace symétrique */
+
+.match-row {
+	display: grid;
+	grid-template-columns: 1fr auto 1fr;
+	align-items: center;
+	gap: 12px;
+	padding: 11px 8px;
+	font-size: 13px;
+	font-weight: 600;
+	font-style: italic;
+}
+
+.match-row:hover {
+	background: rgba(255, 255, 255, 0.02);
+}
+
+/* Métadonnées (phase + dates + stade) */
+
+.match-meta {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	min-width: 0;
+}
+
+/* Info (phase + date) : 2 lignes */
+
+.match-info {
+	display: flex;
+	flex-direction: column;
+	gap: 3px;
+	flex-shrink: 0;
+}
+
+/* Ligne 1 : type + groupe */
+
+.match-phase-line {
+	display: flex;
+	align-items: baseline;
+	gap: 5px;
+}
+
+.match-type {
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--text-muted);
+}
+
+.match-type--final {
+	color: #ffd700;
+}
+
+.match-group {
+	font-size: 16px;
+	font-weight: 900;
+	letter-spacing: 0.04em;
+	color: var(--text-primary);
+}
+
+/* Ligne 2 : date utilisateur + (date locale) */
+
+.match-date-line {
+	display: flex;
+	align-items: baseline;
+	gap: 5px;
+}
+
+.match-date-user {
+	font-size: 13px;
+	font-weight: 700;
+	color: var(--text-primary);
+	letter-spacing: 0.01em;
+}
+
+.match-date-stadium {
+	font-size: 11px;
+	font-weight: 500;
+	color: rgba(240, 240, 240, 0.32);
+	letter-spacing: 0.01em;
+}
+
+/* Stade */
+
+.match-stadium {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	gap: 7px;
+	min-width: 0;
+}
+
+.stadium-flag {
+	flex-shrink: 0;
+	width: 22px;
+	height: 14px;
+	object-fit: cover;
+	border-radius: 2px;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	display: block;
+}
+
+.stadium-name {
+	font-size: 12px;
+	font-weight: 600;
+	color: var(--text-muted);
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	letter-spacing: 0.01em;
+}
+
+/* Score et équipes — colonne centrale */
+
+.match-score-row {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+}
+
+.match-team {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	flex: 1;
+}
+
+.match-team--left {
+	flex-direction: row;
+	justify-content: flex-end;
+}
+
+.match-team--right {
+	flex-direction: row;
+	justify-content: flex-start;
+}
+
+.team-flag {
+	width: 32px;
+	height: 21px;
+	object-fit: cover;
+	border-radius: 3px;
+	border: 1.5px solid rgba(255, 255, 255, 0.12);
+	display: block;
+	flex-shrink: 0;
+	transition: border-color 0.2s ease;
+}
+
+.team-flag--winner {
+	border-color: #ffd700;
+	box-shadow: 0 0 8px 1px rgba(255, 215, 0, 0.35);
+}
+
+/* Cartons — chiffre coloré + rectangle */
+
+.card-stat {
+	display: inline-flex;
+	align-items: center;
+	gap: 3px;
+	flex-shrink: 0;
+}
+
+.card-count {
+	font-size: 11px;
+	line-height: 1;
+}
+
+.card {
+	display: inline-block;
+	width: 7px;
+	height: 10px;
+	border-radius: 1.5px;
+	flex-shrink: 0;
+}
+
+.card--yellow {
+	background: #f5c518;
+}
+
+.card--red {
+	background: #e03030;
+}
+
+/* Score */
+
+.match-result {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	min-width: 52px;
+	justify-content: center;
+	flex-shrink: 0;
+}
+
+.match-goals {
+	font-size: 20px;
+	font-weight: 900;
+	color: var(--text-primary);
+	letter-spacing: -0.5px;
+	line-height: 1;
+}
+
+.match-separator {
+	font-size: 14px;
+	font-weight: 700;
+	color: var(--text-muted);
+}
+
+/* ============================================================
    RESPONSIVE
    ============================================================ */
 
@@ -480,8 +773,7 @@ a {
 		--flag-row-gap: 32px;
 	}
 
-	.page-wrapper {
-		justify-content: flex-start;
+	.hero-screen {
 		padding-top: 36px;
 	}
 
@@ -495,6 +787,21 @@ a {
 
 	.counter-value {
 		font-size: 48px;
+	}
+
+	.match-row {
+		grid-template-columns: 1fr;
+		gap: 8px;
+		padding: 14px 8px;
+	}
+
+	.match-meta {
+		flex-wrap: wrap;
+		gap: 8px 14px;
+	}
+
+	.match-score-row {
+		justify-content: center;
 	}
 }
 
@@ -518,6 +825,14 @@ a {
 	.site-info-popup {
 		min-width: min(320px, calc(100vw - 36px));
 		max-width: min(360px, calc(100vw - 36px));
+	}
+
+	.matches-section {
+		padding: 28px 16px 60px;
+	}
+
+	.match-date-user {
+		font-size: 10px;
 	}
 }
 
