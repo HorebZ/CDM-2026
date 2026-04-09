@@ -11,23 +11,32 @@
 
 	const { match }: Props = $props();
 
-	const nation1 = $derived(NATIONS[match.nation1.nationId]);
-	const nation2 = $derived(NATIONS[match.nation2.nationId]);
+	const side1 = $derived(match.sides[0]);
+	const side2 = $derived(match.sides[1]);
+	const nation1 = $derived(NATIONS[side1.nationId]);
+	const nation2 = $derived(NATIONS[side2.nationId]);
 	const stadium = $derived(STADIUMS[match.stadiumId]);
 	const dates = $derived(getMatchDates(match.localDate, stadium.timezone));
 	const isMatchPassed = $derived(isMatchDatePassed(match.localDate, stadium.timezone));
 	const stadiumLocalTime = $derived(dates.stadiumDate.replace(':', 'h'));
 
-	const goals1 = $derived(match.nation1.matchStats.goals);
-	const goals2 = $derived(match.nation2.matchStats.goals);
-	const winner = $derived(isMatchPassed ? (goals1 > goals2 ? 1 : goals2 > goals1 ? 2 : 0) : 0);
+	const winner = $derived(isMatchPassed ? (match.result?.winner ?? 0) : 0);
 
-	const TYPE_LABELS: Record<Match['type'], string> = {
-		group: 'groupe',
-		knockout: 'phase finales',
-		quarter: 'quart',
-		semi: 'demi',
-		'small-final': 'petite finale',
+	/** Score à afficher (après prolongation si applicable, sinon temps réglementaire) */
+	const displayScore1 = $derived(side1.score.extraTime ?? side1.score.regularTime);
+	const displayScore2 = $derived(side2.score.extraTime ?? side2.score.regularTime);
+
+	const hasPenalties = $derived(match.result?.resolution === 'penalties');
+	const hasExtraTime = $derived(
+		match.result?.resolution === 'extra-time' || match.result?.resolution === 'penalties'
+	);
+
+	const PHASE_LABELS: Record<Match['phase'], string> = {
+		group: 'Groupe',
+		'round-of-16': '8e de finale',
+		quarter: 'Quart',
+		semi: 'Demi',
+		'small-final': 'Petite finale',
 		final: 'Finale'
 	};
 </script>
@@ -37,9 +46,9 @@
 	<div class="match-meta">
 		<div class="match-info">
 			<div class="match-phase-line">
-				<span class="match-type" class:match-type--final={match.type === 'final'}>
-					{TYPE_LABELS[match.type]}
-					{match.type === 'group' ? match.group : ''}
+				<span class="match-type" class:match-type--final={match.phase === 'final'}>
+					{PHASE_LABELS[match.phase]}
+					{match.phase === 'group' ? match.group : ''}
 				</span>
 			</div>
 			<div class="match-date-line">
@@ -52,16 +61,16 @@
 	<div class="match-score-row">
 		<!-- Nation 1 -->
 		<div class="match-team match-team--left">
-			{#if isMatchPassed && match.nation1.matchStats.redCards > 0}
+			{#if isMatchPassed && (side1.stats?.redCards ?? 0) > 0}
 				<span class="card-stat" aria-label="carton rouge">
 					<span class="card card--red" aria-hidden="true"></span>
-					<span class="card-count">{match.nation1.matchStats.redCards}</span>
+					<span class="card-count">{side1.stats?.redCards}</span>
 				</span>
 			{/if}
-			{#if isMatchPassed && match.nation1.matchStats.yellowCards > 0}
+			{#if isMatchPassed && (side1.stats?.yellowCards ?? 0) > 0}
 				<span class="card-stat" aria-label="carton jaune">
 					<span class="card card--yellow" aria-hidden="true"></span>
-					<span class="card-count">{match.nation1.matchStats.yellowCards}</span>
+					<span class="card-count">{side1.stats?.yellowCards}</span>
 				</span>
 			{/if}
 			<img
@@ -77,11 +86,18 @@
 
 		<div class="match-result">
 			{#if isMatchPassed}
-				<span class="match-goals">{match.nation1.matchStats.goals}</span>
+				<span class="match-goals">{displayScore1}</span>
 				<span class="match-separator">–</span>
-				<span class="match-goals">{match.nation2.matchStats.goals}</span>
+				<span class="match-goals">{displayScore2}</span>
 			{:else}
 				<span class="match-separator" aria-label="score non disponible">-</span>
+			{/if}
+			{#if isMatchPassed && hasPenalties}
+				<span class="match-resolution">
+					({side1.score.penalties} – {side2.score.penalties} tab)
+				</span>
+			{:else if isMatchPassed && hasExtraTime}
+				<span class="match-resolution">ap.</span>
 			{/if}
 		</div>
 
@@ -96,16 +112,16 @@
 				height={21}
 				loading="lazy"
 			/>
-			{#if isMatchPassed && match.nation2.matchStats.redCards > 0}
+			{#if isMatchPassed && (side2.stats?.redCards ?? 0) > 0}
 				<span class="card-stat" aria-label="carton rouge">
 					<span class="card card--red" aria-hidden="true"></span>
-					<span class="card-count">{match.nation2.matchStats.redCards}</span>
+					<span class="card-count">{side2.stats?.redCards}</span>
 				</span>
 			{/if}
-			{#if isMatchPassed && match.nation2.matchStats.yellowCards > 0}
+			{#if isMatchPassed && (side2.stats?.yellowCards ?? 0) > 0}
 				<span class="card-stat" aria-label="carton jaune">
 					<span class="card card--yellow" aria-hidden="true"></span>
-					<span class="card-count">{match.nation2.matchStats.yellowCards}</span>
+					<span class="card-count">{side2.stats?.yellowCards}</span>
 				</span>
 			{/if}
 		</div>

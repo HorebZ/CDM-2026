@@ -13,12 +13,6 @@ export interface Stadium {
 	timezone: string;
 }
 
-interface NationMatchStats {
-	yellowCards: number;
-	redCards: number;
-	goals: number;
-}
-
 export type Confederation = 'CONCACAF' | 'CONMEBOL' | 'UEFA' | 'CAF' | 'AFC' | 'OFC';
 
 export const CONFEDERATIONS = {
@@ -38,12 +32,52 @@ export interface Nation {
 	enabled: boolean;
 }
 
+export type GroupId = 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G' | 'H' | 'I' | 'J' | 'K' | 'L';
+
+export type MatchPhase =
+	| 'group'
+	| 'round-of-16'
+	| 'quarter'
+	| 'semi'
+	| 'small-final'
+	| 'final';
+
+export type MatchResolution = 'regular' | 'extra-time' | 'penalties';
+
+export interface TeamMatchStats {
+	possession?: number;
+	shots?: number;
+	shotsOnTarget?: number;
+	corners?: number;
+	fouls?: number;
+	yellowCards?: number;
+	redCards?: number;
+}
+
+/** Score d'une équipe : regularTime est toujours présent, extraTime et penalties uniquement si le match ne s'est pas terminé à 90 min */
+export interface MatchScore {
+	regularTime: number;
+	extraTime?: number;
+	penalties?: number;
+}
+
+export interface MatchSide {
+	nationId: NationId;
+	score: MatchScore;
+	stats?: TeamMatchStats;
+}
+
+export interface MatchResult {
+	resolution: MatchResolution;
+	winner?: 1 | 2;
+}
+
 export interface Match {
-	type: 'group' | 'knockout' | 'quarter' | 'semi' | 'small-final' | 'final';
-	group?: 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G' | 'H' | 'I' | 'J' | 'K' | 'L';
+	phase: MatchPhase;
+	group?: GroupId;
 	/** Heure locale du stade, format ISO sans fuseau : "YYYY-MM-DDTHH:mm:ss" */
 	localDate: string;
 	stadiumId: StadiumId;
-	nation1: { nationId: NationId; matchStats: NationMatchStats };
-	nation2: { nationId: NationId; matchStats: NationMatchStats };
+	sides: [MatchSide, MatchSide];
+	result?: MatchResult;
 }
