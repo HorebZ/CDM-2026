@@ -98,4 +98,6 @@ The source code in this repository is distributed under the [MIT](./LICENSE) lic
 Trademarks, logos, visuals, data, and content from third-party sources remain subject to their respective
 licenses and terms of use.
 
-🥅 ⚽
+<div align="center">
+    <img src="./src/lib/assets/trionda.png" width="100" height="100" alt="Trionda ball" />
+</div>
