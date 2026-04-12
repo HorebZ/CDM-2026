@@ -28,6 +28,7 @@ export interface Nation {
 	code: string;
 	name: string;
 	confederation: Confederation;
+	group: GroupId;
 	participation: number;
 	enabled: boolean;
 }

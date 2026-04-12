@@ -4,6 +4,7 @@
 	import { STADIUMS } from '$lib/data/stadiums.js';
 	import { getFlagUrl } from '$lib/config/site.js';
 	import { getMatchDates, isMatchDatePassed } from '$lib/utils/date.js';
+	import NationTooltip from './NationTooltip.svelte';
 
 	interface Props {
 		match: Match;
@@ -32,6 +33,31 @@
 	const hasPenaltyScores = $derived(
 		side1.score?.penalties !== undefined && side2.score?.penalties !== undefined
 	);
+
+	let hoveredTeam = $state<0 | 1 | 2>(0);
+	let hoverTimeout: ReturnType<typeof setTimeout> | null = null;
+
+	function handleFlagMouseEnter(team: 1 | 2) {
+		if (hoverTimeout) {
+			clearTimeout(hoverTimeout);
+		}
+
+		hoverTimeout = setTimeout(() => {
+			hoveredTeam = team;
+			hoverTimeout = null;
+		}, 500);
+	}
+
+	function handleFlagMouseLeave(team: 1 | 2) {
+		if (hoverTimeout) {
+			clearTimeout(hoverTimeout);
+			hoverTimeout = null;
+		}
+
+		if (hoveredTeam === team) {
+			hoveredTeam = 0;
+		}
+	}
 
 	const PHASE_LABELS: Record<Match['phase'], string> = {
 		group: 'Groupe',
@@ -63,28 +89,38 @@
 	<div class="match-score-row">
 		<!-- Nation 1 -->
 		<div class="match-team match-team--left">
-			{#if isMatchPassed && (side1.stats?.redCards ?? 0) > 0}
+			{#if isMatchPassed && side1.stats.redCards > 0}
 				<span class="card-stat" aria-label="carton rouge">
 					<span class="card card--red" aria-hidden="true"></span>
-					<span class="card-count">{side1.stats?.redCards}</span>
+					<span class="card-count">{side1.stats.redCards}</span>
 				</span>
 			{/if}
-			{#if isMatchPassed && (side1.stats?.yellowCards ?? 0) > 0}
+			{#if isMatchPassed && side1.stats.yellowCards > 0}
 				<span class="card-stat" aria-label="carton jaune">
 					<span class="card card--yellow" aria-hidden="true"></span>
-					<span class="card-count">{side1.stats?.yellowCards}</span>
+					<span class="card-count">{side1.stats.yellowCards}</span>
 				</span>
 			{/if}
 			{#if nation1}
-				<img
-					class="team-flag"
-					class:team-flag--winner={winner === 1}
-					src={getFlagUrl(nation1.code)}
-					alt={side1Label}
-					width={32}
-					height={21}
-					loading="lazy"
-				/>
+				<div
+					class="flag-wrapper match-flag-wrapper"
+					onmouseenter={() => handleFlagMouseEnter(1)}
+					onmouseleave={() => handleFlagMouseLeave(1)}
+					role="group"
+				>
+					<img
+						class="team-flag"
+						class:team-flag--winner={winner === 1}
+						src={getFlagUrl(nation1.code)}
+						alt={side1Label}
+						width={32}
+						height={21}
+						loading="lazy"
+					/>
+					{#if hoveredTeam === 1}
+						<NationTooltip nation={nation1} />
+					{/if}
+				</div>
 			{:else}
 				<span class="team-placeholder" aria-label={side1Label}>{side1Label}</span>
 			{/if}
@@ -108,28 +144,38 @@
 		<!-- Nation 2 -->
 		<div class="match-team match-team--right">
 			{#if nation2}
-				<img
-					class="team-flag"
-					class:team-flag--winner={winner === 2}
-					src={getFlagUrl(nation2.code)}
-					alt={side2Label}
-					width={32}
-					height={21}
-					loading="lazy"
-				/>
+				<div
+					class="flag-wrapper match-flag-wrapper"
+					onmouseenter={() => handleFlagMouseEnter(2)}
+					onmouseleave={() => handleFlagMouseLeave(2)}
+					role="group"
+				>
+					<img
+						class="team-flag"
+						class:team-flag--winner={winner === 2}
+						src={getFlagUrl(nation2.code)}
+						alt={side2Label}
+						width={32}
+						height={21}
+						loading="lazy"
+					/>
+					{#if hoveredTeam === 2}
+						<NationTooltip nation={nation2} />
+					{/if}
+				</div>
 			{:else}
 				<span class="team-placeholder" aria-label={side2Label}>{side2Label}</span>
 			{/if}
-			{#if isMatchPassed && (side2.stats?.redCards ?? 0) > 0}
+			{#if isMatchPassed && side2.stats.redCards > 0}
 				<span class="card-stat" aria-label="carton rouge">
 					<span class="card card--red" aria-hidden="true"></span>
-					<span class="card-count">{side2.stats?.redCards}</span>
+					<span class="card-count">{side2.stats.redCards}</span>
 				</span>
 			{/if}
-			{#if isMatchPassed && (side2.stats?.yellowCards ?? 0) > 0}
+			{#if isMatchPassed && side2.stats.yellowCards > 0}
 				<span class="card-stat" aria-label="carton jaune">
 					<span class="card card--yellow" aria-hidden="true"></span>
-					<span class="card-count">{side2.stats?.yellowCards}</span>
+					<span class="card-count">{side2.stats.yellowCards}</span>
 				</span>
 			{/if}
 		</div>
