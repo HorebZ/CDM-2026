@@ -182,7 +182,7 @@
 	</div>
 
 	<!-- Stade (col droite) -->
-	<div class="flex flex-col items-end">
+	<div class="match-location">
 		<div class="match-stadium">
 			<span class="stadium-name">{stadium.name}</span>
 			<img

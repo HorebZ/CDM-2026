@@ -800,6 +800,16 @@ a {
 		padding-top: 36px;
 	}
 
+	.hero {
+		width: min(100%, calc(var(--flag-size) * 6 + var(--flag-gap) * 5));
+	}
+
+	.hero-card {
+		width: 100%;
+		box-sizing: border-box;
+		justify-content: center;
+	}
+
 	.layout-shell {
 		gap: 40px;
 	}
@@ -823,6 +833,10 @@ a {
 		gap: 8px 14px;
 	}
 
+	.match-location {
+		display: none;
+	}
+
 	.match-score-row {
 		justify-content: center;
 	}
@@ -834,6 +848,10 @@ a {
 		--flag-size: 52px;
 		--flag-gap: 14px;
 		--flag-row-gap: 24px;
+	}
+
+	.hero {
+		width: min(100%, calc(var(--flag-size) * 5 + var(--flag-gap) * 4));
 	}
 
 	.flags-grid {
@@ -864,6 +882,10 @@ a {
 		--flag-size: 48px;
 		--flag-gap: 18px;
 		--flag-row-gap: 24px;
+	}
+
+	.hero {
+		width: min(100%, calc(var(--flag-size) * 4 + var(--flag-gap) * 3));
 	}
 
 	.hero-card {
