@@ -858,6 +858,10 @@ a {
 		--flag-row-gap: 24px;
 	}
 
+	.scroll-chevron {
+		display: none;
+	}
+
 	.hero {
 		width: min(100%, calc(var(--flag-size) * 5 + var(--flag-gap) * 4));
 	}
