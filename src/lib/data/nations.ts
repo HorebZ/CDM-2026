@@ -15,14 +15,14 @@ export const NATIONS: Record<string, Nation> = {
 		name: 'Curaçao',
 		confederation: CONFEDERATIONS.CONCACAF,
 		participation: 1,
-		enabled: false
+		enabled: true
 	},
 	HAITI: {
 		code: 'ht',
 		name: 'Haïti',
 		confederation: CONFEDERATIONS.CONCACAF,
 		participation: 2,
-		enabled: false
+		enabled: true
 	},
 	MEXIQUE: {
 		code: 'mx',
@@ -36,7 +36,7 @@ export const NATIONS: Record<string, Nation> = {
 		name: 'Panama',
 		confederation: CONFEDERATIONS.CONCACAF,
 		participation: 2,
-		enabled: false
+		enabled: true
 	},
 	USA: {
 		code: 'us',
@@ -224,7 +224,7 @@ export const NATIONS: Record<string, Nation> = {
 		name: 'Cap-Vert',
 		confederation: CONFEDERATIONS.CAF,
 		participation: 1,
-		enabled: false
+		enabled: true
 	},
 	ALGERIE: {
 		code: 'dz',
@@ -289,7 +289,7 @@ export const NATIONS: Record<string, Nation> = {
 		name: 'Irak',
 		confederation: CONFEDERATIONS.AFC,
 		participation: 2,
-		enabled: false
+		enabled: true
 	},
 	IRAN: {
 		code: 'ir',
@@ -303,7 +303,7 @@ export const NATIONS: Record<string, Nation> = {
 		name: 'Jordanie',
 		confederation: CONFEDERATIONS.AFC,
 		participation: 1,
-		enabled: false
+		enabled: true
 	},
 	JAPON: {
 		code: 'jp',
@@ -324,7 +324,7 @@ export const NATIONS: Record<string, Nation> = {
 		name: 'Qatar',
 		confederation: CONFEDERATIONS.AFC,
 		participation: 2,
-		enabled: false
+		enabled: true
 	},
 	ARABIE_SAOUDITE: {
 		code: 'sa',
@@ -347,7 +347,7 @@ export const NATIONS: Record<string, Nation> = {
 		name: 'Nouvelle-Zélande',
 		confederation: CONFEDERATIONS.OFC,
 		participation: 3,
-		enabled: false
+		enabled: true
 	}
 };
 
