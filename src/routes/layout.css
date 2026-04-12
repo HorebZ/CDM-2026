@@ -171,6 +171,8 @@ a {
 	width: min(100%, calc(var(--flag-size) * 12 + var(--flag-gap) * 11));
 	display: grid;
 	grid-template-columns: repeat(12, var(--flag-size));
+	grid-template-rows: repeat(4, var(--flag-size));
+	grid-auto-flow: column;
 	justify-content: center;
 	gap: var(--flag-row-gap) var(--flag-gap);
 }
@@ -774,6 +776,8 @@ a {
 @media (max-width: 1150px) {
 	.flags-grid {
 		grid-template-columns: repeat(10, var(--flag-size));
+		grid-template-rows: none;
+		grid-auto-flow: row;
 	}
 }
 
@@ -858,8 +862,8 @@ a {
 @media (max-width: 420px) {
 	:root {
 		--flag-size: 48px;
-		--flag-gap: 10px;
-		--flag-row-gap: 18px;
+		--flag-gap: 18px;
+		--flag-row-gap: 24px;
 	}
 
 	.hero-card {
