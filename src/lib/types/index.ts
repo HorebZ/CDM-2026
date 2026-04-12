@@ -34,15 +34,9 @@ export interface Nation {
 
 export type GroupId = 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G' | 'H' | 'I' | 'J' | 'K' | 'L';
 
-export type MatchPhase =
-	| 'group'
-	| 'round-of-16'
-	| 'quarter'
-	| 'semi'
-	| 'small-final'
-	| 'final';
+export type MatchPhase = 'group' | 'round-of-16' | 'quarter' | 'semi' | 'small-final' | 'final';
 
-export type MatchResolution = 'regular' | 'extra-time' | 'penalties';
+export type MatchResolution = 'regular' | 'penalties';
 
 export interface TeamMatchStats {
 	possession?: number;
@@ -54,18 +48,26 @@ export interface TeamMatchStats {
 	redCards?: number;
 }
 
-/** Score d'une équipe : regularTime est toujours présent, extraTime et penalties uniquement si le match ne s'est pas terminé à 90 min */
+/** Score d'une équipe : regularTime est toujours présent, penalties uniquement si le match se termine aux tirs au but */
 export interface MatchScore {
 	regularTime: number;
-	extraTime?: number;
 	penalties?: number;
 }
 
-export interface MatchSide {
-	nationId: NationId;
-	score: MatchScore;
+export interface MatchSideBase {
+	score?: MatchScore;
 	stats?: TeamMatchStats;
 }
+
+export type MatchSide =
+	| (MatchSideBase & {
+			nationId: NationId;
+			label?: string;
+	  })
+	| (MatchSideBase & {
+			nationId?: undefined;
+			label: string;
+	  });
 
 export interface MatchResult {
 	resolution: MatchResolution;

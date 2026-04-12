@@ -13,8 +13,10 @@
 
 	const side1 = $derived(match.sides[0]);
 	const side2 = $derived(match.sides[1]);
-	const nation1 = $derived(NATIONS[side1.nationId]);
-	const nation2 = $derived(NATIONS[side2.nationId]);
+	const nation1 = $derived(side1.nationId ? NATIONS[side1.nationId] : null);
+	const nation2 = $derived(side2.nationId ? NATIONS[side2.nationId] : null);
+	const side1Label = $derived(nation1?.name ?? side1.label ?? 'TBD');
+	const side2Label = $derived(nation2?.name ?? side2.label ?? 'TBD');
 	const stadium = $derived(STADIUMS[match.stadiumId]);
 	const dates = $derived(getMatchDates(match.localDate, stadium.timezone));
 	const isMatchPassed = $derived(isMatchDatePassed(match.localDate, stadium.timezone));
@@ -22,13 +24,13 @@
 
 	const winner = $derived(isMatchPassed ? (match.result?.winner ?? 0) : 0);
 
-	/** Score à afficher (après prolongation si applicable, sinon temps réglementaire) */
-	const displayScore1 = $derived(side1.score.extraTime ?? side1.score.regularTime);
-	const displayScore2 = $derived(side2.score.extraTime ?? side2.score.regularTime);
+	const displayScore1 = $derived(side1.score?.regularTime);
+	const displayScore2 = $derived(side2.score?.regularTime);
+	const hasScore = $derived(typeof displayScore1 === 'number' && typeof displayScore2 === 'number');
 
 	const hasPenalties = $derived(match.result?.resolution === 'penalties');
-	const hasExtraTime = $derived(
-		match.result?.resolution === 'extra-time' || match.result?.resolution === 'penalties'
+	const hasPenaltyScores = $derived(
+		side1.score?.penalties !== undefined && side2.score?.penalties !== undefined
 	);
 
 	const PHASE_LABELS: Record<Match['phase'], string> = {
@@ -73,45 +75,51 @@
 					<span class="card-count">{side1.stats?.yellowCards}</span>
 				</span>
 			{/if}
-			<img
-				class="team-flag"
-				class:team-flag--winner={winner === 1}
-				src={getFlagUrl(nation1.code)}
-				alt={nation1.name}
-				width={32}
-				height={21}
-				loading="lazy"
-			/>
+			{#if nation1}
+				<img
+					class="team-flag"
+					class:team-flag--winner={winner === 1}
+					src={getFlagUrl(nation1.code)}
+					alt={side1Label}
+					width={32}
+					height={21}
+					loading="lazy"
+				/>
+			{:else}
+				<span class="team-placeholder" aria-label={side1Label}>{side1Label}</span>
+			{/if}
 		</div>
 
 		<div class="match-result">
-			{#if isMatchPassed}
+			{#if isMatchPassed && hasScore}
 				<span class="match-goals">{displayScore1}</span>
 				<span class="match-separator">–</span>
 				<span class="match-goals">{displayScore2}</span>
 			{:else}
 				<span class="match-separator" aria-label="score non disponible">-</span>
 			{/if}
-			{#if isMatchPassed && hasPenalties}
+			{#if isMatchPassed && hasPenalties && hasPenaltyScores}
 				<span class="match-resolution">
-					({side1.score.penalties} – {side2.score.penalties} tab)
+					({side1.score?.penalties} – {side2.score?.penalties} tab)
 				</span>
-			{:else if isMatchPassed && hasExtraTime}
-				<span class="match-resolution">ap.</span>
 			{/if}
 		</div>
 
 		<!-- Nation 2 -->
 		<div class="match-team match-team--right">
-			<img
-				class="team-flag"
-				class:team-flag--winner={winner === 2}
-				src={getFlagUrl(nation2.code)}
-				alt={nation2.name}
-				width={32}
-				height={21}
-				loading="lazy"
-			/>
+			{#if nation2}
+				<img
+					class="team-flag"
+					class:team-flag--winner={winner === 2}
+					src={getFlagUrl(nation2.code)}
+					alt={side2Label}
+					width={32}
+					height={21}
+					loading="lazy"
+				/>
+			{:else}
+				<span class="team-placeholder" aria-label={side2Label}>{side2Label}</span>
+			{/if}
 			{#if isMatchPassed && (side2.stats?.redCards ?? 0) > 0}
 				<span class="card-stat" aria-label="carton rouge">
 					<span class="card card--red" aria-hidden="true"></span>
