@@ -11,11 +11,13 @@ const GROUP_MATCHES_A: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.MEXIQUE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.AFRIQUE_DU_SUD,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -27,11 +29,13 @@ const GROUP_MATCHES_A: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.COREE_DU_SUD,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.TCHEQUIE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -43,11 +47,13 @@ const GROUP_MATCHES_A: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.TCHEQUIE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.AFRIQUE_DU_SUD,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -59,11 +65,13 @@ const GROUP_MATCHES_A: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.MEXIQUE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.COREE_DU_SUD,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -75,11 +83,13 @@ const GROUP_MATCHES_A: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.TCHEQUIE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.MEXIQUE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -91,11 +101,13 @@ const GROUP_MATCHES_A: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.AFRIQUE_DU_SUD,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.COREE_DU_SUD,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	}
@@ -110,11 +122,13 @@ const GROUP_MATCHES_B: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.CANADA,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.BOSNIE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -126,11 +140,13 @@ const GROUP_MATCHES_B: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.QATAR,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.SUISSE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -142,11 +158,13 @@ const GROUP_MATCHES_B: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.SUISSE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.BOSNIE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -158,11 +176,13 @@ const GROUP_MATCHES_B: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.CANADA,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.QATAR,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -174,11 +194,13 @@ const GROUP_MATCHES_B: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.SUISSE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.CANADA,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -190,11 +212,13 @@ const GROUP_MATCHES_B: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.BOSNIE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.QATAR,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	}
@@ -209,11 +233,13 @@ const GROUP_MATCHES_C: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.BRESIL,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.MAROC,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -225,11 +251,13 @@ const GROUP_MATCHES_C: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.HAITI,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.ECOSSE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -241,11 +269,13 @@ const GROUP_MATCHES_C: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.ECOSSE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.MAROC,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -257,11 +287,13 @@ const GROUP_MATCHES_C: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.BRESIL,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.HAITI,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -273,11 +305,13 @@ const GROUP_MATCHES_C: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.ECOSSE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.BRESIL,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -289,11 +323,13 @@ const GROUP_MATCHES_C: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.MAROC,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.HAITI,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	}
@@ -308,11 +344,13 @@ const GROUP_MATCHES_D: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.USA,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.PARAGUAY,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -324,11 +362,13 @@ const GROUP_MATCHES_D: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.AUSTRALIE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.TURQUIE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -340,11 +380,13 @@ const GROUP_MATCHES_D: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.TURQUIE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.PARAGUAY,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -356,11 +398,13 @@ const GROUP_MATCHES_D: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.USA,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.AUSTRALIE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -372,11 +416,13 @@ const GROUP_MATCHES_D: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.TURQUIE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.USA,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -388,11 +434,13 @@ const GROUP_MATCHES_D: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.PARAGUAY,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.AUSTRALIE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	}
@@ -407,11 +455,13 @@ const GROUP_MATCHES_E: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.ALLEMAGNE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.CURACAO,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -423,11 +473,13 @@ const GROUP_MATCHES_E: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.COTE_IVOIRE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.EQUATEUR,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -439,11 +491,13 @@ const GROUP_MATCHES_E: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.ALLEMAGNE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.COTE_IVOIRE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -455,11 +509,13 @@ const GROUP_MATCHES_E: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.EQUATEUR,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.CURACAO,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -471,11 +527,13 @@ const GROUP_MATCHES_E: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.EQUATEUR,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.ALLEMAGNE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -487,11 +545,13 @@ const GROUP_MATCHES_E: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.CURACAO,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.COTE_IVOIRE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	}
@@ -506,11 +566,13 @@ const GROUP_MATCHES_F: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.PAYS_BAS,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.JAPON,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -522,11 +584,13 @@ const GROUP_MATCHES_F: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.SUEDE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.TUNISIE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -538,11 +602,13 @@ const GROUP_MATCHES_F: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.PAYS_BAS,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.SUEDE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -554,11 +620,13 @@ const GROUP_MATCHES_F: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.TUNISIE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.JAPON,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -570,11 +638,13 @@ const GROUP_MATCHES_F: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.JAPON,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.SUEDE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -586,11 +656,13 @@ const GROUP_MATCHES_F: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.TUNISIE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.PAYS_BAS,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	}
@@ -605,11 +677,13 @@ const GROUP_MATCHES_G: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.IRAN,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.NEW_ZEALAND,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -621,11 +695,13 @@ const GROUP_MATCHES_G: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.BELGIQUE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.EGYPTE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -637,11 +713,13 @@ const GROUP_MATCHES_G: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.BELGIQUE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.IRAN,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -653,11 +731,13 @@ const GROUP_MATCHES_G: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.NEW_ZEALAND,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.EGYPTE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -669,11 +749,13 @@ const GROUP_MATCHES_G: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.EGYPTE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.IRAN,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -685,11 +767,13 @@ const GROUP_MATCHES_G: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.NEW_ZEALAND,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.BELGIQUE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	}
@@ -704,11 +788,13 @@ const GROUP_MATCHES_H: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.ESPAGNE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.CAP_VERT,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -720,11 +806,13 @@ const GROUP_MATCHES_H: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.ARABIE_SAOUDITE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.URUGUAY,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -736,11 +824,13 @@ const GROUP_MATCHES_H: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.ESPAGNE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.ARABIE_SAOUDITE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -752,11 +842,13 @@ const GROUP_MATCHES_H: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.URUGUAY,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.CAP_VERT,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -768,11 +860,13 @@ const GROUP_MATCHES_H: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.CAP_VERT,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.ARABIE_SAOUDITE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -784,11 +878,13 @@ const GROUP_MATCHES_H: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.URUGUAY,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.ESPAGNE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	}
@@ -803,11 +899,13 @@ const GROUP_MATCHES_I: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.FRANCE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.SENEGAL,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -819,11 +917,13 @@ const GROUP_MATCHES_I: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.IRAK,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.NORVEGE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -835,11 +935,13 @@ const GROUP_MATCHES_I: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.FRANCE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.IRAK,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -851,11 +953,13 @@ const GROUP_MATCHES_I: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.NORVEGE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.SENEGAL,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -867,11 +971,13 @@ const GROUP_MATCHES_I: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.NORVEGE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.FRANCE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -883,11 +989,13 @@ const GROUP_MATCHES_I: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.SENEGAL,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.IRAK,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	}
@@ -902,11 +1010,13 @@ const GROUP_MATCHES_J: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.ARGENTINE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.ALGERIE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -918,11 +1028,13 @@ const GROUP_MATCHES_J: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.AUTRICHE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.JORDANIE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -934,11 +1046,13 @@ const GROUP_MATCHES_J: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.ARGENTINE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.AUTRICHE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -950,11 +1064,13 @@ const GROUP_MATCHES_J: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.JORDANIE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.ALGERIE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -966,11 +1082,13 @@ const GROUP_MATCHES_J: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.ALGERIE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.AUTRICHE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -982,11 +1100,13 @@ const GROUP_MATCHES_J: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.JORDANIE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.ARGENTINE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	}
@@ -1001,11 +1121,13 @@ const GROUP_MATCHES_K: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.PORTUGAL,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.RDC,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -1017,11 +1139,13 @@ const GROUP_MATCHES_K: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.OUZBEKISTAN,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.COLOMBIE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -1033,11 +1157,13 @@ const GROUP_MATCHES_K: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.PORTUGAL,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.OUZBEKISTAN,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -1049,11 +1175,13 @@ const GROUP_MATCHES_K: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.COLOMBIE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.RDC,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -1065,11 +1193,13 @@ const GROUP_MATCHES_K: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.COLOMBIE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.PORTUGAL,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -1081,11 +1211,13 @@ const GROUP_MATCHES_K: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.RDC,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.OUZBEKISTAN,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	}
@@ -1100,11 +1232,13 @@ const GROUP_MATCHES_L: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.ANGLETERRE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.CROATIE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -1116,11 +1250,13 @@ const GROUP_MATCHES_L: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.GHANA,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.PANAMA,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -1132,11 +1268,13 @@ const GROUP_MATCHES_L: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.ANGLETERRE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.GHANA,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -1148,11 +1286,13 @@ const GROUP_MATCHES_L: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.PANAMA,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.CROATIE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -1164,11 +1304,13 @@ const GROUP_MATCHES_L: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.PANAMA,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.ANGLETERRE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -1180,11 +1322,13 @@ const GROUP_MATCHES_L: Match[] = [
 		sides: [
 			{
 				nationId: NATION_IDS.CROATIE,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.GHANA,
-				score: { regularTime: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	}

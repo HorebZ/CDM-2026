@@ -39,13 +39,13 @@ export type MatchPhase = 'group' | 'round-of-16' | 'quarter' | 'semi' | 'small-f
 export type MatchResolution = 'regular' | 'penalties';
 
 export interface TeamMatchStats {
+	yellowCards: number;
+	redCards: number;
 	possession?: number;
 	shots?: number;
 	shotsOnTarget?: number;
 	corners?: number;
 	fouls?: number;
-	yellowCards?: number;
-	redCards?: number;
 }
 
 /** Score d'une équipe : regularTime est toujours présent, penalties uniquement si le match se termine aux tirs au but */
@@ -56,7 +56,7 @@ export interface MatchScore {
 
 export interface MatchSideBase {
 	score?: MatchScore;
-	stats?: TeamMatchStats;
+	stats: TeamMatchStats;
 }
 
 export type MatchSide =
