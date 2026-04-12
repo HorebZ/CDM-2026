@@ -624,6 +624,14 @@ a {
 
 /* Stade */
 
+.match-location {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	gap: 3px;
+	min-width: 0;
+}
+
 .match-stadium {
 	display: flex;
 	align-items: center;
@@ -870,6 +878,12 @@ a {
 
 	.matches-section {
 		padding: 28px 16px 60px;
+	}
+
+	.match-info {
+		flex-direction: row;
+		align-items: baseline;
+		gap: 6px;
 	}
 
 	.match-date-user {
