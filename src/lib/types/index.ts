@@ -35,7 +35,13 @@ export interface Nation {
 
 export type GroupId = 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G' | 'H' | 'I' | 'J' | 'K' | 'L';
 
-export type MatchPhase = 'group' | 'round-of-16' | 'quarter' | 'semi' | 'small-final' | 'final';
+export type MatchPhase =
+	| 'group'
+	| 'round-of-16'
+	| 'quarter'
+	| 'semi'
+	| 'small-final'
+	| 'final';
 
 export type MatchResolution = 'regular' | 'penalties';
 
@@ -77,6 +83,7 @@ export interface MatchResult {
 
 export interface Match {
 	phase: MatchPhase;
+	phaseLabel?: string;
 	group?: GroupId;
 	/** Heure locale du stade, format ISO sans fuseau : "YYYY-MM-DDTHH:mm:ss" */
 	localDate: string;

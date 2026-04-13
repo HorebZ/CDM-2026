@@ -5,10 +5,35 @@
 	import type { GroupId, Match } from '$lib/types/index.js';
 
 	const GROUP_IDS: GroupId[] = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'];
+	const FINAL_STAGE_FILTERS = [
+		{ id: '16e', label: '16e' },
+		{ id: '8e', label: '8e' },
+		{ id: '1/4', label: '1/4' },
+		{ id: 'PF', label: 'Phase finale' }
+	] as const;
+	const wrapperClasses = 'mx-auto mb-6 flex w-[min(100%,var(--shell-width))] flex-col gap-2.5';
+	const searchIconClasses =
+		'pointer-events-none absolute left-3 z-[1] flex items-center text-[var(--text-muted)]';
+	const selectedChipClasses =
+		'flex h-10 w-full min-w-0 items-center gap-2 rounded-[10px] border border-[var(--ring-active)] bg-[var(--bg-card)] pr-2.5 pl-[38px]';
+	const selectedNameClasses =
+		'min-w-0 flex-1 overflow-hidden text-ellipsis whitespace-nowrap text-[13px] font-semibold italic text-[var(--text-primary)]';
+	const clearButtonClasses =
+		'flex size-[22px] shrink-0 cursor-pointer items-center justify-center rounded-full border-0 bg-transparent p-0 text-[var(--text-muted)] transition-[color,background] duration-150 hover:bg-[rgba(255,255,255,0.08)] hover:text-[var(--text-primary)]';
+	const inputClasses =
+		'h-10 w-full rounded-[10px] border border-[var(--ring)] bg-[var(--bg-card)] px-3 pl-[38px] text-[13px] font-medium italic text-[var(--text-primary)] outline-none transition-[border-color] duration-150 placeholder:text-[var(--text-muted)] focus:border-[var(--ring-active)]';
+	const dropdownClasses =
+		'absolute top-[calc(100%+4px)] right-0 left-0 z-[100] m-0 max-h-[280px] list-none overflow-y-auto rounded-[10px] border border-[var(--ring-active)] bg-[#131322] p-1 shadow-[0_8px_32px_rgba(0,0,0,0.5)]';
+	const dropdownItemClasses =
+		'flex w-full cursor-pointer items-center gap-2.5 rounded-[7px] border-0 bg-transparent px-2.5 py-2 text-left transition-[background] duration-[120ms] hover:bg-[rgba(255,255,255,0.06)]';
+	const groupButtonClasses =
+		'h-[26px] min-w-[30px] cursor-pointer rounded-[6px] border border-[var(--ring)] bg-transparent px-2 text-[12px] font-bold italic text-[var(--text-muted)] transition-[color,border-color,background] duration-150 hover:border-[var(--ring-active)] hover:text-[var(--text-primary)]';
 
 	interface Props {
 		onfilter: (matches: Match[]) => void;
 	}
+
+	type FinalStageFilterId = (typeof FINAL_STAGE_FILTERS)[number]['id'];
 
 	const { onfilter }: Props = $props();
 
@@ -16,6 +41,7 @@
 	let selectedNationId = $state<string | null>(null);
 	let selectedNation = $state<NationSearchResult | null>(null);
 	let selectedGroup = $state<GroupId | null>(null);
+	let selectedFinalStage = $state<FinalStageFilterId | null>(null);
 	let showDropdown = $state(false);
 	let inputEl = $state<HTMLInputElement | null>(null);
 
@@ -30,7 +56,14 @@
 			const matchesNation =
 				!selectedNationId || match.sides.some((side) => side.nationId === selectedNationId);
 			const matchesGroup = !selectedGroup || match.group === selectedGroup;
-			return matchesNation && matchesGroup;
+			const matchesFinalStage =
+				!selectedFinalStage ||
+				(selectedFinalStage === '16e' && match.phaseLabel === '16e de finale') ||
+				(selectedFinalStage === '8e' && match.phaseLabel === '8e de finale') ||
+				(selectedFinalStage === '1/4' && match.phaseLabel === 'Quart de finale') ||
+				(selectedFinalStage === 'PF' &&
+					['Demi-finale', 'Petite finale', 'Finale'].includes(match.phaseLabel ?? ''));
+			return matchesNation && matchesGroup && matchesFinalStage;
 		});
 		onfilter(filtered);
 	});
@@ -49,7 +82,13 @@
 	}
 
 	function toggleGroup(group: GroupId) {
+		selectedFinalStage = null;
 		selectedGroup = selectedGroup === group ? null : group;
+	}
+
+	function toggleFinalStage(filterId: FinalStageFilterId) {
+		selectedGroup = null;
+		selectedFinalStage = selectedFinalStage === filterId ? null : filterId;
 	}
 
 	function handleInput() {
@@ -71,12 +110,9 @@
 	}
 </script>
 
-<div class="mx-auto mb-6 flex w-[min(100%,var(--shell-width))] flex-col gap-2.5">
+<div class={wrapperClasses}>
 	<div class="relative flex items-center">
-		<span
-			class="pointer-events-none absolute left-3 z-[1] flex items-center text-[var(--text-muted)]"
-			aria-hidden="true"
-		>
+		<span class={searchIconClasses} aria-hidden="true">
 			<svg
 				width="16"
 				height="16"
@@ -98,9 +134,7 @@
 		</span>
 
 		{#if selectedNation}
-			<div
-				class="flex h-10 w-full min-w-0 items-center gap-2 rounded-[10px] border border-[var(--ring-active)] bg-[var(--bg-card)] pr-2.5 pl-[38px]"
-			>
+			<div class={selectedChipClasses}>
 				<img
 					src={getFlagUrl(selectedNation.code)}
 					alt={selectedNation.name}
@@ -108,13 +142,11 @@
 					height={16}
 					class="shrink-0 rounded-[2px] object-cover"
 				/>
-				<span
-					class="min-w-0 flex-1 overflow-hidden text-ellipsis whitespace-nowrap text-[13px] font-semibold italic text-[var(--text-primary)]"
-				>
+				<span class={selectedNameClasses}>
 					{selectedNation.name}
 				</span>
 				<button
-					class="flex size-[22px] shrink-0 cursor-pointer items-center justify-center rounded-full border-0 bg-transparent p-0 text-[var(--text-muted)] transition-[color,background] duration-150 hover:bg-[rgba(255,255,255,0.08)] hover:text-[var(--text-primary)]"
+					class={clearButtonClasses}
 					onclick={clearNation}
 					aria-label="Supprimer le filtre pays"
 				>
@@ -154,7 +186,7 @@
 				onblur={handleBlur}
 				onfocus={handleFocus}
 				type="text"
-				class="h-10 w-full rounded-[10px] border border-[var(--ring)] bg-[var(--bg-card)] px-3 pl-[38px] text-[13px] font-medium italic text-[var(--text-primary)] outline-none transition-[border-color] duration-150 placeholder:text-[var(--text-muted)] focus:border-[var(--ring-active)]"
+				class={inputClasses}
 				style="font-family: inherit"
 				placeholder="Rechercher un pays..."
 				autocomplete="off"
@@ -163,14 +195,11 @@
 		{/if}
 
 		{#if showDropdown && suggestions.length > 0}
-			<ul
-				class="absolute top-[calc(100%+4px)] right-0 left-0 z-[100] m-0 max-h-[280px] list-none overflow-y-auto rounded-[10px] border border-[var(--ring-active)] bg-[#131322] p-1 shadow-[0_8px_32px_rgba(0,0,0,0.5)]"
-				role="listbox"
-			>
+			<ul class={dropdownClasses} role="listbox">
 				{#each suggestions as result (result.id)}
 					<li role="option" aria-selected="false">
 						<button
-							class="flex w-full cursor-pointer items-center gap-2.5 rounded-[7px] border-0 bg-transparent px-2.5 py-2 text-left transition-[background] duration-[120ms] hover:bg-[rgba(255,255,255,0.06)]"
+							class={dropdownItemClasses}
 							onmousedown={() => selectNation(result)}
 							type="button"
 						>
@@ -181,10 +210,10 @@
 								height={16}
 								class="shrink-0 rounded-[2px] object-cover"
 							/>
-							<span class="flex-1 text-[13px] font-semibold italic text-[var(--text-primary)]">
+							<span class="flex-1 text-[13px] font-semibold text-(--text-primary) italic">
 								{result.name}
 							</span>
-							<span class="shrink-0 text-[11px] font-medium italic text-[var(--text-muted)]">
+							<span class="shrink-0 text-[11px] font-medium text-(--text-muted) italic">
 								Groupe {result.group}
 							</span>
 						</button>
@@ -194,10 +223,10 @@
 		{/if}
 	</div>
 
-	<div class="flex flex-wrap gap-1.5" role="group" aria-label="Filtrer par groupe">
+	<div class="flex flex-wrap gap-1.5" role="group" aria-label="Filtrer par groupe ou phase finale">
 		{#each GROUP_IDS as group (group)}
 			<button
-				class="h-[26px] min-w-[30px] cursor-pointer rounded-[6px] border border-[var(--ring)] bg-transparent px-2 text-[12px] font-bold italic text-[var(--text-muted)] transition-[color,border-color,background] duration-150 hover:border-[var(--ring-active)] hover:text-[var(--text-primary)]"
+				class={groupButtonClasses}
 				class:border-[var(--ring-active)]={selectedGroup === group}
 				class:bg-[rgba(255,255,255,0.1)]={selectedGroup === group}
 				class:text-[var(--text-primary)]={selectedGroup === group}
@@ -207,6 +236,22 @@
 				aria-pressed={selectedGroup === group}
 			>
 				{group}
+			</button>
+		{/each}
+
+		{#each FINAL_STAGE_FILTERS as filter (filter.id)}
+			<button
+				class={`${groupButtonClasses} min-w-[38px]`}
+				class:border-[var(--ring-active)]={selectedFinalStage === filter.id}
+				class:bg-[rgba(255,255,255,0.1)]={selectedFinalStage === filter.id}
+				class:text-[var(--text-primary)]={selectedFinalStage === filter.id}
+				onclick={() => toggleFinalStage(filter.id)}
+				type="button"
+				style="font-family: inherit"
+				aria-pressed={selectedFinalStage === filter.id}
+				aria-label={`Filtrer par ${filter.label}`}
+			>
+				{filter.label}
 			</button>
 		{/each}
 	</div>

@@ -3,15 +3,15 @@
 
 	interface Props {
 		phase: MatchPhase;
+		phaseLabel?: string;
 		group?: GroupId;
 		userDate: string;
 	}
 
-	const { phase, group, userDate }: Props = $props();
+	const { phase, phaseLabel, group, userDate }: Props = $props();
 
 	const PHASE_LABELS: Record<MatchPhase, string> = {
 		group: 'Groupe',
-		'round-of-32': '16e de finale',
 		'round-of-16': '8e de finale',
 		quarter: 'Quart',
 		semi: 'Demi',
@@ -27,7 +27,7 @@
 				class="text-[11px] font-bold uppercase tracking-[0.06em] text-[var(--text-muted)]"
 				class:text-[#ffd700]={phase === 'final'}
 			>
-				{PHASE_LABELS[phase]}
+				{phaseLabel ?? PHASE_LABELS[phase]}
 				{phase === 'group' ? group : ''}
 			</span>
 		</div>

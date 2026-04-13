@@ -14,7 +14,7 @@
 </script>
 
 <button
-	class="absolute bottom-7 left-1/2 flex size-9 -translate-x-1/2 items-center justify-center rounded-full border border-[rgba(255,255,255,0.12)] bg-transparent p-0 text-[rgba(255,255,255,0.45)] transition-[color,border-color,transform] duration-200 hover:border-[rgba(255,255,255,0.3)] hover:text-[rgba(255,255,255,0.85)] max-[560px]:hidden animate-[chevron-bounce_2.4s_ease-in-out_infinite]"
+	class="absolute bottom-7 left-1/2 flex size-9 -translate-x-1/2 animate-[chevron-bounce_2.4s_ease-in-out_infinite] items-center justify-center rounded-full border border-[rgba(255,255,255,0.12)] bg-transparent p-0 text-[rgba(255,255,255,0.45)] transition-[color,border-color,transform] duration-200 hover:border-[rgba(255,255,255,0.3)] hover:text-[rgba(255,255,255,0.85)] max-[560px]:hidden"
 	onclick={scrollToTarget}
 	aria-label="Voir les matchs"
 	type="button"
