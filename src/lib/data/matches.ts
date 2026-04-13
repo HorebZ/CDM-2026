@@ -1349,4 +1349,607 @@ const GROUP_MATCHES: Match[] = [
 	...GROUP_MATCHES_L
 ].sort((a, b) => a.localDate.localeCompare(b.localDate));
 
-export const MATCHES: Match[] = [...GROUP_MATCHES];
+const SIXTEENTH_FINAL_MATCHES: Match[] = [
+	{
+		phase: 'round-of-16',
+		phaseLabel: '16e de finale',
+		localDate: '2026-06-28T12:00:00',
+		stadiumId: STADIUM_IDS.LOS_ANGELES,
+		sides: [
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			},
+			{
+				label: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			}
+		]
+	},
+	{
+		phase: 'round-of-16',
+		phaseLabel: '16e de finale',
+		localDate: '2026-06-29T12:00:00',
+		stadiumId: STADIUM_IDS.HOUSTON,
+		sides: [
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			},
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			}
+		]
+	},
+	{
+		phase: 'round-of-16',
+		phaseLabel: '16e de finale',
+		localDate: '2026-06-29T16:30:00',
+		stadiumId: STADIUM_IDS.BOSTON,
+		sides: [
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			},
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			}
+		]
+	},
+	{
+		phase: 'round-of-16',
+		phaseLabel: '16e de finale',
+		localDate: '2026-06-29T19:00:00',
+		stadiumId: STADIUM_IDS.MONTERREY,
+		sides: [
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			},
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			}
+		]
+	},
+	{
+		phase: 'round-of-16',
+		phaseLabel: '16e de finale',
+		localDate: '2026-06-30T12:00:00',
+		stadiumId: STADIUM_IDS.ARLINGTON,
+		sides: [
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			},
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			}
+		]
+	},
+	{
+		phase: 'round-of-16',
+		phaseLabel: '16e de finale',
+		localDate: '2026-06-30T17:00:00',
+		stadiumId: STADIUM_IDS.NEW_YORK,
+		sides: [
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			},
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			}
+		]
+	},
+	{
+		phase: 'round-of-16',
+		phaseLabel: '16e de finale',
+		localDate: '2026-06-30T19:00:00',
+		stadiumId: STADIUM_IDS.MEXICO,
+		sides: [
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			},
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			}
+		]
+	},
+	{
+		phase: 'round-of-16',
+		phaseLabel: '16e de finale',
+		localDate: '2026-07-01T12:00:00',
+		stadiumId: STADIUM_IDS.ATLANTA,
+		sides: [
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			},
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			}
+		]
+	},
+	{
+		phase: 'round-of-16',
+		phaseLabel: '16e de finale',
+		localDate: '2026-07-01T13:00:00',
+		stadiumId: STADIUM_IDS.SEATTLE,
+		sides: [
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			},
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			}
+		]
+	},
+	{
+		phase: 'round-of-16',
+		phaseLabel: '16e de finale',
+		localDate: '2026-07-01T17:00:00',
+		stadiumId: STADIUM_IDS.SANTA_CLARA,
+		sides: [
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			},
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			}
+		]
+	},
+	{
+		phase: 'round-of-16',
+		phaseLabel: '16e de finale',
+		localDate: '2026-07-02T12:00:00',
+		stadiumId: STADIUM_IDS.LOS_ANGELES,
+		sides: [
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			},
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			}
+		]
+	},
+	{
+		phase: 'round-of-16',
+		phaseLabel: '16e de finale',
+		localDate: '2026-07-02T19:00:00',
+		stadiumId: STADIUM_IDS.TORONTO,
+		sides: [
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			},
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			}
+		]
+	},
+	{
+		phase: 'round-of-16',
+		phaseLabel: '16e de finale',
+		localDate: '2026-07-02T20:00:00',
+		stadiumId: STADIUM_IDS.VANCOUVER,
+		sides: [
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			},
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			}
+		]
+	},
+	{
+		phase: 'round-of-16',
+		phaseLabel: '16e de finale',
+		localDate: '2026-07-03T13:00:00',
+		stadiumId: STADIUM_IDS.ARLINGTON,
+		sides: [
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			},
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			}
+		]
+	},
+	{
+		phase: 'round-of-16',
+		phaseLabel: '16e de finale',
+		localDate: '2026-07-03T18:00:00',
+		stadiumId: STADIUM_IDS.MIAMI,
+		sides: [
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			},
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			}
+		]
+	},
+	{
+		phase: 'round-of-16',
+		phaseLabel: '16e de finale',
+		localDate: '2026-07-03T20:30:00',
+		stadiumId: STADIUM_IDS.KANSAS_CITY,
+		sides: [
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			},
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			}
+		]
+	}
+];
+
+const EIGHTH_FINAL_MATCHES: Match[] = [
+	{
+		phase: 'quarter',
+		phaseLabel: '8e de finale',
+		localDate: '2026-07-04T12:00:00',
+		stadiumId: STADIUM_IDS.HOUSTON,
+		sides: [
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			},
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			}
+		]
+	},
+	{
+		phase: 'quarter',
+		phaseLabel: '8e de finale',
+		localDate: '2026-07-04T17:00:00',
+		stadiumId: STADIUM_IDS.PHILADELPHIE,
+		sides: [
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			},
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			}
+		]
+	},
+	{
+		phase: 'quarter',
+		phaseLabel: '8e de finale',
+		localDate: '2026-07-05T16:00:00',
+		stadiumId: STADIUM_IDS.NEW_YORK,
+		sides: [
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			},
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			}
+		]
+	},
+	{
+		phase: 'quarter',
+		phaseLabel: '8e de finale',
+		localDate: '2026-07-05T18:00:00',
+		stadiumId: STADIUM_IDS.MEXICO,
+		sides: [
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			},
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			}
+		]
+	},
+	{
+		phase: 'quarter',
+		phaseLabel: '8e de finale',
+		localDate: '2026-07-06T14:00:00',
+		stadiumId: STADIUM_IDS.ARLINGTON,
+		sides: [
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			},
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			}
+		]
+	},
+	{
+		phase: 'quarter',
+		phaseLabel: '8e de finale',
+		localDate: '2026-07-06T17:00:00',
+		stadiumId: STADIUM_IDS.SEATTLE,
+		sides: [
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			},
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			}
+		]
+	},
+	{
+		phase: 'quarter',
+		phaseLabel: '8e de finale',
+		localDate: '2026-07-07T12:00:00',
+		stadiumId: STADIUM_IDS.ATLANTA,
+		sides: [
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			},
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			}
+		]
+	},
+	{
+		phase: 'quarter',
+		phaseLabel: '8e de finale',
+		localDate: '2026-07-07T13:00:00',
+		stadiumId: STADIUM_IDS.VANCOUVER,
+		sides: [
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			},
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			}
+		]
+	}
+];
+
+const QUARTER_MATCHES: Match[] = [
+	{
+		phase: 'quarter',
+		phaseLabel: 'Quart de finale',
+		localDate: '2026-07-09T16:00:00',
+		stadiumId: STADIUM_IDS.BOSTON,
+		sides: [
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			},
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			}
+		]
+	},
+	{
+		phase: 'quarter',
+		phaseLabel: 'Quart de finale',
+		localDate: '2026-07-10T12:00:00',
+		stadiumId: STADIUM_IDS.LOS_ANGELES,
+		sides: [
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			},
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			}
+		]
+	},
+	{
+		phase: 'quarter',
+		phaseLabel: 'Quart de finale',
+		localDate: '2026-07-11T17:00:00',
+		stadiumId: STADIUM_IDS.MIAMI,
+		sides: [
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			},
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			}
+		]
+	},
+	{
+		phase: 'quarter',
+		phaseLabel: 'Quart de finale',
+		localDate: '2026-07-11T20:00:00',
+		stadiumId: STADIUM_IDS.KANSAS_CITY,
+		sides: [
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			},
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			}
+		]
+	}
+];
+
+const SEMI_MATCHES: Match[] = [
+	{
+		phase: 'semi',
+		phaseLabel: 'Demi-finale',
+		localDate: '2026-07-14T14:00:00',
+		stadiumId: STADIUM_IDS.ARLINGTON,
+		sides: [
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			},
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			}
+		]
+	},
+	{
+		phase: 'semi',
+		phaseLabel: 'Demi-finale',
+		localDate: '2026-07-15T15:00:00',
+		stadiumId: STADIUM_IDS.ATLANTA,
+		sides: [
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			},
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			}
+		]
+	}
+];
+
+const SMALL_FINAL_MATCHES: Match[] = [
+	{
+		phase: 'small-final',
+		phaseLabel: 'Petite finale',
+		localDate: '2026-07-18T17:00:00',
+		stadiumId: STADIUM_IDS.MIAMI,
+		sides: [
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			},
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			}
+		]
+	}
+];
+
+const FINAL_MATCHES: Match[] = [
+	{
+		phase: 'final',
+		phaseLabel: 'Finale',
+		localDate: '2026-07-19T15:00:00',
+		stadiumId: STADIUM_IDS.NEW_YORK,
+		sides: [
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			},
+			{
+				nationId: 'TBD',
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
+			}
+		]
+	}
+];
+
+const KNOCKOUT_MATCHES: Match[] = [
+	...SIXTEENTH_FINAL_MATCHES,
+	...EIGHTH_FINAL_MATCHES,
+	...QUARTER_MATCHES,
+	...SEMI_MATCHES,
+	...SMALL_FINAL_MATCHES,
+	...FINAL_MATCHES
+].sort((a, b) => a.localDate.localeCompare(b.localDate));
+
+export const MATCHES: Match[] = [...GROUP_MATCHES, ...KNOCKOUT_MATCHES];
