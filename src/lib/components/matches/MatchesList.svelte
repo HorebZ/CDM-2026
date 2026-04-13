@@ -5,6 +5,9 @@
 	import MatchSearchBar from './MatchSearchBar.svelte';
 
 	let filteredMatches = $state<Match[]>(MATCHES);
+
+	const resultsWrapperClasses =
+		'mx-auto flex w-[min(100%,var(--shell-width))] min-h-[700px] flex-col max-[800px]:min-h-[980px]';
 </script>
 
 <section
@@ -13,24 +16,21 @@
 >
 	<MatchSearchBar onfilter={(matches) => (filteredMatches = matches)} />
 
-	<ul
-		class="mx-auto flex w-[min(100%,var(--shell-width))] list-none flex-col gap-0 p-0"
-		role="list"
-	>
-		{#each filteredMatches as match, i (i)}
-			<li
-				class="border-b border-[rgba(255,255,255,0.05)] first:border-t first:border-[rgba(255,255,255,0.05)]"
-			>
-				<MatchRow {match} />
-			</li>
-		{/each}
-	</ul>
+	<div class={resultsWrapperClasses}>
+		<ul class="list-none p-0" role="list">
+			{#each filteredMatches as match, i (i)}
+				<li
+					class="border-b border-[rgba(255,255,255,0.05)] first:border-t first:border-[rgba(255,255,255,0.05)]"
+				>
+					<MatchRow {match} />
+				</li>
+			{/each}
+		</ul>
 
-	{#if filteredMatches.length === 0}
-		<div
-			class="mx-auto my-10 w-[min(100%,var(--shell-width))] text-center text-[13px] text-[var(--text-muted)] italic"
-		>
-			<p>Aucun match trouvé pour cette recherche.</p>
-		</div>
-	{/if}
+		{#if filteredMatches.length === 0}
+			<div class="flex flex-1 items-center justify-center text-center text-[13px] text-(--text-muted) italic">
+				<p>Aucun match trouvé pour cette recherche.</p>
+			</div>
+		{/if}
+	</div>
 </section>

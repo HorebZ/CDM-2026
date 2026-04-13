@@ -29,6 +29,12 @@ Inspired by the infographic used by the great [Wiloo](https://www.youtube.com/@w
 
   _revealed at the end of the tournament_
 
+- Matches list
+  <img src="./readme-ressources/demo-matches-list.png" alt="Matches list" />
+
+- Matches search bar (using [`minisearch`](https://github.com/lucaong/minisearch))
+  <img src="./readme-ressources/demo-search.png" alt="Matches search bar" />
+
 ## Usage
 
 #### Prerequisites
