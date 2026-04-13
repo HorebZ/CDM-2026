@@ -39,26 +39,44 @@
 
 <Confetti active={showConfetti} />
 
-<div class="counter">
+<div
+	class="flex min-w-[122px] flex-row items-center justify-center leading-[0.95] max-[420px]:min-w-0 max-[420px]:gap-1.5"
+>
 	{#if showSingleFlag}
-		<div class="counter-flag">
+		<div class="flex flex-col items-center gap-3 text-center">
 			<img
 				src={getFlagUrl(enabledNations[0].code)}
 				alt={enabledNations[0].name}
 				width={120}
 				height={90}
 			/>
-			<span class="counter-label">{enabledNations[0].name.toUpperCase()}</span>
+			<span
+				class="text-[40px] font-black uppercase tracking-[2px] text-[rgba(255,255,255,0.82)] max-[420px]:text-[28px] max-[420px]:tracking-[1.5px]"
+			>
+				{enabledNations[0].name.toUpperCase()}
+			</span>
 		</div>
 	{:else if showTeamCount}
-		<div class="counter-days">
-			<span class="counter-value">{enabledNations.length}</span>
-			<span class="counter-label">ÉQUIPE{enabledNations.length > 1 ? 'S' : ''}</span>
+		<div class="flex flex-col items-start gap-0 max-[420px]:gap-1.5">
+			<span class="text-[66px] font-black uppercase tracking-[-2px] text-white max-[800px]:text-5xl">
+				{enabledNations.length}
+			</span>
+			<span
+				class="text-[40px] font-black uppercase tracking-[2px] text-[rgba(255,255,255,0.82)] max-[420px]:text-[28px] max-[420px]:tracking-[1.5px]"
+			>
+				ÉQUIPE{enabledNations.length > 1 ? 'S' : ''}
+			</span>
 		</div>
 	{:else if showDays}
-		<div class="counter-days">
-			<span class="counter-value">{days}</span>
-			<span class="counter-label">JOURS</span>
+		<div class="flex flex-col items-start gap-0 max-[420px]:gap-1.5">
+			<span class="text-[66px] font-black uppercase tracking-[-2px] text-white max-[800px]:text-5xl">
+				{days}
+			</span>
+			<span
+				class="text-[40px] font-black uppercase tracking-[2px] text-[rgba(255,255,255,0.82)] max-[420px]:text-[28px] max-[420px]:tracking-[1.5px]"
+			>
+				JOURS
+			</span>
 		</div>
 	{/if}
 </div>

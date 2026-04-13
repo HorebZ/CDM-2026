@@ -13,9 +13,14 @@
 >
 	<MatchSearchBar onfilter={(matches) => (filteredMatches = matches)} />
 
-	<ul class="mx-auto flex w-[min(100%,var(--shell-width))] list-none flex-col gap-0 p-0" role="list">
+	<ul
+		class="mx-auto flex w-[min(100%,var(--shell-width))] list-none flex-col gap-0 p-0"
+		role="list"
+	>
 		{#each filteredMatches as match, i (i)}
-			<li class="border-b border-[rgba(255,255,255,0.05)] first:border-t first:border-[rgba(255,255,255,0.05)]">
+			<li
+				class="border-b border-[rgba(255,255,255,0.05)] first:border-t first:border-[rgba(255,255,255,0.05)]"
+			>
 				<MatchRow {match} />
 			</li>
 		{/each}
@@ -23,13 +28,9 @@
 
 	{#if filteredMatches.length === 0}
 		<div
-			class="mx-auto my-10 w-[min(100%,var(--shell-width))] text-center text-[13px] italic text-[var(--text-muted)]"
+			class="mx-auto my-10 w-[min(100%,var(--shell-width))] text-center text-[13px] text-[var(--text-muted)] italic"
 		>
 			<p>Aucun match trouvé pour cette recherche.</p>
 		</div>
 	{/if}
-
-	<div class="flex items-center justify-center">
-		<p class="text-sm text-gray-400">(la suite arrive bientôt...)</p>
-	</div>
 </section>
