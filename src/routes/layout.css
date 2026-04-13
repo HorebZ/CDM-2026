@@ -371,6 +371,7 @@ a {
 	aspect-ratio: 1 / 1;
 	padding: 0;
 	border-radius: 999px;
+	background-color: #050509;
 	cursor: pointer;
 	border: 2px solid;
 }
@@ -564,7 +565,6 @@ a {
 	.counter-value {
 		font-size: 48px;
 	}
-
 }
 
 /* 6 cols @ 58px = 448px → plafonner à 4 cols sur mobile */
@@ -598,7 +598,6 @@ a {
 		min-width: min(320px, calc(100vw - 36px));
 		max-width: min(360px, calc(100vw - 36px));
 	}
-
 }
 
 @media (max-width: 420px) {
