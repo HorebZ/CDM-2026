@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { MATCHES } from '$lib/data/matches.js';
+	import type { Match } from '$lib/types/index.js';
 	import MatchRow from './MatchRow.svelte';
 	import MatchSearchBar from './MatchSearchBar.svelte';
-	import type { Match } from '$lib/types/index.js';
 
 	let filteredMatches = $state<Match[]>(MATCHES);
 </script>

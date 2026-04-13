@@ -2,6 +2,7 @@
 	import type { Nation } from '$lib/types/index.js';
 	import { getFlagUrl } from '$lib/config/site.js';
 	import NationTooltip from './NationTooltip.svelte';
+	import TooltipTrigger from './TooltipTrigger.svelte';
 
 	interface Props {
 		nation: Nation;
@@ -17,41 +18,21 @@
 	}
 
 	const jumpDelay = $derived(celebrating ? codeToDelay(nation.code) : '0ms');
-
-	let showTooltip = $state(false);
-	let hoverTimeout: ReturnType<typeof setTimeout> | null = null;
-
-	function handleMouseEnter() {
-		hoverTimeout = setTimeout(() => {
-			showTooltip = true;
-		}, 500);
-	}
-
-	function handleMouseLeave() {
-		if (hoverTimeout) {
-			clearTimeout(hoverTimeout);
-			hoverTimeout = null;
-		}
-		showTooltip = false;
-	}
 </script>
 
-<div
-	class="flag-wrapper"
-	onmouseenter={handleMouseEnter}
-	onmouseleave={handleMouseLeave}
-	role="group"
->
-	<div
-		class="flag-badge"
-		class:is-active={nation.enabled}
-		class:is-celebrating={celebrating}
-		style="--jump-delay: {jumpDelay}"
-	>
-		<img src={getFlagUrl(nation.code)} alt={nation.name} width={80} height={60} loading="lazy" />
-	</div>
+<TooltipTrigger className="flag-wrapper" role="group">
+	{#snippet trigger()}
+		<div
+			class="flag-badge"
+			class:is-active={nation.enabled}
+			class:is-celebrating={celebrating}
+			style="--jump-delay: {jumpDelay}"
+		>
+			<img src={getFlagUrl(nation.code)} alt={nation.name} width={80} height={60} loading="lazy" />
+		</div>
+	{/snippet}
 
-	{#if showTooltip}
+	{#snippet tooltip()}
 		<NationTooltip {nation} />
-	{/if}
-</div>
+	{/snippet}
+</TooltipTrigger>

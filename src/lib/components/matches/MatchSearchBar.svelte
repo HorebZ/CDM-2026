@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { nationSearch, type NationSearchResult } from '$lib/search/nations-index.js';
-	import { MATCHES } from '$lib/data/matches.js';
 	import { getFlagUrl } from '$lib/config/site.js';
+	import { MATCHES } from '$lib/data/matches.js';
+	import { nationSearch, type NationSearchResult } from '$lib/search/nations-index.js';
 	import type { GroupId, Match } from '$lib/types/index.js';
 
 	const GROUP_IDS: GroupId[] = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'];

@@ -3,7 +3,7 @@
 	import FlagsGrid from '$lib/components/FlagsGrid.svelte';
 	import SiteInfoBadge from '$lib/components/SiteInfoBadge.svelte';
 	import ScrollChevron from '$lib/components/ScrollChevron.svelte';
-	import MatchesList from '$lib/components/MatchesList.svelte';
+	import MatchesList from '$lib/components/matches/MatchesList.svelte';
 	import { NATIONS } from '$lib/data/nations.js';
 	import { OPENING_MATCH_DATE } from '$lib/config/site.js';
 
