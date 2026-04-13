@@ -28,8 +28,7 @@
 	$effect(() => {
 		const filtered = MATCHES.filter((match) => {
 			const matchesNation =
-				!selectedNationId ||
-				match.sides.some((side) => side.nationId === selectedNationId);
+				!selectedNationId || match.sides.some((side) => side.nationId === selectedNationId);
 			const matchesGroup = !selectedGroup || match.group === selectedGroup;
 			return matchesNation && matchesGroup;
 		});
@@ -75,9 +74,23 @@
 <div class="match-search-bar">
 	<div class="match-search-input-wrapper">
 		<span class="match-search-icon" aria-hidden="true">
-			<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<svg
+				width="16"
+				height="16"
+				viewBox="0 0 16 16"
+				fill="none"
+				xmlns="http://www.w3.org/2000/svg"
+			>
 				<circle cx="6.5" cy="6.5" r="5" stroke="currentColor" stroke-width="1.5" />
-				<line x1="10.354" y1="10.646" x2="14.354" y2="14.646" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+				<line
+					x1="10.354"
+					y1="10.646"
+					x2="14.354"
+					y2="14.646"
+					stroke="currentColor"
+					stroke-width="1.5"
+					stroke-linecap="round"
+				/>
 			</svg>
 		</span>
 
@@ -91,10 +104,36 @@
 					class="match-search-chip-flag"
 				/>
 				<span class="match-search-chip-name">{selectedNation.name}</span>
-				<button class="match-search-chip-clear" onclick={clearNation} aria-label="Supprimer le filtre pays">
-					<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<line x1="1" y1="1" x2="11" y2="11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-						<line x1="11" y1="1" x2="1" y2="11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+				<button
+					class="match-search-chip-clear"
+					onclick={clearNation}
+					aria-label="Supprimer le filtre pays"
+				>
+					<svg
+						width="12"
+						height="12"
+						viewBox="0 0 12 12"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<line
+							x1="1"
+							y1="1"
+							x2="11"
+							y2="11"
+							stroke="currentColor"
+							stroke-width="1.5"
+							stroke-linecap="round"
+						/>
+						<line
+							x1="11"
+							y1="1"
+							x2="1"
+							y2="11"
+							stroke="currentColor"
+							stroke-width="1.5"
+							stroke-linecap="round"
+						/>
 					</svg>
 				</button>
 			</div>

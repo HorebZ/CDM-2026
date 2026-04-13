@@ -607,7 +607,9 @@ a {
 	cursor: pointer;
 	padding: 0;
 	flex-shrink: 0;
-	transition: color 0.15s, background 0.15s;
+	transition:
+		color 0.15s,
+		background 0.15s;
 }
 
 .match-search-chip-clear:hover {
