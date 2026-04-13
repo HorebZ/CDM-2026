@@ -567,7 +567,7 @@ a {
 
 }
 
-/* 6 cols @ 58px = 448px → réduire pour mobiles */
+/* 6 cols @ 58px = 448px → plafonner à 4 cols sur mobile */
 @media (max-width: 560px) {
 	:root {
 		--flag-size: 52px;
@@ -584,7 +584,9 @@ a {
 	}
 
 	.flags-grid {
-		grid-template-columns: repeat(5, var(--flag-size));
+		width: min(100%, calc(var(--flag-size) * 5 + var(--flag-gap) * 4));
+		grid-template-columns: repeat(4, var(--flag-size));
+		justify-content: space-between;
 	}
 
 	.site-info-wrapper {
