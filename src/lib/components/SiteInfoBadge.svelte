@@ -49,14 +49,14 @@
 
 <div
 	bind:this={wrapper}
-	class="site-info-wrapper"
+	class="fixed bottom-6 left-6 z-120 max-[560px]:bottom-[18px] max-[560px]:left-[18px] max-[420px]:bottom-[14px] max-[420px]:left-[14px]"
 	onmouseenter={handleMouseEnter}
 	onmouseleave={handleMouseLeave}
 	role="group"
 >
 	<button
 		type="button"
-		class="site-info-badge"
+		class="flex aspect-square h-5 cursor-pointer items-center justify-center rounded-full border-2 bg-[#050509] p-0"
 		aria-label="Informations sur le site"
 		aria-expanded={showPopup}
 		aria-controls="site-info-popup"
@@ -69,40 +69,57 @@
 	{#if showPopup}
 		<div
 			id="site-info-popup"
-			class="site-info-popup"
+			class="absolute bottom-[calc(100%+12px)] left-0 z-120 w-auto min-w-[min(360px,calc(100vw-48px))] max-w-[min(420px,calc(100vw-48px))] whitespace-normal rounded-[10px] border border-[rgba(255,255,255,0.12)] bg-[#151522] px-4 py-[14px] shadow-[0_8px_24px_rgba(0,0,0,0.5),0_0_0_1px_rgba(255,255,255,0.04)] animate-[infoTooltipFadeIn_0.5s_ease] max-[560px]:min-w-[min(320px,calc(100vw-36px))] max-[560px]:max-w-[min(360px,calc(100vw-36px))] max-[420px]:min-w-[min(280px,calc(100vw-28px))] max-[420px]:max-w-[min(320px,calc(100vw-28px))]"
 			role="tooltip"
 			onmouseenter={openPopup}
 			onmouseleave={handleMouseLeave}
 		>
-			<div class="site-info-content">
-				<span class="site-info-title">A propos du site</span>
+			<span
+				class="absolute top-full left-[34px] h-0 w-0 border-[6px] border-transparent border-t-[rgba(255,255,255,0.12)]"
+				aria-hidden="true"
+			></span>
+			<span
+				class="absolute top-full left-[35px] h-0 w-0 border-[5px] border-transparent border-t-[#151522]"
+				aria-hidden="true"
+			></span>
 
-				<div class="site-info-item">
-					<span class="site-info-label">Inspiration</span>
-					<span class="site-info-value"
+			<div class="flex flex-col gap-2.5">
+				<span class="text-[11px] font-extrabold uppercase tracking-[0.08em] text-(--text-primary)">
+					A propos du site
+				</span>
+
+				<div class="flex flex-col gap-1">
+					<span class="text-[11px] font-bold uppercase tracking-[0.06em] text-[rgba(255,255,255,0.72)]">
+						Inspiration
+					</span>
+					<span class="text-[11px] leading-[1.45] text-(--text-muted)"
 						>Reproduction libre de l'infographie utilisé par
 						<a href="https://www.youtube.com/@wiloo" target="_blank">Wiloo</a> dans ses vidéos youtube
 						sur le mondiale 2026
 					</span>
 				</div>
 
-				<div class="site-info-item">
-					<span class="site-info-label">Développement</span>
-					<span class="site-info-value"
+				<div class="flex flex-col gap-1">
+					<span class="text-[11px] font-bold uppercase tracking-[0.06em] text-[rgba(255,255,255,0.72)]">
+						Développement
+					</span>
+					<span class="text-[11px] leading-[1.45] text-(--text-muted)"
 						>Site développé par <a href="https://github.com/HorebZ" target="_blank">Horebz</a></span
 					>
 				</div>
 
-				<div class="site-info-item">
-					<span class="site-info-label">Source de données</span>
-					<span class="site-info-value">
+				<div class="flex flex-col gap-1">
+					<span class="text-[11px] font-bold uppercase tracking-[0.06em] text-[rgba(255,255,255,0.72)]">
+						Source de données
+					</span>
+					<span class="text-[11px] leading-[1.45] text-(--text-muted)">
 						Api Flagpedia :
 						<a href="https://flagpedia.net/download/api" target="_blank"
 							>Embed country flag images over CDN (HTTP API)
 						</a>
 					</span>
 
-					<span class="site-info-value">
+					<span class="text-[11px] leading-[1.45] text-(--text-muted)">
 						Site offiiciel de la FIFA :
 						<a
 							href="https://www.fifa.com/fr/tournaments/mens/worldcup/canadamexicousa2026/articles/coupe-du-monde-2026-equipes-qualifiees"
@@ -110,7 +127,7 @@
 						>
 					</span>
 
-					<span class="site-info-value">
+					<span class="text-[11px] leading-[1.45] text-(--text-muted)">
 						Wikipédia :
 						<a
 							href="https://fr.wikipedia.org/wiki/Apparition_des_%C3%A9quipes_dans_la_Coupe_du_monde_de_football"
@@ -122,3 +139,16 @@
 		</div>
 	{/if}
 </div>
+
+<style>
+	@keyframes infoTooltipFadeIn {
+		from {
+			opacity: 0;
+			transform: translateY(4px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+</style>

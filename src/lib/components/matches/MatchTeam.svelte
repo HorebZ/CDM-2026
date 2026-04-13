@@ -35,7 +35,7 @@
 	{/if}
 
 	{#if nation}
-		<TooltipTrigger className="flag-wrapper match-flag-wrapper" role="group">
+		<TooltipTrigger className="relative" role="group">
 			{#snippet trigger()}
 				<img
 					class="block h-[21px] w-8 shrink-0 rounded-[3px] border-[1.5px] border-[rgba(255,255,255,0.12)] object-cover transition-[border-color]"

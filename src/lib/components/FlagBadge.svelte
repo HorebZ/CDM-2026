@@ -20,10 +20,10 @@
 	const jumpDelay = $derived(celebrating ? codeToDelay(nation.code) : '0ms');
 </script>
 
-<TooltipTrigger className="flag-wrapper" role="group">
+<TooltipTrigger className="group relative" role="group">
 	{#snippet trigger()}
 		<div
-			class="flag-badge"
+			class="flag-badge transition-transform group-hover:scale-[1.08] group-hover:border-(--ring-active)"
 			class:is-active={nation.enabled}
 			class:is-celebrating={celebrating}
 			style="--jump-delay: {jumpDelay}"
