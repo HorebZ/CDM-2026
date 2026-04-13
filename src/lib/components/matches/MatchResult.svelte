@@ -22,16 +22,20 @@
 	}: Props = $props();
 </script>
 
-<div class="match-result">
+<div class="flex min-w-[52px] shrink-0 items-center justify-center gap-1.5">
 	{#if isMatchPassed && hasScore}
-		<span class="match-goals">{score1}</span>
-		<span class="match-separator">–</span>
-		<span class="match-goals">{score2}</span>
+		<span class="text-[20px] leading-none font-black tracking-[-0.5px] text-[var(--text-primary)]">
+			{score1}
+		</span>
+		<span class="text-sm font-bold text-[var(--text-muted)]">–</span>
+		<span class="text-[20px] leading-none font-black tracking-[-0.5px] text-[var(--text-primary)]">
+			{score2}
+		</span>
 	{:else}
-		<span class="match-separator" aria-label="score non disponible">-</span>
+		<span class="text-sm font-bold text-[var(--text-muted)]" aria-label="score non disponible">-</span>
 	{/if}
 
 	{#if isMatchPassed && hasPenalties && hasPenaltyScores}
-		<span class="match-resolution">({penalties1} – {penalties2} tab)</span>
+		<span>({penalties1} – {penalties2} tab)</span>
 	{/if}
 </div>

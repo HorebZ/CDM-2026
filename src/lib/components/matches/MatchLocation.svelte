@@ -9,11 +9,15 @@
 	const { stadiumName, countryCode, stadiumLocalTime, flagUrl }: Props = $props();
 </script>
 
-<div class="match-location">
-	<div class="match-stadium">
-		<span class="stadium-name">{stadiumName}</span>
+<div class="flex min-w-0 flex-col items-end gap-[3px] max-[800px]:hidden">
+	<div class="flex min-w-0 items-center justify-end gap-[7px]">
+		<span
+			class="overflow-hidden text-ellipsis whitespace-nowrap text-[12px] font-semibold tracking-[0.01em] text-[var(--text-muted)]"
+		>
+			{stadiumName}
+		</span>
 		<img
-			class="stadium-flag"
+			class="block h-[14px] w-[22px] shrink-0 rounded-[2px] border border-[rgba(255,255,255,0.1)] object-cover"
 			src={flagUrl}
 			alt={countryCode}
 			width={28}
@@ -21,5 +25,7 @@
 			loading="lazy"
 		/>
 	</div>
-	<span class="match-date-stadium">({stadiumLocalTime} heure locale)</span>
+	<span class="text-[11px] font-medium tracking-[0.01em] text-[rgba(240,240,240,0.32)]">
+		({stadiumLocalTime} heure locale)
+	</span>
 </div>

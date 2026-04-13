@@ -71,9 +71,12 @@
 	}
 </script>
 
-<div class="match-search-bar">
-	<div class="match-search-input-wrapper">
-		<span class="match-search-icon" aria-hidden="true">
+<div class="mx-auto mb-6 flex w-[min(100%,var(--shell-width))] flex-col gap-2.5">
+	<div class="relative flex items-center">
+		<span
+			class="pointer-events-none absolute left-3 z-[1] flex items-center text-[var(--text-muted)]"
+			aria-hidden="true"
+		>
 			<svg
 				width="16"
 				height="16"
@@ -95,17 +98,23 @@
 		</span>
 
 		{#if selectedNation}
-			<div class="match-search-chip">
+			<div
+				class="flex h-10 w-full min-w-0 items-center gap-2 rounded-[10px] border border-[var(--ring-active)] bg-[var(--bg-card)] pr-2.5 pl-[38px]"
+			>
 				<img
 					src={getFlagUrl(selectedNation.code)}
 					alt={selectedNation.name}
 					width={24}
 					height={16}
-					class="match-search-chip-flag"
+					class="shrink-0 rounded-[2px] object-cover"
 				/>
-				<span class="match-search-chip-name">{selectedNation.name}</span>
+				<span
+					class="min-w-0 flex-1 overflow-hidden text-ellipsis whitespace-nowrap text-[13px] font-semibold italic text-[var(--text-primary)]"
+				>
+					{selectedNation.name}
+				</span>
 				<button
-					class="match-search-chip-clear"
+					class="flex size-[22px] shrink-0 cursor-pointer items-center justify-center rounded-full border-0 bg-transparent p-0 text-[var(--text-muted)] transition-[color,background] duration-150 hover:bg-[rgba(255,255,255,0.08)] hover:text-[var(--text-primary)]"
 					onclick={clearNation}
 					aria-label="Supprimer le filtre pays"
 				>
@@ -145,7 +154,8 @@
 				onblur={handleBlur}
 				onfocus={handleFocus}
 				type="text"
-				class="match-search-input"
+				class="h-10 w-full rounded-[10px] border border-[var(--ring)] bg-[var(--bg-card)] px-3 pl-[38px] text-[13px] font-medium italic text-[var(--text-primary)] outline-none transition-[border-color] duration-150 placeholder:text-[var(--text-muted)] focus:border-[var(--ring-active)]"
+				style="font-family: inherit"
 				placeholder="Rechercher un pays..."
 				autocomplete="off"
 				spellcheck="false"
@@ -153,11 +163,14 @@
 		{/if}
 
 		{#if showDropdown && suggestions.length > 0}
-			<ul class="match-search-dropdown" role="listbox">
+			<ul
+				class="absolute top-[calc(100%+4px)] right-0 left-0 z-[100] m-0 max-h-[280px] list-none overflow-y-auto rounded-[10px] border border-[var(--ring-active)] bg-[#131322] p-1 shadow-[0_8px_32px_rgba(0,0,0,0.5)]"
+				role="listbox"
+			>
 				{#each suggestions as result (result.id)}
 					<li role="option" aria-selected="false">
 						<button
-							class="match-search-dropdown-item"
+							class="flex w-full cursor-pointer items-center gap-2.5 rounded-[7px] border-0 bg-transparent px-2.5 py-2 text-left transition-[background] duration-[120ms] hover:bg-[rgba(255,255,255,0.06)]"
 							onmousedown={() => selectNation(result)}
 							type="button"
 						>
@@ -166,10 +179,14 @@
 								alt={result.name}
 								width={24}
 								height={16}
-								class="match-search-dropdown-flag"
+								class="shrink-0 rounded-[2px] object-cover"
 							/>
-							<span class="match-search-dropdown-name">{result.name}</span>
-							<span class="match-search-dropdown-group">Groupe {result.group}</span>
+							<span class="flex-1 text-[13px] font-semibold italic text-[var(--text-primary)]">
+								{result.name}
+							</span>
+							<span class="shrink-0 text-[11px] font-medium italic text-[var(--text-muted)]">
+								Groupe {result.group}
+							</span>
 						</button>
 					</li>
 				{/each}
@@ -177,13 +194,16 @@
 		{/if}
 	</div>
 
-	<div class="match-search-groups" role="group" aria-label="Filtrer par groupe">
+	<div class="flex flex-wrap gap-1.5" role="group" aria-label="Filtrer par groupe">
 		{#each GROUP_IDS as group (group)}
 			<button
-				class="match-search-group-pill"
-				class:is-active={selectedGroup === group}
+				class="h-[26px] min-w-[30px] cursor-pointer rounded-[6px] border border-[var(--ring)] bg-transparent px-2 text-[12px] font-bold italic text-[var(--text-muted)] transition-[color,border-color,background] duration-150 hover:border-[var(--ring-active)] hover:text-[var(--text-primary)]"
+				class:border-[var(--ring-active)]={selectedGroup === group}
+				class:bg-[rgba(255,255,255,0.1)]={selectedGroup === group}
+				class:text-[var(--text-primary)]={selectedGroup === group}
 				onclick={() => toggleGroup(group)}
 				type="button"
+				style="font-family: inherit"
 				aria-pressed={selectedGroup === group}
 			>
 				{group}

@@ -38,10 +38,12 @@
 	);
 </script>
 
-<div class="match-row">
+<div
+	class="grid grid-cols-[1fr_auto_1fr] items-center gap-3 px-2 py-[11px] text-[13px] font-semibold italic hover:bg-[rgba(255,255,255,0.02)] max-[800px]:grid-cols-1 max-[800px]:gap-2 max-[800px]:py-[14px]"
+>
 	<MatchMeta phase={match.phase} group={match.group} userDate={dates.userDate} />
 
-	<div class="match-score-row">
+	<div class="flex items-center justify-center gap-2.5">
 		<MatchTeam
 			side={side1}
 			nation={nation1}
