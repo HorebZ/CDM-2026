@@ -3,7 +3,7 @@
 	import { NATIONS } from '$lib/data/nations.js';
 	import { STADIUMS } from '$lib/data/stadiums.js';
 	import type { Match } from '$lib/types/index.js';
-	import { getMatchDates, isMatchDatePassed } from '$lib/utils/date.js';
+	import { fromLocal, getMatchDates, isMatchDatePassed } from '$lib/utils/date.js';
 	import MatchLocation from './MatchLocation.svelte';
 	import MatchMeta from './MatchMeta.svelte';
 	import MatchResult from './MatchResult.svelte';
@@ -25,6 +25,7 @@
 	const dates = $derived(getMatchDates(match.localDate, stadium.timezone));
 	const isMatchPassed = $derived(isMatchDatePassed(match.localDate, stadium.timezone));
 	const stadiumLocalTime = $derived(dates.stadiumDate.replace(':', 'h'));
+	const stadiumUtcOffset = $derived(`UTC${fromLocal(match.localDate, stadium.timezone).offset}`);
 
 	const winner = $derived(isMatchPassed ? (match.result?.winner ?? 0) : 0);
 
@@ -80,7 +81,10 @@
 	</div>
 
 	<MatchLocation
+		cityName={stadium.city}
 		stadiumName={stadium.name}
+		stadiumCapacity={stadium.capacity}
+		stadiumUtcOffset={stadiumUtcOffset}
 		countryCode={stadium.countryCode}
 		{stadiumLocalTime}
 		flagUrl={getFlagUrl(stadium.countryCode)}
