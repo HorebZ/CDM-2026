@@ -94,7 +94,7 @@
 			></span>
 
 			<div class="flex flex-col gap-2.5">
-				<span class="text-[11px] font-extrabold uppercase tracking-[0.08em] text-(--text-primary)">
+				<span class="text-[11px] font-extrabold tracking-[0.08em] text-(--text-primary) uppercase">
 					A propos du site
 				</span>
 
@@ -103,7 +103,9 @@
 					<span class={sectionValueClasses}
 						>Reproduction libre de l'infographie utilisé par
 						<a href="https://www.youtube.com/@wiloo" target="_blank">Wiloo</a> dans ses vidéos youtube
-						sur le mondiale 2026
+						sur le mondiale 2026. Avant le mondial, les nations sont activées au fur et à mesure en suivant
+						les vidéos de présentation de Wiloo. Pendant le mondial, les nations seront désactivées à
+						leur sortie.
 					</span>
 				</div>
 
@@ -117,25 +119,14 @@
 				<div class="flex flex-col gap-1">
 					<span class={sectionTitleClasses}>Source de données</span>
 					<span class={sectionValueClasses}>
-						Api Flagpedia :
-						<a href="https://flagpedia.net/download/api" target="_blank"
-							>Embed country flag images over CDN (HTTP API)
-						</a>
+						drapeaux (CDN) :
+						<a href="https://flagpedia.net/download/api" target="_blank">Flagpedia - API</a>
 					</span>
 
 					<span class={sectionValueClasses}>
-						Site offiiciel de la FIFA :
-						<a
-							href="https://www.fifa.com/fr/tournaments/mens/worldcup/canadamexicousa2026/articles/coupe-du-monde-2026-equipes-qualifiees"
-							target="_blank">Coupe du Monde 2026 : Les équipes qualifiées</a
-						>
-					</span>
-
-					<span class={sectionValueClasses}>
-						Wikipédia :
-						<a
-							href="https://fr.wikipedia.org/wiki/Apparition_des_%C3%A9quipes_dans_la_Coupe_du_monde_de_football"
-							target="_blank">Apparition des équipes dans la Coupe du monde de football</a
+						Données sur les équipes, stades et matchs :
+						<a href="https://fr.wikipedia.org/wiki/Coupe_du_monde_de_football_2026#" target="_blank"
+							>Wikipédia - Coupe du monde de football 2026</a
 						>
 					</span>
 				</div>
