@@ -7,19 +7,19 @@
 	}
 
 	const { nation }: Props = $props();
-const tooltipClasses =
-	'absolute top-[calc(100%+10px)] left-1/2 z-100 flex -translate-x-1/2 items-center gap-2.5 whitespace-nowrap rounded-[10px] border border-[rgba(255,255,255,0.12)] bg-[#151522] px-[14px] py-2.5 shadow-[0_8px_24px_rgba(0,0,0,0.5),0_0_0_1px_rgba(255,255,255,0.04)] animate-[tooltipFadeIn_0.5s_ease]';
-const tooltipArrowOuterClasses =
-	'absolute bottom-full left-1/2 h-0 w-0 -translate-x-1/2 border-[6px] border-transparent border-b-[rgba(255,255,255,0.12)]';
-const tooltipArrowInnerClasses =
-	'absolute bottom-full left-1/2 h-0 w-0 -translate-x-1/2 border-[5px] border-transparent border-b-[#151522]';
+	const tooltipClasses =
+		'absolute top-[calc(100%+10px)] left-1/2 z-100 flex -translate-x-1/2 items-center gap-4.5 whitespace-nowrap rounded-[10px] border border-[rgba(255,255,255,0.12)] bg-[#151522] px-4.5 py-2.5 shadow-[0_8px_24px_rgba(0,0,0,0.5),0_0_0_1px_rgba(255,255,255,0.04)] animate-[tooltipFadeIn_0.5s_ease]';
+	const tooltipArrowOuterClasses =
+		'absolute bottom-full left-1/2 h-0 w-0 -translate-x-1/2 border-[6px] border-transparent border-b-[rgba(255,255,255,0.12)]';
+	const tooltipArrowInnerClasses =
+		'absolute bottom-full left-1/2 h-0 w-0 -translate-x-1/2 border-[5px] border-transparent border-b-[#151522]';
 </script>
 
 <div class={tooltipClasses} role="tooltip">
 	<span class={tooltipArrowOuterClasses} aria-hidden="true"></span>
 	<span class={tooltipArrowInnerClasses} aria-hidden="true"></span>
 
-	<div class="size-9 shrink-0 overflow-hidden rounded-full border border-[rgba(255,255,255,0.1)]">
+	<div class="size-13 shrink-0 overflow-hidden rounded-full border border-[rgba(255,255,255,0.1)]">
 		<img src={getFlagUrl(nation.code)} alt="" width={48} height={36} />
 	</div>
 	<div class="flex flex-col gap-0.5">
