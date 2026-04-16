@@ -24,8 +24,8 @@
 	{#snippet trigger()}
 		<div
 			class={[
-				'flag-badge relative size-(--flag-size) shrink-0 overflow-hidden rounded-full border-[1.5px] border-(--ring) bg-[rgba(255,255,255,0.02)] p-0 transition-[border-color,transform] duration-300 group-hover:scale-[1.08] group-hover:border-(--ring-active)',
-				nation.enabled && 'border-(--ring-active)',
+				'flag-badge relative size-(--flag-size) shrink-0 overflow-hidden rounded-full border-[1.5px] border-ring-subtle bg-[rgba(255,255,255,0.02)] p-0 transition-[border-color,transform] duration-300 group-hover:scale-[1.08] group-hover:border-ring-active',
+				nation.enabled && 'border-ring-active',
 				celebrating &&
 					'animate-[celebrate-jump_0.85s_ease-in-out_infinite] border-[#ffd700] shadow-[0_0_10px_2px_rgba(255,215,0,0.35)]'
 			]}

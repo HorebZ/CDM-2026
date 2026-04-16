@@ -7,23 +7,22 @@
 	const GROUP_IDS: GroupId[] = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'];
 	const wrapperClasses = 'mx-auto mb-6 flex w-[min(100%,var(--shell-width))] flex-col gap-2.5';
 	const searchIconClasses =
-		'pointer-events-none absolute left-3 z-[1] flex items-center text-[var(--text-muted)]';
+		'pointer-events-none absolute left-3 z-[1] flex items-center text-text-muted';
 	const selectedChipClasses =
-		'flex h-10 w-full min-w-0 items-center gap-2 rounded-[10px] border border-[var(--ring-active)] bg-[var(--bg-card)] pr-2.5 pl-[38px]';
+		'flex h-10 w-full min-w-0 items-center gap-2 rounded-[10px] border border-ring-active bg-surface-card pr-2.5 pl-[38px]';
 	const selectedNameClasses =
-		'min-w-0 flex-1 overflow-hidden text-ellipsis whitespace-nowrap text-[13px] font-semibold italic text-[var(--text-primary)]';
+		'min-w-0 flex-1 overflow-hidden text-ellipsis whitespace-nowrap text-[13px] font-semibold italic text-text-primary';
 	const clearButtonClasses =
-		'flex size-[22px] shrink-0 cursor-pointer items-center justify-center rounded-full border-0 bg-transparent p-0 text-[var(--text-muted)] transition-[color,background] duration-150 hover:bg-[rgba(255,255,255,0.08)] hover:text-[var(--text-primary)]';
+		'flex size-[22px] shrink-0 cursor-pointer items-center justify-center rounded-full border-0 bg-transparent p-0 text-text-muted transition-[color,background] duration-150 hover:bg-[rgba(255,255,255,0.08)] hover:text-text-primary';
 	const inputClasses =
-		'h-10 w-full rounded-[10px] border border-[var(--ring)] bg-[var(--bg-card)] px-3 pl-[38px] text-[13px] font-medium italic text-[var(--text-primary)] outline-none transition-[border-color] duration-150 placeholder:text-[var(--text-muted)] focus:border-[var(--ring-active)]';
+		'h-10 w-full rounded-[10px] border border-ring-subtle bg-surface-card px-3 pl-[38px] text-[13px] font-medium italic text-text-primary outline-none transition-[border-color] duration-150 placeholder:text-text-muted focus:border-ring-active';
 	const dropdownClasses =
-		'absolute top-[calc(100%+4px)] right-0 left-0 z-[100] m-0 max-h-[280px] list-none overflow-y-auto rounded-[10px] border border-[var(--ring-active)] bg-[#131322] p-1 shadow-[0_8px_32px_rgba(0,0,0,0.5)]';
+		'absolute top-[calc(100%+4px)] right-0 left-0 z-[100] m-0 max-h-[280px] list-none overflow-y-auto rounded-[10px] border border-ring-active bg-[#131322] p-1 shadow-[0_8px_32px_rgba(0,0,0,0.5)]';
 	const dropdownItemClasses =
 		'flex w-full cursor-pointer items-center gap-2.5 rounded-[7px] border-0 bg-transparent px-2.5 py-2 text-left transition-[background] duration-[120ms] hover:bg-[rgba(255,255,255,0.06)]';
 	const groupButtonClasses =
-		'h-[26px] min-w-[30px] cursor-pointer rounded-[6px] border border-[var(--ring)] bg-transparent px-2 text-[12px] font-bold italic text-[var(--text-muted)] transition-[color,border-color,background] duration-150 hover:border-[var(--ring-active)] hover:text-[var(--text-primary)]';
-	const activeChipClasses =
-		'border-[var(--ring-active)] bg-[rgba(255,255,255,0.1)] text-[var(--text-primary)]';
+		'h-[26px] min-w-[30px] cursor-pointer rounded-[6px] border border-ring-subtle bg-transparent px-2 text-[12px] font-bold italic text-text-muted transition-[color,border-color,background] duration-150 hover:border-ring-active hover:text-text-primary';
+	const activeChipClasses = 'border-ring-active bg-[rgba(255,255,255,0.1)] text-text-primary';
 
 	interface Props {
 		filters: MatchFilters;
@@ -163,10 +162,10 @@
 								height={16}
 								class="shrink-0 rounded-[2px] object-cover"
 							/>
-							<span class="flex-1 text-[13px] font-semibold text-(--text-primary) italic">
+							<span class="flex-1 text-[13px] font-semibold text-text-primary italic">
 								{result.name}
 							</span>
-							<span class="shrink-0 text-[11px] font-medium text-(--text-muted) italic">
+							<span class="shrink-0 text-[11px] font-medium text-text-muted italic">
 								Groupe {result.group}
 							</span>
 						</button>

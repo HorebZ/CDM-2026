@@ -24,16 +24,16 @@
 
 <div class="flex min-w-[52px] shrink-0 items-center justify-center gap-1.5">
 	{#if isMatchPassed && hasScore}
-		<span class="text-[20px] leading-none font-black tracking-[-0.5px] text-[--text-primary]">
+		<span class="text-[20px] leading-none font-black tracking-[-0.5px] text-text-primary">
 			{score1}
 		</span>
-		<span class="text-sm font-bold text-[--text-muted]">–</span>
-		<span class="text-[20px] leading-none font-black tracking-[-0.5px] text-[--text-primary]">
+		<span class="text-sm font-bold text-text-muted">–</span>
+		<span class="text-[20px] leading-none font-black tracking-[-0.5px] text-text-primary">
 			{score2}
 		</span>
 	{:else}
 		<span
-			class="flex items-center justify-center text-sm font-bold text-[--text-muted]"
+			class="flex items-center justify-center text-sm font-bold text-text-muted"
 			aria-label="score non disponible"
 		>
 			-

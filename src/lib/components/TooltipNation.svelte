@@ -15,11 +15,11 @@
 		<img src={getFlagUrl(nation.code)} alt="" width={48} height={36} />
 	</div>
 	<div class="flex flex-col gap-0.5">
-		<span class="text-[13px] font-bold text-(--text-primary)">{nation.name}</span>
-		<span class="text-[11px] font-medium text-(--text-muted)">
+		<span class="text-[13px] font-bold text-text-primary">{nation.name}</span>
+		<span class="text-[11px] font-medium text-text-muted">
 			{nation.confederation} · Groupe {nation.group}
 		</span>
-		<span class="text-[11px] font-medium text-(--text-muted)"
+		<span class="text-[11px] font-medium text-text-muted"
 			>{nation.participation} participation{nation.participation > 1 ? 's' : ''}</span
 		>
 	</div>

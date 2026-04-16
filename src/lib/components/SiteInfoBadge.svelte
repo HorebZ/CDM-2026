@@ -7,7 +7,7 @@
 		'absolute bottom-[calc(100%+12px)] left-0 z-120 w-auto min-w-[min(360px,calc(100vw-48px))] max-w-[min(420px,calc(100vw-48px))] whitespace-normal rounded-[10px] border border-[rgba(255,255,255,0.12)] bg-[#151522] px-4 py-[14px] shadow-[0_8px_24px_rgba(0,0,0,0.5),0_0_0_1px_rgba(255,255,255,0.04)] animate-[infoTooltipFadeIn_0.5s_ease] max-[560px]:min-w-[min(320px,calc(100vw-36px))] max-[560px]:max-w-[min(360px,calc(100vw-36px))] max-[420px]:min-w-[min(280px,calc(100vw-28px))] max-[420px]:max-w-[min(320px,calc(100vw-28px))]';
 	const sectionTitleClasses =
 		'text-[11px] font-bold uppercase tracking-[0.06em] text-[rgba(255,255,255,0.72)]';
-	const sectionValueClasses = 'text-[11px] leading-[1.45] text-(--text-muted)';
+	const sectionValueClasses = 'text-[11px] leading-[1.45] text-text-muted';
 
 	let showPopup = $state(false);
 	let hoverTimeout: ReturnType<typeof setTimeout> | null = null;
@@ -94,7 +94,7 @@
 			></span>
 
 			<div class="flex flex-col gap-2.5">
-				<span class="text-[11px] font-extrabold tracking-[0.08em] text-(--text-primary) uppercase">
+				<span class="text-[11px] font-extrabold tracking-[0.08em] text-text-primary uppercase">
 					A propos du site
 				</span>
 

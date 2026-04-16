@@ -16,7 +16,7 @@
 
 <Tooltip className="min-w-[260px]">
 	<div
-		class="flag-badge relative size-13 shrink-0 overflow-hidden rounded-full border-[1.5px] border-(--ring) bg-[rgba(255,255,255,0.02)] p-0"
+		class="flag-badge relative size-13 shrink-0 overflow-hidden rounded-full border-[1.5px] border-ring-subtle bg-[rgba(255,255,255,0.02)] p-0"
 	>
 		<img
 			class="block size-full object-cover"
@@ -29,9 +29,9 @@
 	</div>
 
 	<div class="flex min-w-0 flex-col gap-0.5">
-		<span class="text-[13px] font-bold text-(--text-primary)">{cityName}</span>
-		<span class="text-[11px] font-medium text-(--text-muted)">{stadiumName}</span>
-		<span class="text-[11px] font-medium text-(--text-muted)"
+		<span class="text-[13px] font-bold text-text-primary">{cityName}</span>
+		<span class="text-[11px] font-medium text-text-muted">{stadiumName}</span>
+		<span class="text-[11px] font-medium text-text-muted"
 			>{formattedCapacity} places · {stadiumUtcOffset}</span
 		>
 	</div>

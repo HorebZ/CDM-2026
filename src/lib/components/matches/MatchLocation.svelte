@@ -31,7 +31,7 @@
 		<div class="flex min-w-0 flex-col items-end gap-[3px]">
 			<div class="flex min-w-0 items-center justify-end gap-[7px]">
 				<span
-					class="overflow-hidden text-[12px] font-semibold tracking-[0.01em] text-ellipsis whitespace-nowrap text-(--text-muted)"
+					class="overflow-hidden text-[12px] font-semibold tracking-[0.01em] text-ellipsis whitespace-nowrap text-text-muted"
 				>
 					{cityName}
 				</span>

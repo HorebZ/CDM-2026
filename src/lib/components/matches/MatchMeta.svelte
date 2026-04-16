@@ -29,7 +29,7 @@
 		<div class="flex items-baseline gap-[5px]">
 			<span
 				class={[
-					'text-[11px] font-bold tracking-[0.06em] text-[--text-muted] uppercase',
+					'text-[11px] font-bold tracking-[0.06em] text-text-muted uppercase',
 					phase === 'final' && 'text-[#ffd700]'
 				]}
 			>
@@ -39,7 +39,7 @@
 		</div>
 		<div class="flex items-baseline gap-[5px]">
 			<span
-				class="text-[13px] font-bold tracking-[0.01em] text-[--text-primary] max-[560px]:text-[10px]"
+				class="text-[13px] font-bold tracking-[0.01em] text-text-primary max-[560px]:text-[10px]"
 			>
 				{userDate}
 			</span>
