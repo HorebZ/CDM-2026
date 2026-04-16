@@ -1,16 +1,10 @@
 <script lang="ts">
 	import { getFlagUrl } from '$lib/config/site.js';
-	import { MATCHES } from '$lib/data/matches.js';
 	import { nationSearch, type NationSearchResult } from '$lib/search/nations-index.js';
-	import type { GroupId, Match } from '$lib/types/index.js';
+	import type { GroupId } from '$lib/types/index.js';
+	import { FINAL_STAGE_FILTERS, type MatchFilters } from './match-filters.svelte.js';
 
 	const GROUP_IDS: GroupId[] = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'];
-	const FINAL_STAGE_FILTERS = [
-		{ id: '16e', label: '16e' },
-		{ id: '8e', label: '8e' },
-		{ id: '1/4', label: '1/4' },
-		{ id: 'PF', label: 'Phase finale' }
-	] as const;
 	const wrapperClasses = 'mx-auto mb-6 flex w-[min(100%,var(--shell-width))] flex-col gap-2.5';
 	const searchIconClasses =
 		'pointer-events-none absolute left-3 z-[1] flex items-center text-[var(--text-muted)]';
@@ -28,74 +22,34 @@
 		'flex w-full cursor-pointer items-center gap-2.5 rounded-[7px] border-0 bg-transparent px-2.5 py-2 text-left transition-[background] duration-[120ms] hover:bg-[rgba(255,255,255,0.06)]';
 	const groupButtonClasses =
 		'h-[26px] min-w-[30px] cursor-pointer rounded-[6px] border border-[var(--ring)] bg-transparent px-2 text-[12px] font-bold italic text-[var(--text-muted)] transition-[color,border-color,background] duration-150 hover:border-[var(--ring-active)] hover:text-[var(--text-primary)]';
+	const activeChipClasses =
+		'border-[var(--ring-active)] bg-[rgba(255,255,255,0.1)] text-[var(--text-primary)]';
 
 	interface Props {
-		onfilter: (matches: Match[]) => void;
+		filters: MatchFilters;
 	}
 
-	type FinalStageFilterId = (typeof FINAL_STAGE_FILTERS)[number]['id'];
+	const { filters }: Props = $props();
 
-	const { onfilter }: Props = $props();
-
-	let query = $state('');
-	let selectedNationId = $state<string | null>(null);
-	let selectedNation = $state<NationSearchResult | null>(null);
-	let selectedGroup = $state<GroupId | null>(null);
-	let selectedFinalStage = $state<FinalStageFilterId | null>(null);
 	let showDropdown = $state(false);
-	let inputEl = $state<HTMLInputElement | null>(null);
 
-	const suggestions = $derived.by(() => {
-		const q = query.trim();
-		if (!q || selectedNationId) return [];
+	const suggestions = $derived.by<NationSearchResult[]>(() => {
+		const q = filters.query.trim();
+		if (!q || filters.selectedNationId) return [];
 		return nationSearch.search(q) as unknown as NationSearchResult[];
 	});
 
-	$effect(() => {
-		const filtered = MATCHES.filter((match) => {
-			const matchesNation =
-				!selectedNationId || match.sides.some((side) => side.nationId === selectedNationId);
-			const matchesGroup = !selectedGroup || match.group === selectedGroup;
-			const matchesFinalStage =
-				!selectedFinalStage ||
-				(selectedFinalStage === '16e' && match.phaseLabel === '16e de finale') ||
-				(selectedFinalStage === '8e' && match.phaseLabel === '8e de finale') ||
-				(selectedFinalStage === '1/4' && match.phaseLabel === 'Quart de finale') ||
-				(selectedFinalStage === 'PF' &&
-					['Demi-finale', 'Petite finale', 'Finale'].includes(match.phaseLabel ?? ''));
-			return matchesNation && matchesGroup && matchesFinalStage;
-		});
-		onfilter(filtered);
-	});
-
 	function selectNation(result: NationSearchResult) {
-		selectedNationId = result.id;
-		selectedNation = result;
-		query = '';
+		filters.selectNation(result);
 		showDropdown = false;
-	}
-
-	function clearNation() {
-		selectedNationId = null;
-		selectedNation = null;
-		query = '';
-	}
-
-	function toggleGroup(group: GroupId) {
-		selectedFinalStage = null;
-		selectedGroup = selectedGroup === group ? null : group;
-	}
-
-	function toggleFinalStage(filterId: FinalStageFilterId) {
-		selectedGroup = null;
-		selectedFinalStage = selectedFinalStage === filterId ? null : filterId;
 	}
 
 	function handleInput() {
 		showDropdown = true;
-		if (selectedNationId) {
-			selectedNationId = null;
-			selectedNation = null;
+		if (filters.selectedNationId) {
+			filters.selectedNationId = null;
+			filters.selectedNationName = null;
+			filters.selectedNationCode = null;
 		}
 	}
 
@@ -106,7 +60,7 @@
 	}
 
 	function handleFocus() {
-		if (query.trim()) showDropdown = true;
+		if (filters.query.trim()) showDropdown = true;
 	}
 </script>
 
@@ -133,21 +87,21 @@
 			</svg>
 		</span>
 
-		{#if selectedNation}
+		{#if filters.selectedNationId && filters.selectedNationCode && filters.selectedNationName}
 			<div class={selectedChipClasses}>
 				<img
-					src={getFlagUrl(selectedNation.code)}
-					alt={selectedNation.name}
+					src={getFlagUrl(filters.selectedNationCode)}
+					alt={filters.selectedNationName}
 					width={24}
 					height={16}
 					class="shrink-0 rounded-[2px] object-cover"
 				/>
 				<span class={selectedNameClasses}>
-					{selectedNation.name}
+					{filters.selectedNationName}
 				</span>
 				<button
 					class={clearButtonClasses}
-					onclick={clearNation}
+					onclick={() => filters.clearNation()}
 					aria-label="Supprimer le filtre pays"
 				>
 					<svg
@@ -181,7 +135,7 @@
 		{:else}
 			<input
 				bind:this={inputEl}
-				bind:value={query}
+				bind:value={filters.query}
 				oninput={handleInput}
 				onblur={handleBlur}
 				onfocus={handleFocus}
@@ -226,14 +180,11 @@
 	<div class="flex flex-wrap gap-1.5" role="group" aria-label="Filtrer par groupe ou phase finale">
 		{#each GROUP_IDS as group (group)}
 			<button
-				class={groupButtonClasses}
-				class:border-[var(--ring-active)]={selectedGroup === group}
-				class:bg-[rgba(255,255,255,0.1)]={selectedGroup === group}
-				class:text-[var(--text-primary)]={selectedGroup === group}
-				onclick={() => toggleGroup(group)}
+				class={[groupButtonClasses, filters.selectedGroup === group && activeChipClasses]}
+				onclick={() => filters.toggleGroup(group)}
 				type="button"
 				style="font-family: inherit"
-				aria-pressed={selectedGroup === group}
+				aria-pressed={filters.selectedGroup === group}
 			>
 				{group}
 			</button>
@@ -241,14 +192,15 @@
 
 		{#each FINAL_STAGE_FILTERS as filter (filter.id)}
 			<button
-				class={`${groupButtonClasses} min-w-[38px]`}
-				class:border-[var(--ring-active)]={selectedFinalStage === filter.id}
-				class:bg-[rgba(255,255,255,0.1)]={selectedFinalStage === filter.id}
-				class:text-[var(--text-primary)]={selectedFinalStage === filter.id}
-				onclick={() => toggleFinalStage(filter.id)}
+				class={[
+					groupButtonClasses,
+					'min-w-[38px]',
+					filters.selectedFinalStage === filter.id && activeChipClasses
+				]}
+				onclick={() => filters.toggleFinalStage(filter.id)}
 				type="button"
 				style="font-family: inherit"
-				aria-pressed={selectedFinalStage === filter.id}
+				aria-pressed={filters.selectedFinalStage === filter.id}
 				aria-label={`Filtrer par ${filter.label}`}
 			>
 				{filter.label}

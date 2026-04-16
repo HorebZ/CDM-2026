@@ -28,8 +28,10 @@
 	>
 		<div class="flex items-baseline gap-[5px]">
 			<span
-				class="text-[11px] font-bold tracking-[0.06em] text-[var(--text-muted)] uppercase"
-				class:text-[#ffd700]={phase === 'final'}
+				class={[
+					'text-[11px] font-bold tracking-[0.06em] text-[--text-muted] uppercase',
+					phase === 'final' && 'text-[#ffd700]'
+				]}
 			>
 				{phaseLabel ?? PHASE_LABELS[phase]}
 				{phase === 'group' ? group : ''}
@@ -37,7 +39,7 @@
 		</div>
 		<div class="flex items-baseline gap-[5px]">
 			<span
-				class="text-[13px] font-bold tracking-[0.01em] text-[var(--text-primary)] max-[560px]:text-[10px]"
+				class="text-[13px] font-bold tracking-[0.01em] text-[--text-primary] max-[560px]:text-[10px]"
 			>
 				{userDate}
 			</span>

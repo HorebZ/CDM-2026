@@ -26,9 +26,11 @@
 </script>
 
 <div
-	class={containerClasses}
-	class:justify-end={align === 'left'}
-	class:justify-start={align === 'right'}
+	class={[
+		containerClasses,
+		align === 'left' && 'justify-end',
+		align === 'right' && 'justify-start'
+	]}
 >
 	{#if align === 'left'}
 		{#if showRedCards}
@@ -43,9 +45,10 @@
 		<TooltipTrigger className="relative" role="group">
 			{#snippet trigger()}
 				<img
-					class={flagClasses}
-					class:border-[#ffd700]={isWinner}
-					class:shadow-[0_0_8px_1px_rgba(255,215,0,0.35)]={isWinner}
+					class={[
+						flagClasses,
+						isWinner && 'border-[#ffd700] shadow-[0_0_8px_1px_rgba(255,215,0,0.35)]'
+					]}
 					src={getFlagUrl(nation.code)}
 					alt={label}
 					width={32}

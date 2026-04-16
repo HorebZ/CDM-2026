@@ -23,18 +23,21 @@
 <TooltipTrigger className="group relative" role="group">
 	{#snippet trigger()}
 		<div
-			class="flag-badge relative size-(--flag-size) shrink-0 overflow-hidden rounded-full border-[1.5px] border-(--ring) bg-[rgba(255,255,255,0.02)] p-0 transition-[border-color,transform] duration-300 group-hover:scale-[1.08] group-hover:border-(--ring-active)"
-			class:border-(--ring-active)={nation.enabled}
-			class:animate-[celebrate-jump_0.85s_ease-in-out_infinite]={celebrating}
-			class:border-[#ffd700]={celebrating}
-			class:shadow-[0_0_10px_2px_rgba(255,215,0,0.35)]={celebrating}
+			class={[
+				'flag-badge relative size-(--flag-size) shrink-0 overflow-hidden rounded-full border-[1.5px] border-(--ring) bg-[rgba(255,255,255,0.02)] p-0 transition-[border-color,transform] duration-300 group-hover:scale-[1.08] group-hover:border-(--ring-active)',
+				nation.enabled && 'border-(--ring-active)',
+				celebrating &&
+					'animate-[celebrate-jump_0.85s_ease-in-out_infinite] border-[#ffd700] shadow-[0_0_10px_2px_rgba(255,215,0,0.35)]'
+			]}
 			style="--jump-delay: {jumpDelay}"
 		>
 			<img
-				class="block size-full object-cover transition-[filter] duration-400"
-				class:filter-none={nation.enabled || celebrating}
-				class:filter-[grayscale(100%)_brightness(0.55)_contrast(0.85)]={!nation.enabled &&
-					!celebrating}
+				class={[
+					'block size-full object-cover transition-[filter] duration-400',
+					nation.enabled || celebrating
+						? 'filter-none'
+						: 'filter-[grayscale(100%)_brightness(0.55)_contrast(0.85)]'
+				]}
 				src={getFlagUrl(nation.code)}
 				alt={nation.name}
 				width={80}
