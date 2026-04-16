@@ -51,29 +51,33 @@
 				height={90}
 			/>
 			<span
-				class="text-[40px] font-black uppercase tracking-[2px] text-[rgba(255,255,255,0.82)] max-[420px]:text-[28px] max-[420px]:tracking-[1.5px]"
+				class="text-[40px] font-black tracking-[2px] text-[rgba(255,255,255,0.82)] uppercase max-[420px]:text-[28px] max-[420px]:tracking-[1.5px]"
 			>
 				{enabledNations[0].name.toUpperCase()}
 			</span>
 		</div>
 	{:else if showTeamCount}
 		<div class="flex flex-col items-start gap-0 max-[420px]:gap-1.5">
-			<span class="text-[66px] font-black uppercase tracking-[-2px] text-white max-[800px]:text-5xl">
+			<span
+				class="text-[66px] font-black tracking-[-2px] text-white uppercase max-[800px]:text-5xl"
+			>
 				{enabledNations.length}
 			</span>
 			<span
-				class="text-[40px] font-black uppercase tracking-[2px] text-[rgba(255,255,255,0.82)] max-[420px]:text-[28px] max-[420px]:tracking-[1.5px]"
+				class="text-[40px] font-black tracking-[2px] text-[rgba(255,255,255,0.82)] uppercase max-[420px]:text-[28px] max-[420px]:tracking-[1.5px]"
 			>
 				ÉQUIPE{enabledNations.length > 1 ? 'S' : ''}
 			</span>
 		</div>
 	{:else if showDays}
 		<div class="flex flex-col items-start gap-0 max-[420px]:gap-1.5">
-			<span class="text-[66px] font-black uppercase tracking-[-2px] text-white max-[800px]:text-5xl">
+			<span
+				class="text-[66px] font-black tracking-[-2px] text-white uppercase max-[800px]:text-5xl"
+			>
 				{days}
 			</span>
 			<span
-				class="text-[40px] font-black uppercase tracking-[2px] text-[rgba(255,255,255,0.82)] max-[420px]:text-[28px] max-[420px]:tracking-[1.5px]"
+				class="text-[40px] font-black tracking-[2px] text-[rgba(255,255,255,0.82)] uppercase max-[420px]:text-[28px] max-[420px]:tracking-[1.5px]"
 			>
 				JOURS
 			</span>

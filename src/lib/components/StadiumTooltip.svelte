@@ -25,7 +25,14 @@
 	<div
 		class="flag-badge relative size-13 shrink-0 overflow-hidden rounded-full border-[1.5px] border-(--ring) bg-[rgba(255,255,255,0.02)] p-0"
 	>
-		<img class="block size-full object-cover" src={flagUrl} alt="" width={52} height={52} loading="lazy" />
+		<img
+			class="block size-full object-cover"
+			src={flagUrl}
+			alt=""
+			width={52}
+			height={52}
+			loading="lazy"
+		/>
 	</div>
 
 	<div class="flex min-w-0 flex-col gap-0.5">

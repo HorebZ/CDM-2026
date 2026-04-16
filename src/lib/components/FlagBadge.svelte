@@ -33,7 +33,8 @@
 			<img
 				class="block size-full object-cover transition-[filter] duration-400"
 				class:filter-none={nation.enabled || celebrating}
-				class:filter-[grayscale(100%)_brightness(0.55)_contrast(0.85)]={!nation.enabled && !celebrating}
+				class:filter-[grayscale(100%)_brightness(0.55)_contrast(0.85)]={!nation.enabled &&
+					!celebrating}
 				src={getFlagUrl(nation.code)}
 				alt={nation.name}
 				width={80}

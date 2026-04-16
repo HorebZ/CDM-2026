@@ -28,7 +28,9 @@
 		</ul>
 
 		{#if filteredMatches.length === 0}
-			<div class="flex flex-1 items-center justify-center text-center text-[13px] text-(--text-muted) italic">
+			<div
+				class="flex flex-1 items-center justify-center text-center text-[13px] text-(--text-muted) italic"
+			>
 				<p>Aucun match trouvé pour cette recherche.</p>
 			</div>
 		{/if}

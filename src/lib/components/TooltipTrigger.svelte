@@ -39,12 +39,7 @@
 	});
 </script>
 
-<div
-	class={className}
-	onmouseenter={handleMouseEnter}
-	onmouseleave={handleMouseLeave}
-	{role}
->
+<div class={className} onmouseenter={handleMouseEnter} onmouseleave={handleMouseLeave} {role}>
 	{@render trigger()}
 	{#if isOpen}
 		{@render tooltip()}

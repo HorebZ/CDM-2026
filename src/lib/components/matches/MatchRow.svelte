@@ -84,7 +84,7 @@
 		cityName={stadium.city}
 		stadiumName={stadium.name}
 		stadiumCapacity={stadium.capacity}
-		stadiumUtcOffset={stadiumUtcOffset}
+		{stadiumUtcOffset}
 		countryCode={stadium.countryCode}
 		{stadiumLocalTime}
 		flagUrl={getFlagUrl(stadium.countryCode)}

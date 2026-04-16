@@ -32,7 +32,12 @@
 			{score2}
 		</span>
 	{:else}
-		<span class="text-sm font-bold text-[var(--text-muted)]" aria-label="score non disponible">-</span>
+		<span
+			class="flex items-center justify-center text-sm font-bold text-[var(--text-muted)]"
+			aria-label="score non disponible"
+		>
+			-
+		</span>
 	{/if}
 
 	{#if isMatchPassed && hasPenalties && hasPenaltyScores}

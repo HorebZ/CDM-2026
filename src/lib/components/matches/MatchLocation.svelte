@@ -23,12 +23,15 @@
 	}: Props = $props();
 </script>
 
-<TooltipTrigger className="relative inline-flex w-fit justify-self-end max-[800px]:hidden" role="group">
+<TooltipTrigger
+	className="relative inline-flex w-fit justify-self-end max-[800px]:hidden"
+	role="group"
+>
 	{#snippet trigger()}
 		<div class="flex min-w-0 flex-col items-end gap-[3px]">
 			<div class="flex min-w-0 items-center justify-end gap-[7px]">
 				<span
-					class="overflow-hidden text-ellipsis whitespace-nowrap text-[12px] font-semibold tracking-[0.01em] text-(--text-muted)"
+					class="overflow-hidden text-[12px] font-semibold tracking-[0.01em] text-ellipsis whitespace-nowrap text-(--text-muted)"
 				>
 					{cityName}
 				</span>
@@ -48,12 +51,6 @@
 	{/snippet}
 
 	{#snippet tooltip()}
-		<StadiumTooltip
-			{cityName}
-			{stadiumName}
-			{stadiumCapacity}
-			{stadiumUtcOffset}
-			{flagUrl}
-		/>
+		<StadiumTooltip {cityName} {stadiumName} {stadiumCapacity} {stadiumUtcOffset} {flagUrl} />
 	{/snippet}
 </TooltipTrigger>
