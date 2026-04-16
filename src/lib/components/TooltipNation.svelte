@@ -1,24 +1,16 @@
 <script lang="ts">
 	import type { Nation } from '$lib/types/index.js';
 	import { getFlagUrl } from '$lib/config/site.js';
+	import Tooltip from './Tooltip.svelte';
 
 	interface Props {
 		nation: Nation;
 	}
 
 	const { nation }: Props = $props();
-	const tooltipClasses =
-		'absolute top-[calc(100%+10px)] left-1/2 z-100 flex -translate-x-1/2 items-center gap-4.5 whitespace-nowrap rounded-[10px] border border-[rgba(255,255,255,0.12)] bg-[#151522] px-4.5 py-2.5 shadow-[0_8px_24px_rgba(0,0,0,0.5),0_0_0_1px_rgba(255,255,255,0.04)] animate-[tooltipFadeIn_0.5s_ease]';
-	const tooltipArrowOuterClasses =
-		'absolute bottom-full left-1/2 h-0 w-0 -translate-x-1/2 border-[6px] border-transparent border-b-[rgba(255,255,255,0.12)]';
-	const tooltipArrowInnerClasses =
-		'absolute bottom-full left-1/2 h-0 w-0 -translate-x-1/2 border-[5px] border-transparent border-b-[#151522]';
 </script>
 
-<div class={tooltipClasses} role="tooltip">
-	<span class={tooltipArrowOuterClasses} aria-hidden="true"></span>
-	<span class={tooltipArrowInnerClasses} aria-hidden="true"></span>
-
+<Tooltip>
 	<div class="size-13 shrink-0 overflow-hidden rounded-full border border-[rgba(255,255,255,0.1)]">
 		<img src={getFlagUrl(nation.code)} alt="" width={48} height={36} />
 	</div>
@@ -31,7 +23,7 @@
 			>{nation.participation} participation{nation.participation > 1 ? 's' : ''}</span
 		>
 	</div>
-</div>
+</Tooltip>
 
 <style>
 	img {
@@ -39,16 +31,5 @@
 		height: 100%;
 		object-fit: cover;
 		display: block;
-	}
-
-	@keyframes tooltipFadeIn {
-		from {
-			opacity: 0;
-			transform: translateX(-50%) translateY(4px);
-		}
-		to {
-			opacity: 1;
-			transform: translateX(-50%) translateY(0);
-		}
 	}
 </style>
