@@ -134,7 +134,6 @@
 			</div>
 		{:else}
 			<input
-				bind:this={inputEl}
 				bind:value={filters.query}
 				oninput={handleInput}
 				onblur={handleBlur}

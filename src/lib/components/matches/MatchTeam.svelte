@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { getFlagUrl } from '$lib/config/site.js';
 	import type { MatchSide, Nation } from '$lib/types/index.js';
-	import NationTooltip from '../NationTooltip.svelte';
+	import TooltipNation from '../TooltipNation.svelte';
 	import TooltipTrigger from '../TooltipTrigger.svelte';
 	import MatchCardStat from './MatchCardStat.svelte';
 
@@ -58,7 +58,7 @@
 			{/snippet}
 
 			{#snippet tooltip()}
-				<NationTooltip {nation} />
+				<TooltipNation {nation} />
 			{/snippet}
 		</TooltipTrigger>
 	{:else}

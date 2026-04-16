@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Nation } from '$lib/types/index.js';
 	import { getFlagUrl } from '$lib/config/site.js';
-	import NationTooltip from './NationTooltip.svelte';
+	import TooltipNation from './TooltipNation.svelte';
 	import TooltipTrigger from './TooltipTrigger.svelte';
 
 	interface Props {
@@ -48,7 +48,7 @@
 	{/snippet}
 
 	{#snippet tooltip()}
-		<NationTooltip {nation} />
+		<TooltipNation {nation} />
 	{/snippet}
 </TooltipTrigger>
 

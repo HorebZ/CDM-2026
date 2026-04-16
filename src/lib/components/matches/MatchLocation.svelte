@@ -1,5 +1,5 @@
 <script lang="ts">
-	import StadiumTooltip from '$lib/components/StadiumTooltip.svelte';
+	import TooltipStadium from '$lib/components/TooltipStadium.svelte';
 	import TooltipTrigger from '$lib/components/TooltipTrigger.svelte';
 
 	interface Props {
@@ -51,6 +51,6 @@
 	{/snippet}
 
 	{#snippet tooltip()}
-		<StadiumTooltip {cityName} {stadiumName} {stadiumCapacity} {stadiumUtcOffset} {flagUrl} />
+		<TooltipStadium {cityName} {stadiumName} {stadiumCapacity} {stadiumUtcOffset} {flagUrl} />
 	{/snippet}
 </TooltipTrigger>
