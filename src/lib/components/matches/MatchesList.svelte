@@ -1,8 +1,11 @@
 <script lang="ts">
 	import type { Match } from '$lib/types/index.js';
 	import MatchRow from './MatchRow.svelte';
+	import MatchRowSkeleton from './MatchRowSkeleton.svelte';
 	import MatchSearchBar from './MatchSearchBar.svelte';
 	import { applyFilters, filters } from './match-filters.svelte.js';
+
+	const skeletonItems = Array.from({ length: 10 }, (_, i) => i);
 
 	let matches: Match[] = $state([]);
 	let loaded = $state(false);
@@ -26,14 +29,24 @@
 	<div
 		class="mx-auto flex min-h-[700px] w-[min(100%,var(--shell-width))] flex-col max-[800px]:min-h-[980px]"
 	>
-		<ul class="list-none p-0" role="list">
-			{#each filteredMatches as match (`${match.stadiumId}-${match.localDate}`)}
-				<li
-					class="border-b border-[rgba(255,255,255,0.05)] first:border-t first:border-[rgba(255,255,255,0.05)]"
-				>
-					<MatchRow {match} />
-				</li>
-			{/each}
+		<ul class="list-none p-0" role="list" aria-busy={!loaded}>
+			{#if !loaded}
+				{#each skeletonItems as i (i)}
+					<li
+						class="border-b border-[rgba(255,255,255,0.05)] first:border-t first:border-[rgba(255,255,255,0.05)]"
+					>
+						<MatchRowSkeleton />
+					</li>
+				{/each}
+			{:else}
+				{#each filteredMatches as match (`${match.stadiumId}-${match.localDate}`)}
+					<li
+						class="border-b border-[rgba(255,255,255,0.05)] first:border-t first:border-[rgba(255,255,255,0.05)]"
+					>
+						<MatchRow {match} />
+					</li>
+				{/each}
+			{/if}
 		</ul>
 
 		{#if loaded && filteredMatches.length === 0}
