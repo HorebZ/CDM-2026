@@ -31,8 +31,11 @@ vite.config.ts.timestamp-*
 *.swp
 *.swo
 
-# AI agent tooling (personal, not versioned)
-.claude
+# AI agent tooling
+# Shared project skills ARE versioned (see .claude/skills/), personal state is not.
+.claude/*
+!.claude/skills/
+.claude/settings.local.json
 .cursor
 .agents
 .aider*

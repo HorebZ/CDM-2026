@@ -34,6 +34,14 @@ bun run test
 - Formatting is handled by **Prettier** (`bun run format`).
 - Keep changes focused; avoid unrelated refactors in the same PR.
 
+## AI agent skills
+
+This repo ships with shared skills in [`.claude/skills/`](./.claude/skills/) that encode project conventions (Svelte 5 APIs, component structure, Tailwind v4, etc.). They are picked up automatically by [Claude Code](https://claude.com/claude-code) and [Cursor](https://cursor.com), and they also read well as plain documentation.
+
+If you use an AI agent while contributing, please let it load these skills — it keeps PRs aligned with the project's conventions. Feel free to propose new skills via PR when you spot a recurring rule worth codifying.
+
+Personal agent state (e.g. `.claude/settings.local.json`) is gitignored; only the shared `skills/` directory is versioned.
+
 ## Scope
 
 This project is a fan-made showcase, maintained in spare time. Not every suggestion will be accepted, and response times may vary — please don't take it personally. See also the [Disclaimer in the README](./README.md#disclaimer).
