@@ -11,6 +11,19 @@
 		name="description"
 		content="Compte à rebours avant le match d'ouverture de la Coupe du Monde FIFA 2026"
 	/>
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="CDM 2026 — Compte à rebours" />
+	<meta
+		property="og:description"
+		content="Compte à rebours avant le match d'ouverture de la Coupe du Monde FIFA 2026"
+	/>
+	<meta property="og:locale" content="fr_FR" />
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:title" content="CDM 2026 — Compte à rebours" />
+	<meta
+		name="twitter:description"
+		content="Compte à rebours avant le match d'ouverture de la Coupe du Monde FIFA 2026"
+	/>
 	<link rel="icon" type="image/webp" href={trophyUrl} />
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />

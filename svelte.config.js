@@ -13,7 +13,23 @@ const config = {
 			return isExternalLibrary ? undefined : true;
 		}
 	},
-	kit: { adapter: adapter() }
+	kit: {
+		adapter: adapter(),
+		csp: {
+			mode: 'hash',
+			directives: {
+				'default-src': ['self'],
+				'script-src': ['self'],
+				'style-src': ['self', 'unsafe-inline', 'https://fonts.googleapis.com'],
+				'img-src': ['self', 'https://flagcdn.com', 'data:'],
+				'font-src': ['self', 'https://fonts.gstatic.com'],
+				'connect-src': ['self'],
+				'frame-ancestors': ['none'],
+				'base-uri': ['self'],
+				'form-action': ['self']
+			}
+		}
+	}
 };
 
 export default config;

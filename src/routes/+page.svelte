@@ -6,13 +6,7 @@
 	import MatchesList from '$lib/components/matches/MatchesList.svelte';
 	import { NATIONS } from '$lib/data/nations.js';
 	import { OPENING_MATCH_DATE } from '$lib/config/site.js';
-
-	function getDaysRemaining(date: Date): number {
-		const now = new Date();
-		const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-		const target = new Date(date.getFullYear(), date.getMonth(), date.getDate());
-		return Math.max(0, Math.round((target.getTime() - today.getTime()) / 86_400_000));
-	}
+	import { getDaysRemaining } from '$lib/utils/date.js';
 
 	const nations = Object.values(NATIONS);
 
