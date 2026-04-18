@@ -17,7 +17,16 @@
 	const trophyClasses =
 		'flex h-[104px] w-[78px] select-none items-center justify-center leading-none transition-[filter] duration-400 max-[420px]:h-[78px] max-[420px]:w-[58px]';
 
-	const trophyColored = $derived(getDaysRemaining(targetDate) === 0);
+	let currentTime = $state(Date.now());
+	const trophyColored = $derived(getDaysRemaining(targetDate, new Date(currentTime)) === 0);
+
+	$effect(() => {
+		const interval = setInterval(() => {
+			currentTime = Date.now();
+		}, 60_000);
+
+		return () => clearInterval(interval);
+	});
 </script>
 
 <section class={sectionClasses}>
