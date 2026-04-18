@@ -42,7 +42,7 @@ Examples default to **Vue 3** (the source of these rules). For Svelte 5 / React 
 8. **Components in JS/TS: PascalCase.** Imports, exports, declarations.
 
    ```ts
-   import MyComponent from './MyComponent.ext'
+   import MyComponent from './MyComponent.ext';
    ```
 
 9. **Props:** `camelCase` in declaration. Usage in markup: `kebab-case` (Vue/Svelte) or `camelCase` (React — JSX does not accept kebab). Do not mix kebab and camel in usage within the same project.
@@ -93,13 +93,13 @@ Examples default to **Vue 3** (the source of these rules). For Svelte 5 / React 
     ```ts
     // Bad
     const price = computed(() => {
-      const base = cost.value / (1 - margin.value);
-      return base - base * (discount.value || 0);
+    	const base = cost.value / (1 - margin.value);
+    	return base - base * (discount.value || 0);
     });
 
     // Good
-    const basePrice  = computed(() => cost.value / (1 - margin.value));
-    const discount_  = computed(() => basePrice.value * (discount.value || 0));
+    const basePrice = computed(() => cost.value / (1 - margin.value));
+    const discount_ = computed(() => basePrice.value * (discount.value || 0));
     const finalPrice = computed(() => basePrice.value - discount_.value);
     ```
 

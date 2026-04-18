@@ -17,9 +17,11 @@ Snippets for the rules in [SKILL.md](../SKILL.md) that diverge across Vue 3 / Sv
 **React / JSX** — kebab-case is not accepted, camelCase everywhere.
 
 ```tsx
-function WelcomeMessage({ greetingText }: { greetingText: string }) { /* ... */ }
+function WelcomeMessage({ greetingText }: { greetingText: string }) {
+	/* ... */
+}
 
-<WelcomeMessage greetingText="hi" />
+<WelcomeMessage greetingText="hi" />;
 ```
 
 ## Rule 13 — Simple expressions in templates
@@ -44,8 +46,12 @@ function WelcomeMessage({ greetingText }: { greetingText: string }) { /* ... */ 
 
 ```tsx
 const normalized = useMemo(
-  () => fullName.split(' ').map((w) => w[0].toUpperCase() + w.slice(1)).join(' '),
-  [fullName]
+	() =>
+		fullName
+			.split(' ')
+			.map((w) => w[0].toUpperCase() + w.slice(1))
+			.join(' '),
+	[fullName]
 );
 ```
 
@@ -64,7 +70,7 @@ const normalized = useMemo(
 **React**
 
 ```tsx
-const basePrice  = useMemo(() => cost / (1 - margin), [cost, margin]);
-const discount_  = useMemo(() => basePrice * (discount || 0), [basePrice, discount]);
+const basePrice = useMemo(() => cost / (1 - margin), [cost, margin]);
+const discount_ = useMemo(() => basePrice * (discount || 0), [basePrice, discount]);
 const finalPrice = useMemo(() => basePrice - discount_, [basePrice, discount_]);
 ```

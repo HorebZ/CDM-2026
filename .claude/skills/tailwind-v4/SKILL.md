@@ -24,7 +24,7 @@ npm i tailwindcss @tailwindcss/postcss
 ```js
 // postcss.config.js
 export default {
-	plugins: ['@tailwindcss/postcss'],
+	plugins: ['@tailwindcss/postcss']
 };
 ```
 
@@ -43,7 +43,7 @@ import { defineConfig } from 'vite';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-	plugins: [tailwindcss()],
+	plugins: [tailwindcss()]
 });
 ```
 
@@ -146,17 +146,17 @@ Default palette is now OKLCH/P3. Keep balance ~identical to v3 — existing desi
 
 Use the official upgrade tool first: `npx @tailwindcss/upgrade`. Then verify:
 
-| v3                                        | v4 replacement                                              |
-| ----------------------------------------- | ----------------------------------------------------------- |
-| `@tailwind base/components/utilities;`    | `@import 'tailwindcss';`                                    |
-| `tailwind.config.js` (theme, screens, …)  | `@theme { … }` in CSS                                       |
-| `content: [...]` array                    | Automatic detection + `@source` for exceptions              |
-| `postcss-import`                          | Built-in, remove from `postcss.config.js`                   |
-| `@tailwindcss/container-queries` plugin   | Built-in `@container`, `@sm:`, `@max-md:`                   |
-| `bg-gradient-to-r`                        | `bg-linear-to-r` (and new `bg-radial-*`, `bg-conic-*`)      |
-| Arbitrary spacing `w-[4.25rem]` on-scale  | Dynamic value `w-17` derived from `--spacing`               |
-| JS plugins for simple utilities           | `@utility` / `@variant` in CSS                              |
-| Hardcoded theme tokens in JS              | `var(--color-brand-500)` — tokens are real CSS variables    |
+| v3                                       | v4 replacement                                           |
+| ---------------------------------------- | -------------------------------------------------------- |
+| `@tailwind base/components/utilities;`   | `@import 'tailwindcss';`                                 |
+| `tailwind.config.js` (theme, screens, …) | `@theme { … }` in CSS                                    |
+| `content: [...]` array                   | Automatic detection + `@source` for exceptions           |
+| `postcss-import`                         | Built-in, remove from `postcss.config.js`                |
+| `@tailwindcss/container-queries` plugin  | Built-in `@container`, `@sm:`, `@max-md:`                |
+| `bg-gradient-to-r`                       | `bg-linear-to-r` (and new `bg-radial-*`, `bg-conic-*`)   |
+| Arbitrary spacing `w-[4.25rem]` on-scale | Dynamic value `w-17` derived from `--spacing`            |
+| JS plugins for simple utilities          | `@utility` / `@variant` in CSS                           |
+| Hardcoded theme tokens in JS             | `var(--color-brand-500)` — tokens are real CSS variables |
 
 ## Review checklist
 
