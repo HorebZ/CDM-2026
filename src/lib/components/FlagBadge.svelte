@@ -43,6 +43,8 @@
 				width={80}
 				height={60}
 				loading="lazy"
+				decoding="async"
+				referrerpolicy="no-referrer"
 			/>
 		</div>
 	{/snippet}

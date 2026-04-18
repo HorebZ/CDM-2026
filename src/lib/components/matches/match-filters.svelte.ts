@@ -1,5 +1,4 @@
-import { MATCHES } from '$lib/data/matches.js';
-import type { GroupId, Match } from '$lib/types/index.js';
+import type { GroupId, Match, MatchPhase } from '$lib/types/index.js';
 
 export const FINAL_STAGE_FILTERS = [
 	{ id: '16e', label: '16e' },
@@ -10,52 +9,77 @@ export const FINAL_STAGE_FILTERS = [
 
 export type FinalStageFilterId = (typeof FINAL_STAGE_FILTERS)[number]['id'];
 
-export class MatchFilters {
-	query = $state('');
-	selectedNationId = $state<string | null>(null);
-	selectedNationName = $state<string | null>(null);
-	selectedNationCode = $state<string | null>(null);
-	selectedGroup = $state<GroupId | null>(null);
-	selectedFinalStage = $state<FinalStageFilterId | null>(null);
+const FINAL_STAGE_PHASES: Record<FinalStageFilterId, ReadonlyArray<MatchPhase>> = {
+	'16e': ['round-of-32'],
+	'8e': ['round-of-16'],
+	'1/4': ['quarter'],
+	PF: ['semi', 'small-final', 'final']
+};
 
-	readonly filtered = $derived.by<Match[]>(() =>
-		MATCHES.filter((match) => {
-			const matchesNation =
-				!this.selectedNationId ||
-				match.sides.some((side) => side.nationId === this.selectedNationId);
-			const matchesGroup = !this.selectedGroup || match.group === this.selectedGroup;
-			const matchesFinalStage =
-				!this.selectedFinalStage ||
-				(this.selectedFinalStage === '16e' && match.phaseLabel === '16e de finale') ||
-				(this.selectedFinalStage === '8e' && match.phaseLabel === '8e de finale') ||
-				(this.selectedFinalStage === '1/4' && match.phaseLabel === 'Quart de finale') ||
-				(this.selectedFinalStage === 'PF' &&
-					['Demi-finale', 'Petite finale', 'Finale'].includes(match.phaseLabel ?? ''));
-			return matchesNation && matchesGroup && matchesFinalStage;
-		})
-	);
+export interface FiltersState {
+	query: string;
+	selectedNationId: string | null;
+	selectedNationName: string | null;
+	selectedNationCode: string | null;
+	selectedGroup: GroupId | null;
+	selectedFinalStage: FinalStageFilterId | null;
+}
 
-	selectNation(result: { id: string; name: string; code: string }) {
-		this.selectedNationId = result.id;
-		this.selectedNationName = result.name;
-		this.selectedNationCode = result.code;
-		this.query = '';
-	}
+const INITIAL_STATE: FiltersState = {
+	query: '',
+	selectedNationId: null,
+	selectedNationName: null,
+	selectedNationCode: null,
+	selectedGroup: null,
+	selectedFinalStage: null
+};
 
-	clearNation() {
-		this.selectedNationId = null;
-		this.selectedNationName = null;
-		this.selectedNationCode = null;
-		this.query = '';
-	}
+export const filters: FiltersState = $state({ ...INITIAL_STATE });
 
-	toggleGroup(group: GroupId) {
-		this.selectedFinalStage = null;
-		this.selectedGroup = this.selectedGroup === group ? null : group;
-	}
+export function resetFilters(): void {
+	Object.assign(filters, INITIAL_STATE);
+}
 
-	toggleFinalStage(filterId: FinalStageFilterId) {
-		this.selectedGroup = null;
-		this.selectedFinalStage = this.selectedFinalStage === filterId ? null : filterId;
-	}
+export function selectNation({ id, name, code }: { id: string; name: string; code: string }): void {
+	filters.selectedNationId = id;
+	filters.selectedNationName = name;
+	filters.selectedNationCode = code;
+	filters.query = '';
+}
+
+export function clearNation(): void {
+	filters.selectedNationId = null;
+	filters.selectedNationName = null;
+	filters.selectedNationCode = null;
+	filters.query = '';
+}
+
+export function toggleGroup({ group }: { group: GroupId }): void {
+	filters.selectedFinalStage = null;
+	filters.selectedGroup = filters.selectedGroup === group ? null : group;
+}
+
+export function toggleFinalStage({ filterId }: { filterId: FinalStageFilterId }): void {
+	filters.selectedGroup = null;
+	filters.selectedFinalStage = filters.selectedFinalStage === filterId ? null : filterId;
+}
+
+export function applyFilters({
+	matches,
+	filters
+}: {
+	matches: Match[];
+	filters: FiltersState;
+}): Match[] {
+	return matches.filter((match) => {
+		const matchesNation =
+			!filters.selectedNationId ||
+			match.sides.some((side) => side.nationId === filters.selectedNationId);
+		const matchesGroup = !filters.selectedGroup || match.group === filters.selectedGroup;
+		const matchesFinalStage =
+			!filters.selectedFinalStage ||
+			FINAL_STAGE_PHASES[filters.selectedFinalStage].includes(match.phase);
+
+		return matchesNation && matchesGroup && matchesFinalStage;
+	});
 }

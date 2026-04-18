@@ -27,7 +27,7 @@
 	const stadiumLocalTime = $derived(dates.stadiumDate.replace(':', 'h'));
 	const stadiumUtcOffset = $derived(`UTC${fromLocal(match.localDate, stadium.timezone).offset}`);
 
-	const winner = $derived(isMatchPassed ? (match.result?.winner ?? 0) : 0);
+	const winner = $derived(isMatchPassed ? match.result?.winner : undefined);
 
 	const displayScore1 = $derived(side1.score?.regularTime);
 	const displayScore2 = $derived(side2.score?.regularTime);

@@ -12,7 +12,14 @@
 
 <Tooltip>
 	<div class="size-13 shrink-0 overflow-hidden rounded-full border border-[rgba(255,255,255,0.1)]">
-		<img src={getFlagUrl(nation.code)} alt="" width={48} height={36} />
+		<img
+			src={getFlagUrl(nation.code)}
+			alt=""
+			width={48}
+			height={36}
+			decoding="async"
+			referrerpolicy="no-referrer"
+		/>
 	</div>
 	<div class="flex flex-col gap-0.5">
 		<span class="text-[13px] font-bold text-text-primary">{nation.name}</span>

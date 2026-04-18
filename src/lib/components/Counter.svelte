@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { Nation } from '$lib/types/index.js';
 	import { getFlagUrl } from '$lib/config/site.js';
+	import { getDaysRemaining } from '$lib/utils/date.js';
 	import Confetti from './Confetti.svelte';
 
 	interface Props {
@@ -10,17 +11,8 @@
 
 	const { targetDate, nations = [] }: Props = $props();
 
-	function getDaysRemaining(date: Date, currentTime: number): number {
-		const now = new Date(currentTime);
-		const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-		const target = new Date(date.getFullYear(), date.getMonth(), date.getDate());
-		const diffMs = target.getTime() - today.getTime();
-
-		return Math.max(0, Math.round(diffMs / (1000 * 60 * 60 * 24)));
-	}
-
 	let currentTime = $state(Date.now());
-	const days = $derived(getDaysRemaining(targetDate, currentTime));
+	const days = $derived(getDaysRemaining(targetDate, new Date(currentTime)));
 
 	$effect(() => {
 		const interval = setInterval(() => {

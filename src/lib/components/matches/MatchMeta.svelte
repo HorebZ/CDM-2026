@@ -12,6 +12,7 @@
 
 	const PHASE_LABELS: Record<MatchPhase, string> = {
 		group: 'Groupe',
+		'round-of-32': '16e de finale',
 		'round-of-16': '8e de finale',
 		quarter: 'Quart',
 		semi: 'Demi',
