@@ -27,6 +27,21 @@ export function isMatchDatePassed(
 	return Temporal.Instant.compare(now, matchInstant) > 0;
 }
 
+/**
+ * Renvoie le nombre de jours calendaires restants entre `now` et `target`.
+ * Les deux dates sont normalisées à minuit local pour éviter les erreurs d'arrondi liées à l'heure.
+ *
+ * @param target - Date cible
+ * @param now - Instant de référence (par défaut l'instant courant), utile pour les tests
+ */
+export function getDaysRemaining(target: Date, now: Date = new Date()): number {
+	const todayAtMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+	const targetAtMidnight = new Date(target.getFullYear(), target.getMonth(), target.getDate());
+	const diffMs = targetAtMidnight.getTime() - todayAtMidnight.getTime();
+
+	return Math.max(0, Math.round(diffMs / 86_400_000));
+}
+
 export interface MatchDates {
 	/** Date/heure dans le fuseau de l'utilisateur */
 	userDate: string;

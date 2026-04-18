@@ -35,7 +35,14 @@ export interface Nation {
 
 export type GroupId = 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G' | 'H' | 'I' | 'J' | 'K' | 'L';
 
-export type MatchPhase = 'group' | 'round-of-16' | 'quarter' | 'semi' | 'small-final' | 'final';
+export type MatchPhase =
+	| 'group'
+	| 'round-of-32'
+	| 'round-of-16'
+	| 'quarter'
+	| 'semi'
+	| 'small-final'
+	| 'final';
 
 export type MatchResolution = 'regular' | 'penalties';
 
