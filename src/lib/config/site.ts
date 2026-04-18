@@ -7,5 +7,5 @@ export const SITE_CONFIG: SiteConfig = {
 };
 
 export function getFlagUrl(code: string): string {
-	return `https://flagcdn.com/h240/${code.toLowerCase()}.png`;
+	return `https://flagcdn.com/h240/${code.toLowerCase()}.webp`;
 }
