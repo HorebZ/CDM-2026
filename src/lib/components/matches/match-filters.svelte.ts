@@ -1,4 +1,6 @@
+import { NATIONS } from '$lib/data/nations.js';
 import type { GroupId, Match, MatchPhase } from '$lib/types/index.js';
+import { SvelteURLSearchParams } from 'svelte/reactivity';
 
 export const FINAL_STAGE_FILTERS = [
 	{ id: '16e', label: '16e' },
@@ -15,6 +17,32 @@ const FINAL_STAGE_PHASES: Record<FinalStageFilterId, ReadonlyArray<MatchPhase>> 
 	'1/4': ['quarter'],
 	PF: ['semi', 'small-final', 'final']
 };
+
+const STAGE_TO_PARAM: Record<FinalStageFilterId, string> = {
+	'16e': 'r32',
+	'8e': 'r16',
+	'1/4': 'qf',
+	PF: 'final'
+};
+
+const PARAM_TO_STAGE: Record<string, FinalStageFilterId> = Object.fromEntries(
+	Object.entries(STAGE_TO_PARAM).map(([id, param]) => [param, id as FinalStageFilterId])
+);
+
+const VALID_GROUPS: ReadonlySet<GroupId> = new Set<GroupId>([
+	'A',
+	'B',
+	'C',
+	'D',
+	'E',
+	'F',
+	'G',
+	'H',
+	'I',
+	'J',
+	'K',
+	'L'
+]);
 
 export interface FiltersState {
 	query: string;
@@ -62,6 +90,40 @@ export function toggleGroup({ group }: { group: GroupId }): void {
 export function toggleFinalStage({ filterId }: { filterId: FinalStageFilterId }): void {
 	filters.selectedGroup = null;
 	filters.selectedFinalStage = filters.selectedFinalStage === filterId ? null : filterId;
+}
+
+export function filtersToSearchParams(state: FiltersState): SvelteURLSearchParams {
+	const params = new SvelteURLSearchParams();
+
+	if (state.selectedNationCode) params.set('nation', state.selectedNationCode);
+	if (state.selectedGroup) params.set('group', state.selectedGroup);
+	if (state.selectedFinalStage) params.set('stage', STAGE_TO_PARAM[state.selectedFinalStage]);
+
+	return params;
+}
+
+export function hydrateFiltersFromSearchParams(params: URLSearchParams): void {
+	const nationCode = params.get('nation')?.toLowerCase() ?? null;
+	if (nationCode) {
+		const entry = Object.entries(NATIONS).find(([, nation]) => nation.code === nationCode);
+		if (entry) {
+			filters.selectedNationId = entry[0];
+			filters.selectedNationName = entry[1].name;
+			filters.selectedNationCode = entry[1].code;
+		}
+	}
+
+	const stageParam = params.get('stage');
+	const stageId = stageParam ? PARAM_TO_STAGE[stageParam] : null;
+
+	if (stageId) {
+		filters.selectedFinalStage = stageId;
+	} else {
+		const groupParam = params.get('group')?.toUpperCase() as GroupId | null;
+		if (groupParam && VALID_GROUPS.has(groupParam)) {
+			filters.selectedGroup = groupParam;
+		}
+	}
 }
 
 export function applyFilters({

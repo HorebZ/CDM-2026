@@ -5,6 +5,8 @@ import {
 	applyFilters,
 	clearNation,
 	filters,
+	filtersToSearchParams,
+	hydrateFiltersFromSearchParams,
 	resetFilters,
 	selectNation,
 	toggleFinalStage,
@@ -203,6 +205,104 @@ describe('match-filters.svelte', () => {
 			toggleFinalStage({ filterId: 'PF' });
 			expect(filters.selectedGroup).toBeNull();
 			expect(filters.selectedFinalStage).toBe('PF');
+		});
+	});
+
+	describe('filtersToSearchParams', () => {
+		it('renvoie une chaîne vide quand aucun filtre n’est actif', () => {
+			expect(filtersToSearchParams(filters).toString()).toBe('');
+		});
+
+		it('sérialise la nation sélectionnée via son code ISO', () => {
+			selectNation({ id: NATION_IDS.FRANCE, name: 'France', code: 'fr' });
+			expect(filtersToSearchParams(filters).toString()).toBe('nation=fr');
+		});
+
+		it('sérialise le groupe sélectionné', () => {
+			toggleGroup({ group: 'I' });
+			expect(filtersToSearchParams(filters).toString()).toBe('group=I');
+		});
+
+		it('sérialise les phases finales avec des identifiants courts', () => {
+			const expected: Record<(typeof FINAL_STAGE_FILTERS)[number]['id'], string> = {
+				'16e': 'stage=r32',
+				'8e': 'stage=r16',
+				'1/4': 'stage=qf',
+				PF: 'stage=final'
+			};
+
+			for (const { id } of FINAL_STAGE_FILTERS) {
+				resetFilters();
+				toggleFinalStage({ filterId: id });
+				expect(filtersToSearchParams(filters).toString()).toBe(expected[id]);
+			}
+		});
+
+		it('combine nation et groupe', () => {
+			selectNation({ id: NATION_IDS.FRANCE, name: 'France', code: 'fr' });
+			toggleGroup({ group: 'I' });
+			expect(filtersToSearchParams(filters).toString()).toBe('nation=fr&group=I');
+		});
+	});
+
+	describe('hydrateFiltersFromSearchParams', () => {
+		it('ignore une chaîne vide', () => {
+			hydrateFiltersFromSearchParams(new URLSearchParams(''));
+			expect(filters.selectedNationId).toBeNull();
+			expect(filters.selectedGroup).toBeNull();
+			expect(filters.selectedFinalStage).toBeNull();
+		});
+
+		it('hydrate la nation à partir de son code ISO', () => {
+			hydrateFiltersFromSearchParams(new URLSearchParams('nation=fr'));
+			expect(filters.selectedNationId).toBe(NATION_IDS.FRANCE);
+			expect(filters.selectedNationCode).toBe('fr');
+			expect(filters.selectedNationName).toBe('France');
+		});
+
+		it('hydrate la nation même avec un code en majuscules', () => {
+			hydrateFiltersFromSearchParams(new URLSearchParams('nation=FR'));
+			expect(filters.selectedNationId).toBe(NATION_IDS.FRANCE);
+		});
+
+		it('ignore un code de nation inconnu', () => {
+			hydrateFiltersFromSearchParams(new URLSearchParams('nation=zz'));
+			expect(filters.selectedNationId).toBeNull();
+		});
+
+		it('hydrate le groupe quand il est valide', () => {
+			hydrateFiltersFromSearchParams(new URLSearchParams('group=I'));
+			expect(filters.selectedGroup).toBe('I');
+		});
+
+		it('ignore un groupe invalide', () => {
+			hydrateFiltersFromSearchParams(new URLSearchParams('group=Z'));
+			expect(filters.selectedGroup).toBeNull();
+		});
+
+		it('hydrate la phase finale depuis son identifiant court', () => {
+			hydrateFiltersFromSearchParams(new URLSearchParams('stage=qf'));
+			expect(filters.selectedFinalStage).toBe('1/4');
+		});
+
+		it('priorise la phase finale sur le groupe (cohérent avec le toggle mutuel)', () => {
+			hydrateFiltersFromSearchParams(new URLSearchParams('group=I&stage=r32'));
+			expect(filters.selectedFinalStage).toBe('16e');
+			expect(filters.selectedGroup).toBeNull();
+		});
+
+		it('effectue un aller-retour propre sérialisation → hydratation', () => {
+			selectNation({ id: NATION_IDS.FRANCE, name: 'France', code: 'fr' });
+			toggleFinalStage({ filterId: '1/4' });
+			const qs = filtersToSearchParams(filters).toString();
+
+			resetFilters();
+			hydrateFiltersFromSearchParams(new URLSearchParams(qs));
+
+			expect(filters.selectedNationId).toBe(NATION_IDS.FRANCE);
+			expect(filters.selectedNationCode).toBe('fr');
+			expect(filters.selectedFinalStage).toBe('1/4');
+			expect(filters.selectedGroup).toBeNull();
 		});
 	});
 });

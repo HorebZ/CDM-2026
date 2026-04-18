@@ -1,10 +1,36 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
+	import { browser } from '$app/environment';
 	import MatchRow from './MatchRow.svelte';
 	import MatchSearchBar from './MatchSearchBar.svelte';
 	import { MATCHES } from '$lib/data/matches.js';
-	import { applyFilters, filters } from './match-filters.svelte.js';
+	import {
+		applyFilters,
+		filters,
+		filtersToSearchParams,
+		hydrateFiltersFromSearchParams
+	} from './match-filters.svelte.js';
 
 	const filteredMatches = $derived(applyFilters({ matches: MATCHES, filters }));
+
+	let hydrated = $state(false);
+
+	onMount(() => {
+		hydrateFiltersFromSearchParams(new URLSearchParams(window.location.search));
+		hydrated = true;
+	});
+
+	$effect(() => {
+		if (!browser || !hydrated) return;
+
+		const qs = filtersToSearchParams(filters).toString();
+		const { pathname, hash, search } = window.location;
+		const nextSearch = qs ? `?${qs}` : '';
+
+		if (nextSearch === search) return;
+
+		window.history.replaceState(window.history.state, '', `${pathname}${nextSearch}${hash}`);
+	});
 </script>
 
 <section
