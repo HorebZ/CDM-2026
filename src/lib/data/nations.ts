@@ -1,7 +1,7 @@
 import { CONFEDERATIONS, type Nation } from '$lib/types/index.js';
 import { createIdMap } from '$lib/utils/ids';
 
-const GROUP_A: Record<string, Nation> = {
+const GROUP_A = {
 	MEXIQUE: {
 		code: 'mx',
 		name: 'Mexique',
@@ -34,9 +34,9 @@ const GROUP_A: Record<string, Nation> = {
 		participation: 2,
 		enabled: false
 	}
-};
+} as const satisfies Record<string, Nation>;
 
-const GROUP_B: Record<string, Nation> = {
+const GROUP_B = {
 	CANADA: {
 		code: 'ca',
 		name: 'Canada',
@@ -69,9 +69,9 @@ const GROUP_B: Record<string, Nation> = {
 		participation: 2,
 		enabled: false
 	}
-};
+} as const satisfies Record<string, Nation>;
 
-const GROUP_C: Record<string, Nation> = {
+const GROUP_C = {
 	BRESIL: {
 		code: 'br',
 		name: 'Brésil',
@@ -104,9 +104,9 @@ const GROUP_C: Record<string, Nation> = {
 		participation: 2,
 		enabled: true
 	}
-};
+} as const satisfies Record<string, Nation>;
 
-const GROUP_D: Record<string, Nation> = {
+const GROUP_D = {
 	USA: {
 		code: 'us',
 		name: 'États-Unis',
@@ -139,9 +139,9 @@ const GROUP_D: Record<string, Nation> = {
 		participation: 3,
 		enabled: false
 	}
-};
+} as const satisfies Record<string, Nation>;
 
-const GROUP_E: Record<string, Nation> = {
+const GROUP_E = {
 	ALLEMAGNE: {
 		code: 'de',
 		name: 'Allemagne',
@@ -174,9 +174,9 @@ const GROUP_E: Record<string, Nation> = {
 		participation: 1,
 		enabled: true
 	}
-};
+} as const satisfies Record<string, Nation>;
 
-const GROUP_F: Record<string, Nation> = {
+const GROUP_F = {
 	PAYS_BAS: {
 		code: 'nl',
 		name: 'Pays-Bas',
@@ -209,9 +209,9 @@ const GROUP_F: Record<string, Nation> = {
 		participation: 13,
 		enabled: false
 	}
-};
+} as const satisfies Record<string, Nation>;
 
-const GROUP_G: Record<string, Nation> = {
+const GROUP_G = {
 	BELGIQUE: {
 		code: 'be',
 		name: 'Belgique',
@@ -244,9 +244,9 @@ const GROUP_G: Record<string, Nation> = {
 		participation: 3,
 		enabled: true
 	}
-};
+} as const satisfies Record<string, Nation>;
 
-const GROUP_H: Record<string, Nation> = {
+const GROUP_H = {
 	ESPAGNE: {
 		code: 'es',
 		name: 'Espagne',
@@ -279,9 +279,9 @@ const GROUP_H: Record<string, Nation> = {
 		participation: 1,
 		enabled: true
 	}
-};
+} as const satisfies Record<string, Nation>;
 
-const GROUP_I: Record<string, Nation> = {
+const GROUP_I = {
 	FRANCE: {
 		code: 'fr',
 		name: 'France',
@@ -314,9 +314,9 @@ const GROUP_I: Record<string, Nation> = {
 		participation: 2,
 		enabled: true
 	}
-};
+} as const satisfies Record<string, Nation>;
 
-const GROUP_J: Record<string, Nation> = {
+const GROUP_J = {
 	ARGENTINE: {
 		code: 'ar',
 		name: 'Argentine',
@@ -349,9 +349,9 @@ const GROUP_J: Record<string, Nation> = {
 		participation: 1,
 		enabled: true
 	}
-};
+} as const satisfies Record<string, Nation>;
 
-const GROUP_K: Record<string, Nation> = {
+const GROUP_K = {
 	PORTUGAL: {
 		code: 'pt',
 		name: 'Portugal',
@@ -384,9 +384,9 @@ const GROUP_K: Record<string, Nation> = {
 		participation: 2,
 		enabled: false
 	}
-};
+} as const satisfies Record<string, Nation>;
 
-const GROUP_L: Record<string, Nation> = {
+const GROUP_L = {
 	ANGLETERRE: {
 		code: 'gb-eng',
 		name: 'Angleterre',
@@ -419,9 +419,9 @@ const GROUP_L: Record<string, Nation> = {
 		participation: 5,
 		enabled: false
 	}
-};
+} as const satisfies Record<string, Nation>;
 
-export const NATIONS: Record<string, Nation> = {
+export const NATIONS = {
 	...GROUP_A,
 	...GROUP_B,
 	...GROUP_C,
@@ -434,7 +434,7 @@ export const NATIONS: Record<string, Nation> = {
 	...GROUP_J,
 	...GROUP_K,
 	...GROUP_L
-};
+} as const satisfies Record<string, Nation>;
 
 export type NationId = keyof typeof NATIONS;
 export const NATION_IDS = createIdMap(NATIONS);

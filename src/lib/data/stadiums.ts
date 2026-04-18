@@ -1,7 +1,7 @@
 import type { Stadium } from '$lib/types';
 import { createIdMap } from '$lib/utils/ids';
 
-export const STADIUMS: Record<string, Stadium> = {
+export const STADIUMS = {
 	VANCOUVER: {
 		countryCode: 'ca',
 		city: 'Vancouver',
@@ -114,7 +114,7 @@ export const STADIUMS: Record<string, Stadium> = {
 		capacity: 53460,
 		timezone: 'America/Monterrey'
 	}
-};
+} as const satisfies Record<string, Stadium>;
 
 export type StadiumId = keyof typeof STADIUMS;
 export const STADIUM_IDS = createIdMap(STADIUMS);
