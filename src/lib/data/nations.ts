@@ -94,7 +94,7 @@ const GROUP_C = {
 		confederation: CONFEDERATIONS.UEFA,
 		group: 'C',
 		participation: 9,
-		enabled: false
+		enabled: true
 	},
 	HAITI: {
 		code: 'ht',
@@ -113,7 +113,7 @@ const GROUP_D = {
 		confederation: CONFEDERATIONS.CONCACAF,
 		group: 'D',
 		participation: 12,
-		enabled: false
+		enabled: true
 	},
 	AUSTRALIE: {
 		code: 'au',
@@ -199,7 +199,7 @@ const GROUP_F = {
 		confederation: CONFEDERATIONS.CAF,
 		group: 'F',
 		participation: 7,
-		enabled: false
+		enabled: true
 	},
 	SUEDE: {
 		code: 'se',
@@ -234,7 +234,7 @@ const GROUP_G = {
 		confederation: CONFEDERATIONS.CAF,
 		group: 'G',
 		participation: 4,
-		enabled: false
+		enabled: true
 	},
 	NEW_ZEALAND: {
 		code: 'nz',
