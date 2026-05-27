@@ -8,7 +8,7 @@ const GROUP_A = {
 		confederation: CONFEDERATIONS.CONCACAF,
 		group: 'A',
 		participation: 18,
-		enabled: false
+		enabled: true
 	},
 	COREE_DU_SUD: {
 		code: 'kr',
@@ -32,7 +32,7 @@ const GROUP_A = {
 		confederation: CONFEDERATIONS.UEFA,
 		group: 'A',
 		participation: 2,
-		enabled: false
+		enabled: true
 	}
 } as const satisfies Record<string, Nation>;
 
@@ -43,7 +43,7 @@ const GROUP_B = {
 		confederation: CONFEDERATIONS.CONCACAF,
 		group: 'B',
 		participation: 3,
-		enabled: false
+		enabled: true
 	},
 	SUISSE: {
 		code: 'ch',
@@ -323,7 +323,7 @@ const GROUP_J = {
 		confederation: CONFEDERATIONS.CONMEBOL,
 		group: 'J',
 		participation: 19,
-		enabled: false
+		enabled: true
 	},
 	AUTRICHE: {
 		code: 'at',
@@ -417,7 +417,7 @@ const GROUP_L = {
 		confederation: CONFEDERATIONS.CAF,
 		group: 'L',
 		participation: 5,
-		enabled: false
+		enabled: true
 	}
 } as const satisfies Record<string, Nation>;
 
