@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
-	import MatchRow from './MatchRow.svelte';
 	import MatchSearchBar from './MatchSearchBar.svelte';
+	import MatchesListRows from './MatchesListRows.svelte';
 	import { MATCHES } from '$lib/data/matches.js';
 	import {
 		applyFilters,
@@ -42,22 +42,6 @@
 	<div
 		class="mx-auto flex min-h-[700px] w-[min(100%,var(--shell-width))] flex-col max-[800px]:min-h-[980px]"
 	>
-		<ul class="list-none p-0" role="list">
-			{#each filteredMatches as match (`${match.stadiumId}-${match.localDate}`)}
-				<li
-					class="border-b border-[rgba(255,255,255,0.05)] first:border-t first:border-[rgba(255,255,255,0.05)]"
-				>
-					<MatchRow {match} />
-				</li>
-			{/each}
-		</ul>
-
-		{#if filteredMatches.length === 0}
-			<div
-				class="flex flex-1 items-center justify-center text-center text-[13px] text-text-muted italic"
-			>
-				<p>Aucun match trouvé pour cette recherche.</p>
-			</div>
-		{/if}
+		<MatchesListRows matches={filteredMatches} />
 	</div>
 </section>

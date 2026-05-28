@@ -7,9 +7,12 @@
 	interface Props {
 		nation: Nation;
 		celebrating?: boolean;
+		forceActive?: boolean;
 	}
 
-	const { nation, celebrating = false }: Props = $props();
+	const { nation, celebrating = false, forceActive = false }: Props = $props();
+
+	const isVisuallyActive = $derived(nation.enabled || forceActive);
 
 	function codeToDelay(code: string): string {
 		let hash = 0;
@@ -25,7 +28,7 @@
 		<div
 			class={[
 				'flag-badge relative size-(--flag-size) shrink-0 overflow-hidden rounded-full border-[1.5px] border-ring-subtle bg-[rgba(255,255,255,0.02)] p-0 transition-[border-color,transform] duration-300 group-hover:scale-[1.08] group-hover:border-ring-active',
-				nation.enabled && 'border-ring-active',
+				isVisuallyActive && 'border-ring-active',
 				celebrating &&
 					'animate-[celebrate-jump_0.85s_ease-in-out_infinite] border-[#ffd700] shadow-[0_0_10px_2px_rgba(255,215,0,0.35)]'
 			]}
@@ -34,7 +37,7 @@
 			<img
 				class={[
 					'block size-full object-cover transition-[filter] duration-400',
-					nation.enabled || celebrating
+					isVisuallyActive || celebrating
 						? 'filter-none'
 						: 'filter-[grayscale(100%)_brightness(0.55)_contrast(0.85)]'
 				]}

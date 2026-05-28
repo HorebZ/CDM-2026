@@ -1,8 +1,16 @@
 import { SITE_URL } from '$lib/config/site.js';
+import { TV_COUNTRY_ROUTE_ENTRIES } from '$lib/utils/tv-country.js';
 
 export const prerender = true;
 
-const PAGES = [{ path: '/', changefreq: 'daily', priority: '1.0' }] as const;
+const PAGES = [
+	{ path: '/', changefreq: 'daily', priority: '1.0' },
+	...TV_COUNTRY_ROUTE_ENTRIES.map(({ nationCode }) => ({
+		path: `/tv/${nationCode}`,
+		changefreq: 'daily' as const,
+		priority: '0.8'
+	}))
+] as const;
 
 export function GET(): Response {
 	const lastmod = new Date().toISOString().slice(0, 10);
