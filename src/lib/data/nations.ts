@@ -296,7 +296,7 @@ const GROUP_I = {
 		confederation: CONFEDERATIONS.CAF,
 		group: 'I',
 		participation: 4,
-		enabled: false
+		enabled: true
 	},
 	NORVEGE: {
 		code: 'no',
@@ -304,7 +304,7 @@ const GROUP_I = {
 		confederation: CONFEDERATIONS.UEFA,
 		group: 'I',
 		participation: 4,
-		enabled: false
+		enabled: true
 	},
 	IRAK: {
 		code: 'iq',
