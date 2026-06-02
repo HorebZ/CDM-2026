@@ -4,9 +4,16 @@
 	import MatchesListRows from '$lib/components/matches/MatchesListRows.svelte';
 	import { OPENING_MATCH_DATE } from '$lib/config/site.js';
 	import { getDaysRemaining } from '$lib/utils/date.js';
+	import { getUpcomingTvCompetitionDays } from '$lib/utils/tv-country.js';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
+
+	const competitionDayDateFormatter = new Intl.DateTimeFormat('fr-FR', {
+		weekday: 'long',
+		day: 'numeric',
+		month: 'long'
+	});
 
 	let currentTime = $state(Date.now());
 	const forceActiveFlags = $derived(
@@ -22,6 +29,16 @@
 	const participationLabel = $derived(
 		`${data.nation.participation} participation${data.nation.participation > 1 ? 's' : ''}`
 	);
+	const upcomingCompetitionDays = $derived(
+		getUpcomingTvCompetitionDays({
+			excludedMatches: data.matches,
+			now: new Date(currentTime)
+		})
+	);
+
+	function formatCompetitionDay(date: string): string {
+		return competitionDayDateFormatter.format(new Date(`${date}T12:00:00`));
+	}
 
 	$effect(() => {
 		const interval = setInterval(() => {
@@ -36,13 +53,13 @@
 	<title>{data.nation.name} | TV | CDM 2026</title>
 </svelte:head>
 
-<div class="tv-layout grid min-h-screen xl:grid-cols-[minmax(0,2fr)_minmax(420px,1fr)]">
+<div class="tv-layout grid min-h-screen xl:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
 	<section
-		class="tv-stage flex min-h-[68vh] items-center justify-center px-6 pt-11 pb-20 max-[800px]:pt-9 max-[560px]:px-4 xl:min-h-screen xl:pb-11"
+		class="tv-stage flex min-h-[68vh] min-w-0 items-center justify-center px-6 pt-11 pb-20 max-[800px]:pt-9 max-[560px]:px-4 xl:min-h-screen xl:pb-11"
 		aria-labelledby="tv-country-title"
 	>
 		<main
-			class="flex w-[min(100%,var(--shell-width))] flex-col items-center gap-[52px] max-[800px]:gap-10"
+			class="flex w-[min(100%,var(--shell-width))] min-w-0 flex-col items-center gap-[52px] max-[800px]:gap-10"
 		>
 			<Hero targetDate={OPENING_MATCH_DATE} nations={data.nations} />
 			<FlagsGrid nations={data.nations} {celebrating} forceActive={forceActiveFlags} />
@@ -50,7 +67,7 @@
 	</section>
 
 	<aside
-		class="tv-sidebar flex min-h-[32vh] flex-col overflow-hidden px-6 pb-6 max-[560px]:px-4 xl:min-h-screen xl:border-l xl:border-[rgba(255,255,255,0.06)] xl:px-0 xl:pb-0"
+		class="tv-sidebar flex min-h-[32vh] min-w-0 flex-col overflow-hidden px-6 pb-6 max-[560px]:px-4 xl:min-h-screen xl:border-l xl:border-[rgba(255,255,255,0.06)] xl:px-0 xl:pb-0"
 	>
 		<header class="tv-sidebar-header px-0 py-5 max-[560px]:py-4 xl:px-6">
 			<div class="flex items-end justify-between gap-3">
@@ -74,6 +91,40 @@
 
 		<div class="tv-matches flex min-h-0 flex-1 flex-col overflow-y-auto px-0 py-2 xl:px-4">
 			<MatchesListRows matches={data.matches} emptyMessage="Aucun match prévu pour cette nation." />
+
+			{#if upcomingCompetitionDays.length > 0}
+				<section
+					class="mt-7 border-t border-[rgba(255,255,255,0.08)] pt-5"
+					aria-labelledby="tv-upcoming-days-title"
+				>
+					<div class="mb-4 px-2">
+						<h2
+							id="tv-upcoming-days-title"
+							class="text-[13px] font-black tracking-[0.08em] text-white uppercase"
+						>
+							À suivre
+						</h2>
+						<p class="mt-1 text-[12px] font-semibold text-text-muted">
+							{upcomingCompetitionDays.length}
+							{upcomingCompetitionDays.length > 1 ? 'prochaines journées' : 'prochaine journée'} de compétition.
+						</p>
+					</div>
+
+					<div class="flex flex-col gap-6">
+						{#each upcomingCompetitionDays as competitionDay (competitionDay.date)}
+							<section aria-labelledby={`tv-competition-day-${competitionDay.date}`}>
+								<h3
+									id={`tv-competition-day-${competitionDay.date}`}
+									class="mb-2 px-2 text-[12px] font-black tracking-[0.08em] text-text-primary uppercase"
+								>
+									{formatCompetitionDay(competitionDay.date)}
+								</h3>
+								<MatchesListRows matches={competitionDay.matches} />
+							</section>
+						{/each}
+					</div>
+				</section>
+			{/if}
 		</div>
 	</aside>
 </div>
@@ -86,11 +137,16 @@
 		--flag-row-gap: 48px;
 	}
 
-	@media (min-width: 2200px) {
-		.tv-layout {
-			grid-template-columns: minmax(0, 2.1fr) minmax(520px, 1fr);
+	@media (min-width: 1280px) and (max-width: 1799px) {
+		.tv-stage {
+			--shell-width: 100%;
+			--flag-size: clamp(52px, 3.55vw, 68px);
+			--flag-gap: clamp(14px, 1vw, 28px);
+			--flag-row-gap: clamp(34px, 2.5vw, 48px);
 		}
+	}
 
+	@media (min-width: 2200px) {
 		.tv-stage {
 			--shell-width: 1220px;
 			--flag-size: 82px;
@@ -132,10 +188,6 @@
 	}
 
 	@media (min-width: 3000px) {
-		.tv-layout {
-			grid-template-columns: minmax(0, 2.2fr) minmax(620px, 1fr);
-		}
-
 		.tv-stage {
 			--shell-width: 1480px;
 			--flag-size: 94px;
