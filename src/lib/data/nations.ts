@@ -207,7 +207,7 @@ const GROUP_F = {
 		confederation: CONFEDERATIONS.UEFA,
 		group: 'F',
 		participation: 13,
-		enabled: false
+		enabled: true
 	}
 } as const satisfies Record<string, Nation>;
 
@@ -218,7 +218,7 @@ const GROUP_G = {
 		confederation: CONFEDERATIONS.UEFA,
 		group: 'G',
 		participation: 15,
-		enabled: false
+		enabled: true
 	},
 	IRAN: {
 		code: 'ir',
@@ -401,7 +401,7 @@ const GROUP_L = {
 		confederation: CONFEDERATIONS.UEFA,
 		group: 'L',
 		participation: 7,
-		enabled: false
+		enabled: true
 	},
 	PANAMA: {
 		code: 'pa',
