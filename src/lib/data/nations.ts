@@ -183,7 +183,7 @@ const GROUP_F = {
 		confederation: CONFEDERATIONS.UEFA,
 		group: 'F',
 		participation: 12,
-		enabled: false
+		enabled: true
 	},
 	JAPON: {
 		code: 'jp',
@@ -339,7 +339,7 @@ const GROUP_J = {
 		confederation: CONFEDERATIONS.CAF,
 		group: 'J',
 		participation: 5,
-		enabled: false
+		enabled: true
 	},
 	JORDANIE: {
 		code: 'jo',
