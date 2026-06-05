@@ -9,9 +9,20 @@
 	import { getDaysRemaining } from '$lib/utils/date.js';
 
 	const nations = Object.values(NATIONS);
-
 	const enabledCount = nations.filter((n) => n.enabled).length;
-	const celebrating = getDaysRemaining(OPENING_MATCH_DATE) === 0 && enabledCount === 1;
+
+	let currentTime = $state(Date.now());
+	const celebrating = $derived(
+		getDaysRemaining(OPENING_MATCH_DATE, new Date(currentTime)) === 0 && enabledCount === 1
+	);
+
+	$effect(() => {
+		const interval = setInterval(() => {
+			currentTime = Date.now();
+		}, 60_000);
+
+		return () => clearInterval(interval);
+	});
 </script>
 
 <div class="flex flex-col items-center">

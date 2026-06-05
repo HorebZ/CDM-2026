@@ -7,12 +7,11 @@
 	interface Props {
 		nation: Nation;
 		celebrating?: boolean;
-		forceActive?: boolean;
 	}
 
-	const { nation, celebrating = false, forceActive = false }: Props = $props();
+	const { nation, celebrating = false }: Props = $props();
 
-	const isVisuallyActive = $derived(nation.enabled || forceActive);
+	const isVisuallyActive = $derived(nation.enabled);
 
 	function codeToDelay(code: string): string {
 		let hash = 0;

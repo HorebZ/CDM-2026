@@ -5,11 +5,10 @@
 	interface Props {
 		nations: Nation[];
 		celebrating?: boolean;
-		forceActive?: boolean;
 		columns?: number;
 	}
 
-	const { nations, celebrating = false, forceActive = false, columns = 12 }: Props = $props();
+	const { nations, celebrating = false, columns = 12 }: Props = $props();
 
 	const rowCount = $derived(Math.ceil(nations.length / columns));
 	const largeColumns = $derived(Math.min(columns, 10));
@@ -31,7 +30,7 @@
 		style={`--grid-columns: ${columns}; --grid-rows: ${rowCount}; --grid-columns-lg: ${largeColumns}; --grid-columns-md: ${mediumColumns}; --grid-columns-sm: ${smallColumns}; --grid-columns-xs: ${narrowColumns}; width: ${gridWidth}; --grid-width-xs: ${narrowWidth};`}
 	>
 		{#each nations as nation (nation.code)}
-			<FlagBadge {nation} {celebrating} {forceActive} />
+			<FlagBadge {nation} {celebrating} />
 		{/each}
 	</div>
 </section>

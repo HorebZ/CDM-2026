@@ -23,9 +23,10 @@
 	});
 
 	const enabledNations = $derived(nations.filter((n) => n.enabled));
-	const showTeamCount = $derived(days <= 8 && enabledNations.length > 1);
-	const showSingleFlag = $derived(days <= 8 && enabledNations.length === 1);
-	const showDays = $derived(!showTeamCount && !showSingleFlag);
+	const isBeforeOpening = $derived(days > 0);
+	const showTeamCount = $derived(!isBeforeOpening && enabledNations.length > 1);
+	const showSingleFlag = $derived(!isBeforeOpening && enabledNations.length === 1);
+	const showDays = $derived(isBeforeOpening);
 	const showConfetti = $derived(days === 0 && enabledNations.length === 1);
 </script>
 

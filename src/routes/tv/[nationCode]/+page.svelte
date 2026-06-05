@@ -16,9 +16,6 @@
 	});
 
 	let currentTime = $state(Date.now());
-	const forceActiveFlags = $derived(
-		getDaysRemaining(OPENING_MATCH_DATE, new Date(currentTime)) > 0
-	);
 	const enabledCount = $derived(data.nations.filter((nation) => nation.enabled).length);
 	const celebrating = $derived(
 		getDaysRemaining(OPENING_MATCH_DATE, new Date(currentTime)) === 0 && enabledCount === 1
@@ -62,7 +59,7 @@
 			class="flex w-[min(100%,var(--shell-width))] min-w-0 flex-col items-center gap-[52px] max-[800px]:gap-10"
 		>
 			<Hero targetDate={OPENING_MATCH_DATE} nations={data.nations} />
-			<FlagsGrid nations={data.nations} {celebrating} forceActive={forceActiveFlags} />
+			<FlagsGrid nations={data.nations} {celebrating} />
 		</main>
 	</section>
 
