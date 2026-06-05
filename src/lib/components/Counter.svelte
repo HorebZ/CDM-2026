@@ -39,11 +39,13 @@
 	{#if showSingleFlag}
 		<div class="counter-single flex flex-col items-center gap-3 text-center">
 			<img
-				class="counter-flag"
+				class="counter-flag block rounded-[4px] border-[1.5px] border-[#ffd700] object-cover shadow-[0_0_10px_2px_rgba(255,215,0,0.35)]"
 				src={getFlagUrl(enabledNations[0].code)}
 				alt={enabledNations[0].name}
 				width={120}
-				height={90}
+				height={80}
+				decoding="async"
+				referrerpolicy="no-referrer"
 			/>
 			<span class="counter-label text-[rgba(255,255,255,0.82)] uppercase">
 				{enabledNations[0].name.toUpperCase()}
@@ -83,7 +85,8 @@
 
 	.counter-flag {
 		width: var(--counter-flag-width, 120px);
-		height: var(--counter-flag-height, 90px);
+		aspect-ratio: 3 / 2;
+		height: auto;
 	}
 
 	@media (max-width: 800px) {

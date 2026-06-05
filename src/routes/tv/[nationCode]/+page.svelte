@@ -162,7 +162,6 @@
 			--counter-label-size-mobile: 34px;
 			--counter-label-tracking: 2.5px;
 			--counter-flag-width: 150px;
-			--counter-flag-height: 112px;
 		}
 
 		.tv-sidebar {
@@ -203,7 +202,6 @@
 			--counter-label-size-mobile: 38px;
 			--counter-label-tracking: 3px;
 			--counter-flag-width: 170px;
-			--counter-flag-height: 128px;
 		}
 
 		.tv-sidebar {
