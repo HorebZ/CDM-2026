@@ -6,14 +6,14 @@
 	import MatchesList from '$lib/components/matches/MatchesList.svelte';
 	import { NATIONS } from '$lib/data/nations.js';
 	import { OPENING_MATCH_DATE } from '$lib/config/site.js';
-	import { getDaysRemaining } from '$lib/utils/date.js';
+	import { isOpeningMatchPassed } from '$lib/utils/date.js';
 
 	const nations = Object.values(NATIONS);
-	const enabledCount = nations.filter((n) => n.enabled).length;
 
 	let currentTime = $state(Date.now());
+	const enabledCount = $derived(nations.filter((n) => n.enabled).length);
 	const celebrating = $derived(
-		getDaysRemaining(OPENING_MATCH_DATE, new Date(currentTime)) === 0 && enabledCount === 1
+		isOpeningMatchPassed(OPENING_MATCH_DATE, new Date(currentTime)) && enabledCount === 1
 	);
 
 	$effect(() => {

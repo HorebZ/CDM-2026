@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Nation } from '$lib/types/index.js';
 	import { getFlagUrl } from '$lib/config/site.js';
-	import { getDaysRemaining } from '$lib/utils/date.js';
+	import { getDaysRemaining, isOpeningMatchPassed } from '$lib/utils/date.js';
 	import Confetti from './Confetti.svelte';
 
 	interface Props {
@@ -24,10 +24,11 @@
 
 	const enabledNations = $derived(nations.filter((n) => n.enabled));
 	const isBeforeOpening = $derived(days > 0);
-	const showTeamCount = $derived(!isBeforeOpening && enabledNations.length > 1);
-	const showSingleFlag = $derived(!isBeforeOpening && enabledNations.length === 1);
+	const openingMatchPassed = $derived(isOpeningMatchPassed(targetDate, new Date(currentTime)));
+	const showTeamCount = $derived(openingMatchPassed && enabledNations.length > 1);
+	const showSingleFlag = $derived(openingMatchPassed && enabledNations.length === 1);
 	const showDays = $derived(isBeforeOpening);
-	const showConfetti = $derived(days === 0 && enabledNations.length === 1);
+	const showConfetti = $derived(openingMatchPassed && enabledNations.length === 1);
 </script>
 
 <Confetti active={showConfetti} />

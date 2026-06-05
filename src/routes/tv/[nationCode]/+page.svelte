@@ -3,7 +3,7 @@
 	import Hero from '$lib/components/Hero.svelte';
 	import MatchesListRows from '$lib/components/matches/MatchesListRows.svelte';
 	import { OPENING_MATCH_DATE } from '$lib/config/site.js';
-	import { getDaysRemaining } from '$lib/utils/date.js';
+	import { isOpeningMatchPassed } from '$lib/utils/date.js';
 	import { getUpcomingTvCompetitionDays } from '$lib/utils/tv-country.js';
 	import type { PageData } from './$types';
 
@@ -18,7 +18,7 @@
 	let currentTime = $state(Date.now());
 	const enabledCount = $derived(data.nations.filter((nation) => nation.enabled).length);
 	const celebrating = $derived(
-		getDaysRemaining(OPENING_MATCH_DATE, new Date(currentTime)) === 0 && enabledCount === 1
+		isOpeningMatchPassed(OPENING_MATCH_DATE, new Date(currentTime)) && enabledCount === 1
 	);
 	const matchCountLabel = $derived(
 		`${data.matches.length} match${data.matches.length > 1 ? 's' : ''}`

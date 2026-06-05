@@ -1,7 +1,7 @@
 <script lang="ts">
 	import trophyUrl from '$lib/assets/trophy.webp';
 	import type { Nation } from '$lib/types/index.js';
-	import { getDaysRemaining } from '$lib/utils/date.js';
+	import { isOpeningMatchPassed } from '$lib/utils/date.js';
 	import Counter from './Counter.svelte';
 
 	interface Props {
@@ -21,7 +21,7 @@
 		'hero-counter-card-trophy flex select-none items-center justify-center leading-none transition-[filter] duration-400';
 
 	let currentTime = $state(Date.now());
-	const trophyColored = $derived(getDaysRemaining(targetDate, new Date(currentTime)) === 0);
+	const trophyColored = $derived(isOpeningMatchPassed(targetDate, new Date(currentTime)));
 
 	$effect(() => {
 		const interval = setInterval(() => {
