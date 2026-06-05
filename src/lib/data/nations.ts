@@ -288,7 +288,7 @@ const GROUP_I = {
 		confederation: CONFEDERATIONS.UEFA,
 		group: 'I',
 		participation: 17,
-		enabled: false
+		enabled: true
 	},
 	SENEGAL: {
 		code: 'sn',
