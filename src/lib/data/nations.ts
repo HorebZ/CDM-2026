@@ -253,7 +253,7 @@ const GROUP_H = {
 		confederation: CONFEDERATIONS.UEFA,
 		group: 'H',
 		participation: 17,
-		enabled: false
+		enabled: true
 	},
 	URUGUAY: {
 		code: 'uy',
@@ -261,7 +261,7 @@ const GROUP_H = {
 		confederation: CONFEDERATIONS.CONMEBOL,
 		group: 'H',
 		participation: 15,
-		enabled: false
+		enabled: true
 	},
 	ARABIE_SAOUDITE: {
 		code: 'sa',
@@ -366,7 +366,7 @@ const GROUP_K = {
 		confederation: CONFEDERATIONS.CONMEBOL,
 		group: 'K',
 		participation: 7,
-		enabled: false
+		enabled: true
 	},
 	OUZBEKISTAN: {
 		code: 'uz',
