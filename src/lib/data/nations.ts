@@ -51,7 +51,7 @@ const GROUP_B = {
 		confederation: CONFEDERATIONS.UEFA,
 		group: 'B',
 		participation: 13,
-		enabled: false
+		enabled: true
 	},
 	QATAR: {
 		code: 'qa',
@@ -86,7 +86,7 @@ const GROUP_C = {
 		confederation: CONFEDERATIONS.CAF,
 		group: 'C',
 		participation: 7,
-		enabled: false
+		enabled: true
 	},
 	ECOSSE: {
 		code: 'gb-sct',
@@ -148,7 +148,7 @@ const GROUP_E = {
 		confederation: CONFEDERATIONS.UEFA,
 		group: 'E',
 		participation: 21,
-		enabled: false
+		enabled: true
 	},
 	EQUATEUR: {
 		code: 'ec',
@@ -156,7 +156,7 @@ const GROUP_E = {
 		confederation: CONFEDERATIONS.CONMEBOL,
 		group: 'E',
 		participation: 5,
-		enabled: false
+		enabled: true
 	},
 	COTE_IVOIRE: {
 		code: 'ci',
