@@ -40,16 +40,19 @@
 </script>
 
 <div
-	class="grid grid-cols-[1fr_auto_1fr] items-center gap-3 px-2 py-[11px] text-[13px] font-semibold italic hover:bg-[rgba(255,255,255,0.02)] max-[800px]:grid-cols-1 max-[800px]:gap-2 max-[800px]:py-[14px]"
+	class="grid grid-cols-[1fr_auto_1fr] items-center gap-3 px-2 py-[11px] text-[13px] font-semibold italic hover:bg-[rgba(255,255,255,0.02)] max-[800px]:grid-cols-[minmax(42px,auto)_minmax(0,1fr)_minmax(24px,auto)] max-[800px]:gap-2 max-[800px]:py-2.5"
 >
 	<MatchMeta
 		phase={match.phase}
 		phaseLabel={match.phaseLabel}
 		group={match.group}
 		userDate={dates.userDate}
+		compactUserDate={dates.compactUserDate}
 	/>
 
-	<div class="flex items-center justify-center gap-2.5">
+	<div
+		class="flex min-w-0 items-center justify-center gap-2.5 max-[800px]:col-start-2 max-[800px]:row-start-1 max-[560px]:gap-1.5"
+	>
 		<MatchTeam
 			side={side1}
 			nation={nation1}

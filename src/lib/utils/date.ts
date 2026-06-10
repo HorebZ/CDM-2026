@@ -51,6 +51,8 @@ export function isOpeningMatchPassed(target: Date, now: Date = new Date()): bool
 export interface MatchDates {
 	/** Date/heure dans le fuseau de l'utilisateur */
 	userDate: string;
+	/** Date/heure compacte dans le fuseau de l'utilisateur */
+	compactUserDate: string;
 	/** Heure locale du stade */
 	stadiumDate: string;
 }
@@ -77,6 +79,18 @@ export function getMatchDates(localIso: string, stadiumTimezone: string): MatchD
 		hour12: false
 	}).format(date);
 
+	const compactUserDateParts = new Intl.DateTimeFormat('fr-FR', {
+		day: '2-digit',
+		month: '2-digit',
+		hour: '2-digit',
+		timeZone: userTz,
+		hour12: false,
+		hourCycle: 'h23'
+	}).formatToParts(date);
+	const getCompactPart = (type: Intl.DateTimeFormatPartTypes): string =>
+		compactUserDateParts.find((part) => part.type === type)?.value ?? '';
+	const compactUserDate = `${getCompactPart('day')}/${getCompactPart('month')}, ${getCompactPart('hour')}h`;
+
 	const stadiumDate = new Intl.DateTimeFormat('fr-FR', {
 		hour: '2-digit',
 		minute: '2-digit',
@@ -84,5 +98,5 @@ export function getMatchDates(localIso: string, stadiumTimezone: string): MatchD
 		hour12: false
 	}).format(date);
 
-	return { userDate, stadiumDate };
+	return { userDate, compactUserDate, stadiumDate };
 }
