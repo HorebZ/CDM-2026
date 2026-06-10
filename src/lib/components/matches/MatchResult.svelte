@@ -20,14 +20,16 @@
 		penalties1,
 		penalties2
 	}: Props = $props();
+
+	const showPenalties = $derived(isMatchPassed && hasPenalties && hasPenaltyScores);
 </script>
 
-<div class="flex min-w-[52px] shrink-0 items-center justify-center gap-1.5">
+<div class="relative flex min-w-[52px] shrink-0 items-center justify-center">
 	{#if isMatchPassed && hasScore}
 		<span class="text-[20px] leading-none font-black tracking-[-0.5px] text-text-primary">
 			{score1}
 		</span>
-		<span class="text-sm font-bold text-text-muted">–</span>
+		<span class="mx-1.5 text-sm font-bold text-text-muted">–</span>
 		<span class="text-[20px] leading-none font-black tracking-[-0.5px] text-text-primary">
 			{score2}
 		</span>
@@ -40,7 +42,11 @@
 		</span>
 	{/if}
 
-	{#if isMatchPassed && hasPenalties && hasPenaltyScores}
-		<span>({penalties1} – {penalties2} tab)</span>
+	{#if showPenalties}
+		<span
+			class="absolute top-[calc(100%-1px)] left-1/2 -translate-x-1/2 text-[10px] leading-none font-bold whitespace-nowrap text-text-muted"
+		>
+			({penalties1} – {penalties2} tab)
+		</span>
 	{/if}
 </div>

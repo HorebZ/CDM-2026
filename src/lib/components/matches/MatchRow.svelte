@@ -28,6 +28,8 @@
 	const stadiumUtcOffset = $derived(`UTC${fromLocal(match.localDate, stadium.timezone).offset}`);
 
 	const winner = $derived(isMatchPassed ? match.result?.winner : undefined);
+	const isSide1Loser = $derived(winner !== undefined && winner !== 1);
+	const isSide2Loser = $derived(winner !== undefined && winner !== 2);
 
 	const displayScore1 = $derived(side1.score?.regularTime);
 	const displayScore2 = $derived(side2.score?.regularTime);
@@ -59,6 +61,7 @@
 			label={side1Label}
 			align="left"
 			isWinner={winner === 1}
+			isLoser={isSide1Loser}
 			{isMatchPassed}
 		/>
 
@@ -79,6 +82,7 @@
 			label={side2Label}
 			align="right"
 			isWinner={winner === 2}
+			isLoser={isSide2Loser}
 			{isMatchPassed}
 		/>
 	</div>
