@@ -33,7 +33,7 @@
 			class="flex w-[min(100%,var(--shell-width))] flex-col items-center gap-[52px] max-[800px]:gap-10"
 		>
 			<Hero targetDate={OPENING_MATCH_DATE} {nations} />
-			<FlagsGrid {nations} {celebrating} />
+			<FlagsGrid {nations} {celebrating} expandedMobileColumnGap />
 		</main>
 		<ScrollChevron targetId="matches" />
 	</section>

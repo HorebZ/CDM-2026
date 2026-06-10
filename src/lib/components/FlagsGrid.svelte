@@ -6,9 +6,15 @@
 		nations: Nation[];
 		celebrating?: boolean;
 		columns?: number;
+		expandedMobileColumnGap?: boolean;
 	}
 
-	const { nations, celebrating = false, columns = 12 }: Props = $props();
+	const {
+		nations,
+		celebrating = false,
+		columns = 12,
+		expandedMobileColumnGap = false
+	}: Props = $props();
 
 	const rowCount = $derived(Math.ceil(nations.length / columns));
 	const largeColumns = $derived(Math.min(columns, 10));
@@ -21,13 +27,20 @@
 	const narrowWidth = $derived(
 		`min(100%, calc(var(--flag-size) * ${narrowColumns} + var(--flag-gap) * ${Math.max(narrowColumns - 1, 0)}))`
 	);
+	const expandedNarrowWidth = $derived(
+		`min(100%, calc(var(--flag-size) * ${narrowColumns} + var(--flag-gap) * ${Math.max(narrowColumns - 1, 0) * 2}))`
+	);
+	const gridClasses = $derived([
+		'flags-grid grid justify-center gap-x-(--flag-gap) gap-y-(--flag-row-gap)',
+		expandedMobileColumnGap && 'flags-grid--expanded-mobile-column-gap'
+	]);
 	const ariaLabel = $derived(`${nations.length} nations qualifiées CDM 2026`);
 </script>
 
 <section class="flex w-full justify-center" aria-label={ariaLabel}>
 	<div
-		class="flags-grid grid w-[min(100%,calc(var(--flag-size)*12+var(--flag-gap)*11))] justify-center gap-x-(--flag-gap) gap-y-(--flag-row-gap)"
-		style={`--grid-columns: ${columns}; --grid-rows: ${rowCount}; --grid-columns-lg: ${largeColumns}; --grid-columns-md: ${mediumColumns}; --grid-columns-sm: ${smallColumns}; --grid-columns-xs: ${narrowColumns}; width: ${gridWidth}; --grid-width-xs: ${narrowWidth};`}
+		class={gridClasses}
+		style={`--grid-columns: ${columns}; --grid-rows: ${rowCount}; --grid-columns-lg: ${largeColumns}; --grid-columns-md: ${mediumColumns}; --grid-columns-sm: ${smallColumns}; --grid-columns-xs: ${narrowColumns}; --grid-width: ${gridWidth}; --grid-width-xs: ${narrowWidth}; --grid-width-xs-expanded: ${expandedNarrowWidth};`}
 	>
 		{#each nations as nation (nation.code)}
 			<FlagBadge {nation} {celebrating} />
@@ -46,6 +59,7 @@
 	 * sur sa propre ligne (4 consécutifs par groupe).
 	 */
 	.flags-grid {
+		width: var(--grid-width);
 		grid-auto-flow: column;
 		grid-template-rows: repeat(var(--grid-rows), var(--flag-size));
 		grid-template-columns: repeat(var(--grid-columns), var(--flag-size));
@@ -71,11 +85,30 @@
 		}
 	}
 
+	@media (max-width: 800px) {
+		.flags-grid--expanded-mobile-column-gap {
+			column-gap: calc(var(--flag-gap) * 2);
+			row-gap: var(--flag-gap);
+		}
+	}
+
+	@media (max-width: 620px) {
+		.flags-grid--expanded-mobile-column-gap {
+			width: var(--grid-width-xs-expanded);
+			grid-template-columns: repeat(var(--grid-columns-xs), var(--flag-size));
+			justify-content: center;
+		}
+	}
+
 	@media (max-width: 560px) {
 		.flags-grid {
-			width: var(--grid-width-xs);
 			grid-template-columns: repeat(var(--grid-columns-xs), var(--flag-size));
 			justify-content: space-between;
+		}
+
+		.flags-grid--expanded-mobile-column-gap {
+			width: var(--grid-width-xs-expanded);
+			justify-content: center;
 		}
 	}
 </style>
