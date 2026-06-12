@@ -38,7 +38,7 @@ const GROUP_MATCHES_A: Match[] = [
 			{
 				nationId: NATION_IDS.COREE_DU_SUD,
 				score: { regularTime: 2 },
-				stats: { yellowCards: 0, redCards: 1 }
+				stats: { yellowCards: 1, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.TCHEQUIE,
