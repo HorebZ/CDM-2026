@@ -1,4 +1,5 @@
-import type { Match } from '$lib/types/index.js';
+import matchResults from './match-results.json';
+import type { Match, MatchResultKey, MatchResultsMap } from '$lib/types/index.js';
 import { STADIUM_IDS } from './stadiums';
 import { NATION_IDS } from './nations';
 
@@ -8,20 +9,16 @@ const GROUP_MATCHES_A: Match[] = [
 		group: 'A',
 		localDate: '2026-06-11T13:00:00',
 		stadiumId: STADIUM_IDS.MEXICO,
-		result: {
-			resolution: 'regular',
-			winner: 1
-		},
 		sides: [
 			{
 				nationId: NATION_IDS.MEXIQUE,
-				score: { regularTime: 2 },
-				stats: { yellowCards: 1, redCards: 1 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.AFRIQUE_DU_SUD,
 				score: { regularTime: 0 },
-				stats: { yellowCards: 2, redCards: 2 }
+				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
 	},
@@ -30,19 +27,15 @@ const GROUP_MATCHES_A: Match[] = [
 		group: 'A',
 		localDate: '2026-06-11T20:00:00',
 		stadiumId: STADIUM_IDS.GUADALAJARA,
-		result: {
-			resolution: 'regular',
-			winner: 1
-		},
 		sides: [
 			{
 				nationId: NATION_IDS.COREE_DU_SUD,
-				score: { regularTime: 2 },
-				stats: { yellowCards: 1, redCards: 0 }
+				score: { regularTime: 0 },
+				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
 				nationId: NATION_IDS.TCHEQUIE,
-				score: { regularTime: 1 },
+				score: { regularTime: 0 },
 				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
@@ -1960,4 +1953,35 @@ const KNOCKOUT_MATCHES: Match[] = [
 	...FINAL_MATCHES
 ].sort((a, b) => a.localDate.localeCompare(b.localDate));
 
-export const MATCHES: Match[] = [...GROUP_MATCHES, ...KNOCKOUT_MATCHES];
+const MATCH_RESULTS = matchResults as unknown as MatchResultsMap;
+
+export function getMatchResultKey(match: Pick<Match, 'localDate' | 'stadiumId'>): MatchResultKey {
+	return `${match.localDate}|${match.stadiumId}`;
+}
+
+function applyStoredResult(match: Match): Match {
+	const storedResult = MATCH_RESULTS[getMatchResultKey(match)];
+
+	if (!storedResult) {
+		return match;
+	}
+
+	return {
+		...match,
+		result: storedResult.result,
+		sides: match.sides.map((side, sideIndex) => {
+			const storedSide = storedResult.sides[sideIndex];
+
+			return {
+				...side,
+				score: storedSide.score,
+				stats: {
+					...side.stats,
+					...storedSide.stats
+				}
+			};
+		}) as Match['sides']
+	};
+}
+
+export const MATCHES: Match[] = [...GROUP_MATCHES, ...KNOCKOUT_MATCHES].map(applyStoredResult);

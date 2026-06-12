@@ -82,6 +82,20 @@ export interface MatchResult {
 	winner?: 1 | 2;
 }
 
+export type MatchResultKey = `${string}|${StadiumId}`;
+
+export interface MatchResultSide {
+	score: MatchScore;
+	stats?: Partial<TeamMatchStats>;
+}
+
+export interface MatchResultEntry {
+	result: MatchResult;
+	sides: [MatchResultSide, MatchResultSide];
+}
+
+export type MatchResultsMap = Record<string, MatchResultEntry>;
+
 export interface Match {
 	phase: MatchPhase;
 	phaseLabel?: string;

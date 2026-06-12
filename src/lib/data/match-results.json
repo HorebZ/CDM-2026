@@ -1,0 +1,72 @@
+{
+	"2026-06-11T13:00:00|MEXICO": {
+		"result": {
+			"resolution": "regular",
+			"winner": 1
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 2
+				},
+				"stats": {
+					"yellowCards": 1,
+					"redCards": 1
+				}
+			},
+			{
+				"score": {
+					"regularTime": 0
+				},
+				"stats": {
+					"yellowCards": 2,
+					"redCards": 2
+				}
+			}
+		]
+	},
+	"2026-06-11T20:00:00|GUADALAJARA": {
+		"result": {
+			"resolution": "regular",
+			"winner": 1
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 2,
+					"yellowCards": 0
+				}
+			},
+			{
+				"score": {
+					"regularTime": 1
+				}
+			}
+		]
+	},
+	"2026-06-12T15:00:00|TORONTO": {
+		"result": {
+			"resolution": "regular"
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 1
+				},
+				"stats": {
+					"yellowCards": 2,
+					"redCards": 0
+				}
+			},
+			{
+				"score": {
+					"regularTime": 1
+				},
+				"stats": {
+					"yellowCards": 3,
+					"redCards": 0
+				}
+			}
+		]
+	}
+}
