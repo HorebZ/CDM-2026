@@ -30,15 +30,19 @@ const GROUP_MATCHES_A: Match[] = [
 		group: 'A',
 		localDate: '2026-06-11T20:00:00',
 		stadiumId: STADIUM_IDS.GUADALAJARA,
+		result: {
+			resolution: 'regular',
+			winner: 1
+		},
 		sides: [
 			{
 				nationId: NATION_IDS.COREE_DU_SUD,
-				score: { regularTime: 0 },
-				stats: { yellowCards: 0, redCards: 0 }
+				score: { regularTime: 2 },
+				stats: { yellowCards: 0, redCards: 1 }
 			},
 			{
 				nationId: NATION_IDS.TCHEQUIE,
-				score: { regularTime: 0 },
+				score: { regularTime: 1 },
 				stats: { yellowCards: 0, redCards: 0 }
 			}
 		]
