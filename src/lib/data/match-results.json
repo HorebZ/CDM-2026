@@ -94,5 +94,30 @@
 				}
 			}
 		]
+	},
+	"2026-06-13T12:00:00|SANTA_CLARA": {
+		"result": {
+			"resolution": "regular"
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 1
+				},
+				"stats": {
+					"yellowCards": 2,
+					"redCards": 0
+				}
+			},
+			{
+				"score": {
+					"regularTime": 1
+				},
+				"stats": {
+					"yellowCards": 1,
+					"redCards": 0
+				}
+			}
+		]
 	}
 }
