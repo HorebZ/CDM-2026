@@ -68,5 +68,31 @@
 				}
 			}
 		]
+	},
+	"2026-06-12T18:00:00|LOS_ANGELES": {
+		"result": {
+			"resolution": "regular",
+			"winner": 1
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 4
+				},
+				"stats": {
+					"yellowCards": 1,
+					"redCards": 0
+				}
+			},
+			{
+				"score": {
+					"regularTime": 1
+				},
+				"stats": {
+					"yellowCards": 5,
+					"redCards": 0
+				}
+			}
+		]
 	}
 }
