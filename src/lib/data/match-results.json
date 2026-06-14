@@ -192,5 +192,31 @@
 				}
 			}
 		]
+	},
+	"2026-06-14T12:00:00|HOUSTON": {
+		"result": {
+			"resolution": "regular",
+			"winner": 1
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 7
+				},
+				"stats": {
+					"yellowCards": 0,
+					"redCards": 0
+				}
+			},
+			{
+				"score": {
+					"regularTime": 1
+				},
+				"stats": {
+					"yellowCards": 0,
+					"redCards": 0
+				}
+			}
+		]
 	}
 }
