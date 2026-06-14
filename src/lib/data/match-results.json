@@ -119,5 +119,78 @@
 				}
 			}
 		]
+	},
+	"2026-06-13T18:00:00|NEW_YORK": {
+		"result": {
+			"resolution": "regular"
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 1
+				},
+				"stats": {
+					"yellowCards": 2,
+					"redCards": 0
+				}
+			},
+			{
+				"score": {
+					"regularTime": 1
+				},
+				"stats": {
+					"yellowCards": 0,
+					"redCards": 0
+				}
+			}
+		]
+	},
+	"2026-06-13T21:00:00|BOSTON": {
+		"result": {
+			"resolution": "regular",
+			"winner": 2
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 0
+				},
+				"stats": {
+					"yellowCards": 1,
+					"redCards": 0
+				}
+			},
+			{
+				"score": {
+					"regularTime": 1
+				},
+				"stats": {
+					"yellowCards": 2,
+					"redCards": 0
+				}
+			}
+		]
+	},
+	"2026-06-13T21:00:00|VANCOUVER": {
+		"result": {
+			"resolution": "regular",
+			"winner": 1
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 2
+				}
+			},
+			{
+				"score": {
+					"regularTime": 0
+				},
+				"stats": {
+					"yellowCards": 1,
+					"redCards": 0
+				}
+			}
+		]
 	}
 }
