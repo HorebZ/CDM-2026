@@ -43,13 +43,13 @@
 	{/if}
 
 	{#if nation}
-		<TooltipTrigger className="relative" role="group">
+		<TooltipTrigger className="relative block h-[21px] w-8 shrink-0" role="group">
 			{#snippet trigger()}
 				<img
 					class={[
 						flagClasses,
 						isWinner && 'border-[#ffd700] shadow-[0_0_8px_1px_rgba(255,215,0,0.35)]',
-						isLoser && 'grayscale-[80%]'
+						isLoser && 'grayscale-80'
 					]}
 					src={getFlagUrl(nation.code)}
 					alt={label}
@@ -64,7 +64,7 @@
 			{/snippet}
 		</TooltipTrigger>
 	{:else}
-		<span class={[placeholderClasses, isLoser && 'grayscale-[80%]']} aria-label={label}>
+		<span class={[placeholderClasses, isLoser && 'grayscale-80']} aria-label={label}>
 			{label}
 		</span>
 	{/if}

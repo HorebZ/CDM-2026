@@ -53,7 +53,7 @@
 	/>
 
 	<div
-		class="flex min-w-0 items-center justify-center gap-2.5 max-[800px]:col-start-2 max-[800px]:row-start-1 max-[560px]:gap-1.5"
+		class="grid w-[300px] min-w-0 grid-cols-[1fr_auto_1fr] items-center gap-2.5 justify-self-center max-[800px]:col-start-2 max-[800px]:row-start-1 max-[800px]:w-full max-[560px]:gap-1.5"
 	>
 		<MatchTeam
 			side={side1}

@@ -24,18 +24,22 @@
 	const showPenalties = $derived(isMatchPassed && hasPenalties && hasPenaltyScores);
 </script>
 
-<div class="relative flex min-w-[52px] shrink-0 items-center justify-center">
+<div class="relative grid w-[64px] shrink-0 grid-cols-[1fr_auto_1fr] items-center">
 	{#if isMatchPassed && hasScore}
-		<span class="text-[20px] leading-none font-black tracking-[-0.5px] text-text-primary">
+		<span
+			class="justify-self-end text-[20px] leading-none font-black tracking-[-0.5px] text-text-primary"
+		>
 			{score1}
 		</span>
-		<span class="mx-1.5 text-sm font-bold text-text-muted">–</span>
-		<span class="text-[20px] leading-none font-black tracking-[-0.5px] text-text-primary">
+		<span class="px-1.5 text-sm font-bold text-text-muted">–</span>
+		<span
+			class="justify-self-start text-[20px] leading-none font-black tracking-[-0.5px] text-text-primary"
+		>
 			{score2}
 		</span>
 	{:else}
 		<span
-			class="flex items-center justify-center text-sm font-bold text-text-muted"
+			class="col-span-3 flex items-center justify-center text-sm font-bold text-text-muted"
 			aria-label="score non disponible"
 		>
 			-
