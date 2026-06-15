@@ -23,7 +23,6 @@
 		'inline-flex h-[21px] min-w-8 shrink-0 items-center justify-center rounded-[3px] border-[1.5px] border-dashed border-[rgba(255,255,255,0.18)] bg-[rgba(255,255,255,0.04)] px-1.5 text-[10px] leading-none font-bold uppercase tracking-[0.04em] text-[rgba(255,255,255,0.75)] transition-[filter]';
 
 	const showRedCards = $derived(isMatchPassed && side.stats.redCards > 0);
-	const showYellowCards = $derived(isMatchPassed && side.stats.yellowCards > 0);
 </script>
 
 <div
@@ -36,9 +35,6 @@
 	{#if align === 'left'}
 		{#if showRedCards}
 			<MatchCardStat color="red" count={side.stats.redCards} />
-		{/if}
-		{#if showYellowCards}
-			<MatchCardStat color="yellow" count={side.stats.yellowCards} />
 		{/if}
 	{/if}
 
@@ -72,9 +68,6 @@
 	{#if align === 'right'}
 		{#if showRedCards}
 			<MatchCardStat color="red" count={side.stats.redCards} />
-		{/if}
-		{#if showYellowCards}
-			<MatchCardStat color="yellow" count={side.stats.yellowCards} />
 		{/if}
 	{/if}
 </div>

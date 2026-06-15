@@ -1,6 +1,7 @@
 import matchResults from './match-results.json';
 import type { Match, MatchResultKey, MatchResultsMap } from '$lib/types/index.js';
-import { STADIUM_IDS } from './stadiums';
+import { fromLocal } from '$lib/utils/date.js';
+import { STADIUMS, STADIUM_IDS } from './stadiums';
 import { NATION_IDS } from './nations';
 
 const GROUP_MATCHES_A: Match[] = [
@@ -1348,7 +1349,7 @@ const GROUP_MATCHES: Match[] = [
 	...GROUP_MATCHES_J,
 	...GROUP_MATCHES_K,
 	...GROUP_MATCHES_L
-].sort((a, b) => a.localDate.localeCompare(b.localDate));
+].sort(compareMatchesByKickoff);
 
 const SIXTEENTH_FINAL_MATCHES: Match[] = [
 	{
@@ -1951,12 +1952,32 @@ const KNOCKOUT_MATCHES: Match[] = [
 	...SEMI_MATCHES,
 	...SMALL_FINAL_MATCHES,
 	...FINAL_MATCHES
-].sort((a, b) => a.localDate.localeCompare(b.localDate));
+].sort(compareMatchesByKickoff);
 
 const MATCH_RESULTS = matchResults as unknown as MatchResultsMap;
 
 export function getMatchResultKey(match: Pick<Match, 'localDate' | 'stadiumId'>): MatchResultKey {
 	return `${match.localDate}|${match.stadiumId}`;
+}
+
+export function getMatchKickoffEpochMilliseconds(
+	match: Pick<Match, 'localDate' | 'stadiumId'>
+): number {
+	return Number(fromLocal(match.localDate, STADIUMS[match.stadiumId].timezone).epochMilliseconds);
+}
+
+export function compareMatchesByKickoff(
+	matchA: Pick<Match, 'localDate' | 'stadiumId'>,
+	matchB: Pick<Match, 'localDate' | 'stadiumId'>
+): number {
+	const kickoffComparison =
+		getMatchKickoffEpochMilliseconds(matchA) - getMatchKickoffEpochMilliseconds(matchB);
+
+	if (kickoffComparison !== 0) {
+		return kickoffComparison;
+	}
+
+	return getMatchResultKey(matchA).localeCompare(getMatchResultKey(matchB));
 }
 
 function applyStoredResult(match: Match): Match {
@@ -1984,4 +2005,6 @@ function applyStoredResult(match: Match): Match {
 	};
 }
 
-export const MATCHES: Match[] = [...GROUP_MATCHES, ...KNOCKOUT_MATCHES].map(applyStoredResult);
+export const MATCHES: Match[] = [...GROUP_MATCHES, ...KNOCKOUT_MATCHES]
+	.map(applyStoredResult)
+	.sort(compareMatchesByKickoff);

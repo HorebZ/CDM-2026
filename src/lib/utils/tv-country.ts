@@ -1,9 +1,11 @@
 import { applyFilters, type FiltersState } from '$lib/components/matches/match-filters.svelte.js';
-import { MATCHES } from '$lib/data/matches.js';
+import {
+	MATCHES,
+	compareMatchesByKickoff,
+	getMatchKickoffEpochMilliseconds
+} from '$lib/data/matches.js';
 import { NATIONS, type NationId } from '$lib/data/nations.js';
-import { STADIUMS } from '$lib/data/stadiums.js';
 import type { Match, Nation } from '$lib/types/index.js';
-import { fromLocal } from './date.js';
 
 const EMPTY_FILTERS_STATE: FiltersState = {
 	query: '',
@@ -55,21 +57,6 @@ function getTvMatchKey(match: Match): string {
 	return `${match.stadiumId}-${match.localDate}`;
 }
 
-function getMatchInstant(match: Match) {
-	return fromLocal(match.localDate, STADIUMS[match.stadiumId].timezone).toInstant();
-}
-
-function compareMatchesByKickoff(matchA: Match, matchB: Match): number {
-	const instantComparison =
-		getMatchInstant(matchA).epochMilliseconds - getMatchInstant(matchB).epochMilliseconds;
-
-	if (instantComparison !== 0) {
-		return instantComparison;
-	}
-
-	return getTvMatchKey(matchA).localeCompare(getTvMatchKey(matchB));
-}
-
 export function getUpcomingTvCompetitionDays({
 	matches = MATCHES,
 	excludedMatches,
@@ -93,7 +80,7 @@ export function getUpcomingTvCompetitionDays({
 		.filter(
 			(match) =>
 				!excludedMatchKeys.has(getTvMatchKey(match)) &&
-				getMatchInstant(match).epochMilliseconds > nowEpochMilliseconds
+				getMatchKickoffEpochMilliseconds(match) > nowEpochMilliseconds
 		)
 		.sort(compareMatchesByKickoff)) {
 		const date = match.localDate.slice(0, 10);
