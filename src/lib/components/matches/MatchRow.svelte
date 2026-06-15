@@ -42,7 +42,7 @@
 </script>
 
 <div
-	class="grid grid-cols-[1fr_auto_1fr] items-center gap-3 px-2 py-[11px] text-[13px] font-semibold italic hover:bg-[rgba(255,255,255,0.02)] max-[800px]:grid-cols-[minmax(42px,auto)_minmax(0,1fr)_minmax(24px,auto)] max-[800px]:gap-2 max-[800px]:py-2.5"
+	class="grid grid-cols-[1fr_auto_1fr] items-center gap-3 px-2 py-[11px] text-[13px] font-semibold italic hover:bg-[rgba(255,255,255,0.02)] max-[800px]:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] max-[800px]:gap-2 max-[800px]:py-2.5"
 >
 	<MatchMeta
 		phase={match.phase}
@@ -53,7 +53,7 @@
 	/>
 
 	<div
-		class="grid w-[300px] min-w-0 grid-cols-[1fr_auto_1fr] items-center gap-2.5 justify-self-center max-[800px]:col-start-2 max-[800px]:row-start-1 max-[800px]:w-full max-[560px]:gap-1.5"
+		class="grid w-[300px] min-w-0 grid-cols-[1fr_auto_1fr] items-center gap-2.5 justify-self-center max-[800px]:col-start-2 max-[800px]:row-start-1 max-[800px]:w-[min(300px,calc(100vw-160px))] max-[560px]:gap-1.5"
 	>
 		<MatchTeam
 			side={side1}
