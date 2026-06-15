@@ -1,0 +1,78 @@
+name: Update Match Results
+
+on:
+  workflow_dispatch:
+  schedule:
+    # GitHub cron uses UTC. These map to 00:00 and 08:00 Europe/Paris (CEST).
+    - cron: '0 6 15-30 6 *'
+    - cron: '0 22 15-30 6 *'
+    - cron: '0 6 1-20 7 *'
+    - cron: '0 22 1-19 7 *'
+
+permissions:
+  contents: write
+
+jobs:
+  schedule-window:
+    runs-on: ubuntu-latest
+    outputs:
+      active: ${{ steps.check.outputs.active }}
+    steps:
+      - name: Check schedule end date
+        id: check
+        run: |
+          if [ "${{ github.event_name }}" != "schedule" ]; then
+            echo "active=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          if [ "$(date -u +%Y-%m-%d)" \> "2026-07-20" ]; then
+            echo "active=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "active=true" >> "$GITHUB_OUTPUT"
+          fi
+
+  update-match-results:
+    needs: schedule-window
+    if: needs.schedule-window.outputs.active == 'true'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Install Playwright browsers
+        run: bunx playwright install --with-deps chromium
+
+      - name: Update match results
+        run: bun run results:update
+
+      - name: Validate project
+        run: |
+          bun run check
+          bun run test
+
+      - name: Detect result changes
+        id: changes
+        run: |
+          if git diff --quiet -- src/lib/data/match-results.json; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Commit updated results
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git add src/lib/data/match-results.json
+          git -c user.name="github-actions[bot]" \
+            -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+            commit -m "result: update match results" \
+            -m "Co-authored-by: Horebz <Horebz@users.noreply.github.com>"
+          git push
