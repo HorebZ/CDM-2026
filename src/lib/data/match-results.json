@@ -287,5 +287,39 @@
 				}
 			}
 		]
+	},
+	"2026-06-15T12:00:00|ATLANTA": {
+		"result": {
+			"resolution": "regular"
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 0
+				}
+			},
+			{
+				"score": {
+					"regularTime": 0
+				}
+			}
+		]
+	},
+	"2026-06-15T12:00:00|SEATTLE": {
+		"result": {
+			"resolution": "regular"
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 1
+				}
+			},
+			{
+				"score": {
+					"regularTime": 1
+				}
+			}
+		]
 	}
 }
