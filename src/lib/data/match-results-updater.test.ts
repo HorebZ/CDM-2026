@@ -62,6 +62,7 @@ describe('updateMatchResults', () => {
 		let writtenContent = '';
 		const summary = await updateMatchResults({
 			now: new Date('2026-06-19T18:00:00Z'),
+			existingResults: {},
 			sourceUrls: ['https://example.test/group-a'],
 			fetchHtml: async () => `<table>
 				<tr>
@@ -115,6 +116,7 @@ describe('updateMatchResults', () => {
 		let writtenContent = '';
 		await updateMatchResults({
 			now: new Date('2026-06-13T23:00:00Z'),
+			existingResults: {},
 			sourceUrls: ['https://example.test/group-b'],
 			fetchHtml: async () => `<table>
 				<tr>

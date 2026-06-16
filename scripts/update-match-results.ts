@@ -42,12 +42,14 @@ interface CandidateMatch {
 	key: string;
 	homeNationId: NationId;
 	awayNationId: NationId;
+	storedResult?: MatchResultEntry;
 }
 
 export interface UpdateMatchResultsOptions {
 	dryRun?: boolean;
 	force?: boolean;
 	now?: Date;
+	existingResults?: MatchResultsMap;
 	sourceUrls?: string[];
 	fetchHtml?: (url: string) => Promise<string>;
 	writeResults?: (content: string) => Promise<void>;
@@ -296,18 +298,23 @@ function isMatchPassed(match: Match, now: Date): boolean {
 	);
 }
 
-function getCandidateMatches(matches: Match[], now: Date, force: boolean): CandidateMatch[] {
+function getCandidateMatches(
+	matches: Match[],
+	now: Date,
+	force: boolean,
+	existingResults: MatchResultsMap
+): CandidateMatch[] {
 	return matches.flatMap((match) => {
 		const homeNationId = getMatchNationId(match, 0);
 		const awayNationId = getMatchNationId(match, 1);
-		const storedResult = toMatchResultsMap(existingResultsData)[getMatchResultKey(match)];
+		const storedResult = existingResults[getMatchResultKey(match)];
 		const hasMissingStoredStats = storedResult?.sides.some((side) => !side.stats);
 
 		if (
 			!homeNationId ||
 			!awayNationId ||
 			!isMatchPassed(match, now) ||
-			(!force && match.result && !hasMissingStoredStats)
+			(!force && storedResult && !hasMissingStoredStats)
 		) {
 			return [];
 		}
@@ -317,7 +324,8 @@ function getCandidateMatches(matches: Match[], now: Date, force: boolean): Candi
 				match,
 				key: getMatchResultKey(match),
 				homeNationId,
-				awayNationId
+				awayNationId,
+				storedResult
 			}
 		];
 	});
@@ -456,12 +464,12 @@ export async function updateMatchResults({
 	dryRun = false,
 	force = false,
 	now = new Date(),
+	existingResults = toMatchResultsMap(existingResultsData),
 	sourceUrls = DEFAULT_SOURCE_URLS,
 	fetchHtml = defaultFetchHtml,
 	writeResults = defaultWriteResults
 }: UpdateMatchResultsOptions = {}): Promise<UpdateMatchResultsSummary> {
-	const existingResults = toMatchResultsMap(existingResultsData);
-	const candidates = getCandidateMatches(MATCHES, now, force);
+	const candidates = getCandidateMatches(MATCHES, now, force, existingResults);
 	const resolvedSourceUrls =
 		sourceUrls === DEFAULT_SOURCE_URLS
 			? [
@@ -520,7 +528,7 @@ export async function updateMatchResults({
 		}
 
 		const parsedResult = uniqueResults[0];
-		if (candidate.match.result && !force && !hasParsedStats(parsedResult)) {
+		if (candidate.storedResult && !force && !hasParsedStats(parsedResult)) {
 			continue;
 		}
 		nextResults[candidate.key] = buildResultEntry(candidate, parsedResult);
