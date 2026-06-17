@@ -427,5 +427,40 @@
 				}
 			}
 		]
+	},
+	"2026-06-17T12:00:00|HOUSTON": {
+		"result": {
+			"resolution": "regular"
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 1
+				}
+			},
+			{
+				"score": {
+					"regularTime": 1
+				}
+			}
+		]
+	},
+	"2026-06-17T15:00:00|ARLINGTON": {
+		"result": {
+			"resolution": "regular",
+			"winner": 1
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 4
+				}
+			},
+			{
+				"score": {
+					"regularTime": 2
+				}
+			}
+		]
 	}
 }
