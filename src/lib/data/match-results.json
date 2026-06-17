@@ -373,5 +373,59 @@
 				}
 			}
 		]
+	},
+	"2026-06-16T18:00:00|BOSTON": {
+		"result": {
+			"resolution": "regular",
+			"winner": 2
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 1
+				}
+			},
+			{
+				"score": {
+					"regularTime": 4
+				}
+			}
+		]
+	},
+	"2026-06-16T20:00:00|KANSAS_CITY": {
+		"result": {
+			"resolution": "regular",
+			"winner": 1
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 3
+				}
+			},
+			{
+				"score": {
+					"regularTime": 0
+				}
+			}
+		]
+	},
+	"2026-06-16T21:00:00|SANTA_CLARA": {
+		"result": {
+			"resolution": "regular",
+			"winner": 1
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 3
+				}
+			},
+			{
+				"score": {
+					"regularTime": 1
+				}
+			}
+		]
 	}
 }
