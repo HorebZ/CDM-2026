@@ -498,5 +498,40 @@
 				}
 			}
 		]
+	},
+	"2026-06-18T12:00:00|ATLANTA": {
+		"result": {
+			"resolution": "regular"
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 1
+				}
+			},
+			{
+				"score": {
+					"regularTime": 1
+				}
+			}
+		]
+	},
+	"2026-06-18T12:00:00|LOS_ANGELES": {
+		"result": {
+			"resolution": "regular",
+			"winner": 1
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 4
+				}
+			},
+			{
+				"score": {
+					"regularTime": 1
+				}
+			}
+		]
 	}
 }
