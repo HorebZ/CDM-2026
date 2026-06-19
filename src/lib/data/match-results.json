@@ -585,5 +585,23 @@
 				}
 			}
 		]
+	},
+	"2026-06-19T12:00:00|SEATTLE": {
+		"result": {
+			"resolution": "regular",
+			"winner": 1
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 2
+				}
+			},
+			{
+				"score": {
+					"regularTime": 0
+				}
+			}
+		]
 	}
 }
