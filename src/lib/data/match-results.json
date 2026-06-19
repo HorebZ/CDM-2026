@@ -530,6 +530,58 @@
 			{
 				"score": {
 					"regularTime": 1
+				},
+				"stats": {
+					"yellowCards": 0,
+					"redCards": 2
+				}
+			}
+		]
+	},
+	"2026-06-18T18:00:00|VANCOUVER": {
+		"result": {
+			"resolution": "regular",
+			"winner": 1
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 6
+				}
+			},
+			{
+				"score": {
+					"regularTime": 0
+				},
+				"stats": {
+					"yellowCards": 0,
+					"redCards": 2
+				}
+			}
+		]
+	},
+	"2026-06-18T19:00:00|GUADALAJARA": {
+		"result": {
+			"resolution": "regular",
+			"winner": 1
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 1
+				},
+				"stats": {
+					"yellowCards": 0,
+					"redCards": 0
+				}
+			},
+			{
+				"score": {
+					"regularTime": 0
+				},
+				"stats": {
+					"yellowCards": 0,
+					"redCards": 0
 				}
 			}
 		]
