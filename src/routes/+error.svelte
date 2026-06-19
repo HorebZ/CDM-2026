@@ -9,13 +9,13 @@
 	const heading = $derived(isNotFound ? 'Page introuvable' : 'Erreur inattendue');
 	const message = $derived(
 		isNotFound
-			? 'Hors-jeu total : la page que tu cherches a envoyé sa frappe directement en tribune.'
-			: (page.error?.message ?? 'Le match a été interrompu côté serveur.')
+			? 'la page que tu cherches a envoyé sa frappe directement en tribune.'
+			: (page.error?.message ?? 'Le site est en pause fraicheur.')
 	);
 	const helper = $derived(
 		isNotFound
 			? "Même la VAR n'a rien trouvé. Retourne au vestiaire et relance depuis l'accueil."
-			: "Retourne à l'accueil pour relancer la partie."
+			: "Retourne à l'accueil pour revoir la tactique."
 	);
 	const pageTitle = $derived(isNotFound ? '404 | CDM 2026' : `${status} | CDM 2026`);
 	const ballAlt = 'Ballon officiel Trionda';
