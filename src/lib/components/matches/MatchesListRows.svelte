@@ -5,9 +5,14 @@
 	interface Props {
 		matches: Match[];
 		emptyMessage?: string;
+		tv?: boolean;
 	}
 
-	const { matches, emptyMessage = 'Aucun match trouvé pour cette recherche.' }: Props = $props();
+	const {
+		matches,
+		emptyMessage = 'Aucun match trouvé pour cette recherche.',
+		tv = false
+	}: Props = $props();
 </script>
 
 {#if matches.length > 0}
@@ -16,7 +21,7 @@
 			<li
 				class="border-b border-[rgba(255,255,255,0.05)] first:border-t first:border-[rgba(255,255,255,0.05)]"
 			>
-				<MatchRow {match} />
+				<MatchRow {match} {tv} />
 			</li>
 		{/each}
 	</ul>

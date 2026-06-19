@@ -3,7 +3,7 @@ import { NATION_IDS, NATIONS } from '$lib/data/nations.js';
 import {
 	TV_COUNTRY_ROUTE_ENTRIES,
 	getTvCountryMatches,
-	getUpcomingTvCompetitionDays,
+	getTvFollowMatches,
 	resolveTvNationByCode
 } from './tv-country.js';
 
@@ -40,18 +40,7 @@ describe('tv-country', () => {
 		}
 	});
 
-	it('renvoie les deux prochains jours de compétition dans l’ordre chronologique', () => {
-		const days = getUpcomingTvCompetitionDays({
-			excludedMatches: [],
-			now: new Date('2026-06-10T00:00:00Z')
-		});
-
-		expect(days).toHaveLength(2);
-		expect(days.map((day) => day.date)).toEqual(['2026-06-11', '2026-06-12']);
-		expect(days.every((day) => day.matches.length > 0)).toBe(true);
-	});
-
-	it('exclut les matchs déjà affichés pour la nation sélectionnée', () => {
+	it('renvoie les 3 derniers matchs terminés et les 3 prochains hors nation', () => {
 		const result = resolveTvNationByCode('mx');
 
 		if (!result) {
@@ -59,16 +48,33 @@ describe('tv-country', () => {
 		}
 
 		const countryMatches = getTvCountryMatches(result);
-		const days = getUpcomingTvCompetitionDays({
+		const followMatches = getTvFollowMatches({
 			excludedMatches: countryMatches,
-			now: new Date('2026-06-10T00:00:00Z')
+			now: new Date('2026-06-19T12:00:00Z')
 		});
-		const displayedMatches = days.flatMap((day) => day.matches);
 
-		expect(days[0].date).toBe('2026-06-11');
-		expect(displayedMatches).not.toContain(countryMatches[0]);
-		for (const match of displayedMatches) {
+		expect(followMatches.recent).toHaveLength(3);
+		expect(followMatches.upcoming).toHaveLength(3);
+		expect(followMatches.recent.every((match) => match.result !== undefined)).toBe(true);
+		for (const match of [...followMatches.recent, ...followMatches.upcoming]) {
 			expect(match.sides.some((side) => side.nationId === NATION_IDS.MEXIQUE)).toBe(false);
+		}
+	});
+
+	it('trie les derniers matchs du plus récent au plus ancien', () => {
+		const result = resolveTvNationByCode('fr');
+
+		if (!result) {
+			throw new Error('France should resolve');
+		}
+
+		const { recent } = getTvFollowMatches({
+			excludedMatches: getTvCountryMatches(result),
+			now: new Date('2026-06-19T12:00:00Z')
+		});
+
+		for (let index = 1; index < recent.length; index += 1) {
+			expect(recent[index - 1].localDate >= recent[index].localDate).toBe(true);
 		}
 	});
 });

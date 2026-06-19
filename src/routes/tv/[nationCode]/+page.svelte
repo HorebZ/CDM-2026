@@ -4,16 +4,10 @@
 	import MatchesListRows from '$lib/components/matches/MatchesListRows.svelte';
 	import { OPENING_MATCH_DATE } from '$lib/config/site.js';
 	import { isOpeningMatchPassed } from '$lib/utils/date.js';
-	import { getUpcomingTvCompetitionDays } from '$lib/utils/tv-country.js';
+	import { getTvFollowMatches } from '$lib/utils/tv-country.js';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
-
-	const competitionDayDateFormatter = new Intl.DateTimeFormat('fr-FR', {
-		weekday: 'long',
-		day: 'numeric',
-		month: 'long'
-	});
 
 	let currentTime = $state(Date.now());
 	const enabledCount = $derived(data.nations.filter((nation) => nation.enabled).length);
@@ -26,16 +20,12 @@
 	const participationLabel = $derived(
 		`${data.nation.participation} participation${data.nation.participation > 1 ? 's' : ''}`
 	);
-	const upcomingCompetitionDays = $derived(
-		getUpcomingTvCompetitionDays({
+	const followMatches = $derived(
+		getTvFollowMatches({
 			excludedMatches: data.matches,
 			now: new Date(currentTime)
 		})
 	);
-
-	function formatCompetitionDay(date: string): string {
-		return competitionDayDateFormatter.format(new Date(`${date}T12:00:00`));
-	}
 
 	$effect(() => {
 		const interval = setInterval(() => {
@@ -87,38 +77,50 @@
 		</header>
 
 		<div class="tv-matches flex min-h-0 flex-1 flex-col overflow-y-auto px-0 py-2 xl:px-4">
-			<MatchesListRows matches={data.matches} emptyMessage="Aucun match prévu pour cette nation." />
+			<MatchesListRows
+				matches={data.matches}
+				tv
+				emptyMessage="Aucun match prévu pour cette nation."
+			/>
 
-			{#if upcomingCompetitionDays.length > 0}
+			{#if followMatches.recent.length > 0 || followMatches.upcoming.length > 0}
 				<section
 					class="mt-7 border-t border-[rgba(255,255,255,0.08)] pt-5"
-					aria-labelledby="tv-upcoming-days-title"
+					aria-labelledby="tv-follow-title"
 				>
 					<div class="mb-4 px-2">
 						<h2
-							id="tv-upcoming-days-title"
+							id="tv-follow-title"
 							class="text-[13px] font-black tracking-[0.08em] text-white uppercase"
 						>
 							À suivre
 						</h2>
-						<p class="mt-1 text-[12px] font-semibold text-text-muted">
-							{upcomingCompetitionDays.length}
-							{upcomingCompetitionDays.length > 1 ? 'prochaines journées' : 'prochaine journée'} de compétition.
-						</p>
 					</div>
 
 					<div class="flex flex-col gap-6">
-						{#each upcomingCompetitionDays as competitionDay (competitionDay.date)}
-							<section aria-labelledby={`tv-competition-day-${competitionDay.date}`}>
+						{#if followMatches.recent.length > 0}
+							<section aria-labelledby="tv-recent-matches-title">
 								<h3
-									id={`tv-competition-day-${competitionDay.date}`}
+									id="tv-recent-matches-title"
 									class="mb-2 px-2 text-[12px] font-black tracking-[0.08em] text-text-primary uppercase"
 								>
-									{formatCompetitionDay(competitionDay.date)}
+									Derniers résultats
 								</h3>
-								<MatchesListRows matches={competitionDay.matches} />
+								<MatchesListRows matches={followMatches.recent} tv />
 							</section>
-						{/each}
+						{/if}
+
+						{#if followMatches.upcoming.length > 0}
+							<section aria-labelledby="tv-upcoming-matches-title">
+								<h3
+									id="tv-upcoming-matches-title"
+									class="mb-2 px-2 text-[12px] font-black tracking-[0.08em] text-text-primary uppercase"
+								>
+									Prochains matchs
+								</h3>
+								<MatchesListRows matches={followMatches.upcoming} tv />
+							</section>
+						{/if}
 					</div>
 				</section>
 			{/if}

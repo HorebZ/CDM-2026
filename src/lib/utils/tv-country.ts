@@ -21,9 +21,9 @@ const nationsByCode = new Map(
 	nationEntries.map(([nationId, nation]) => [nation.code, { nationId, nation }])
 );
 
-export interface TvCompetitionDay {
-	date: string;
-	matches: Match[];
+export interface TvFollowMatches {
+	recent: Match[];
+	upcoming: Match[];
 }
 
 export const TV_COUNTRY_ROUTE_ENTRIES = nationEntries.map(([, nation]) => ({
@@ -57,44 +57,44 @@ function getTvMatchKey(match: Match): string {
 	return `${match.stadiumId}-${match.localDate}`;
 }
 
-export function getUpcomingTvCompetitionDays({
+function isExcludedMatch(match: Match, excludedMatchKeys: Set<string>): boolean {
+	return excludedMatchKeys.has(getTvMatchKey(match));
+}
+
+function isCompletedMatch(match: Match, nowEpochMilliseconds: number): boolean {
+	return (
+		getMatchKickoffEpochMilliseconds(match) <= nowEpochMilliseconds && match.result !== undefined
+	);
+}
+
+export function getTvFollowMatches({
 	matches = MATCHES,
 	excludedMatches,
 	now = new Date(),
-	limit = 2
+	limit = 3
 }: {
 	matches?: Match[];
 	excludedMatches: Match[];
 	now?: Date;
 	limit?: number;
-}): TvCompetitionDay[] {
+}): TvFollowMatches {
 	if (limit <= 0) {
-		return [];
+		return { recent: [], upcoming: [] };
 	}
 
 	const excludedMatchKeys = new Set(excludedMatches.map(getTvMatchKey));
 	const nowEpochMilliseconds = now.getTime();
-	const matchesByDay = new Map<string, Match[]>();
+	const otherMatches = matches.filter((match) => !isExcludedMatch(match, excludedMatchKeys));
 
-	for (const match of matches
-		.filter(
-			(match) =>
-				!excludedMatchKeys.has(getTvMatchKey(match)) &&
-				getMatchKickoffEpochMilliseconds(match) > nowEpochMilliseconds
-		)
-		.sort(compareMatchesByKickoff)) {
-		const date = match.localDate.slice(0, 10);
-		const dayMatches = matchesByDay.get(date);
+	const recent = otherMatches
+		.filter((match) => isCompletedMatch(match, nowEpochMilliseconds))
+		.sort((matchA, matchB) => compareMatchesByKickoff(matchB, matchA))
+		.slice(0, limit);
 
-		if (dayMatches) {
-			dayMatches.push(match);
-		} else {
-			matchesByDay.set(date, [match]);
-		}
-	}
+	const upcoming = otherMatches
+		.filter((match) => getMatchKickoffEpochMilliseconds(match) > nowEpochMilliseconds)
+		.sort(compareMatchesByKickoff)
+		.slice(0, limit);
 
-	return Array.from(matchesByDay, ([date, dayMatches]) => ({
-		date,
-		matches: dayMatches
-	})).slice(0, limit);
+	return { recent, upcoming };
 }

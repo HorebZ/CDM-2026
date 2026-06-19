@@ -11,9 +11,10 @@
 
 	interface Props {
 		match: Match;
+		tv?: boolean;
 	}
 
-	const { match }: Props = $props();
+	const { match, tv = false }: Props = $props();
 
 	const side1 = $derived(match.sides[0]);
 	const side2 = $derived(match.sides[1]);
@@ -95,5 +96,6 @@
 		countryCode={stadium.countryCode}
 		{stadiumLocalTime}
 		flagUrl={getFlagUrl(stadium.countryCode)}
+		{tv}
 	/>
 </div>
