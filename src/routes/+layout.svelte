@@ -1,13 +1,17 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import './layout.css';
 	import trophyUrl from '$lib/assets/trophy.svg';
 	import { OG_IMAGE_PATH, OG_IMAGE_TYPE, SITE_URL } from '$lib/config/site.js';
+	import { scheduleMatchResultsRefresh } from '$lib/utils/match-results-refresh.js';
 
 	const { children } = $props();
 
 	const title = 'CDM 2026 — Compte à rebours';
 	const description = "Compte à rebours avant le match d'ouverture de la Coupe du Monde FIFA 2026";
 	const ogImageUrl = `${SITE_URL}${OG_IMAGE_PATH}`;
+
+	onMount(() => scheduleMatchResultsRefresh(() => window.location.reload()));
 </script>
 
 <svelte:head>
