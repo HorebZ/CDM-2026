@@ -4,10 +4,10 @@ on:
   workflow_dispatch:
   schedule:
     # GitHub cron uses UTC. These map to 00:00 and 08:00 Europe/Paris (CEST).
-    - cron: '0 6 15-30 6 *'
-    - cron: '0 22 15-30 6 *'
-    - cron: '0 6 1-20 7 *'
-    - cron: '0 22 1-19 7 *'
+    - cron: '0 0 * 6 *'
+    - cron: '0 8 * 6 *'
+    - cron: '0 0 1-20 7 *'
+    - cron: '0 8 1-19 7 *'
 
 permissions:
   contents: write
