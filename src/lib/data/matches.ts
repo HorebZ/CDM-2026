@@ -1395,7 +1395,7 @@ const SIXTEENTH_FINAL_MATCHES: Match[] = [
 		stadiumId: STADIUM_IDS.BOSTON,
 		sides: [
 			{
-				label: 'TBD',
+				nationId: NATION_IDS.ALLEMAGNE,
 				score: { regularTime: 0 },
 				stats: { yellowCards: 0, redCards: 0 }
 			},
@@ -1467,7 +1467,7 @@ const SIXTEENTH_FINAL_MATCHES: Match[] = [
 		stadiumId: STADIUM_IDS.MEXICO,
 		sides: [
 			{
-				label: 'TBD',
+				nationId: NATION_IDS.MEXIQUE,
 				score: { regularTime: 0 },
 				stats: { yellowCards: 0, redCards: 0 }
 			},
@@ -1521,7 +1521,7 @@ const SIXTEENTH_FINAL_MATCHES: Match[] = [
 		stadiumId: STADIUM_IDS.SANTA_CLARA,
 		sides: [
 			{
-				label: 'TBD',
+				nationId: NATION_IDS.USA,
 				score: { regularTime: 0 },
 				stats: { yellowCards: 0, redCards: 0 }
 			},
