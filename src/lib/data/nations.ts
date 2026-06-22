@@ -102,7 +102,7 @@ const GROUP_C = {
 		confederation: CONFEDERATIONS.CONCACAF,
 		group: 'C',
 		participation: 2,
-		enabled: true
+		enabled: false
 	}
 } as const satisfies Record<string, Nation>;
 
@@ -137,7 +137,7 @@ const GROUP_D = {
 		confederation: CONFEDERATIONS.UEFA,
 		group: 'D',
 		participation: 3,
-		enabled: true
+		enabled: false
 	}
 } as const satisfies Record<string, Nation>;
 
@@ -199,7 +199,7 @@ const GROUP_F = {
 		confederation: CONFEDERATIONS.CAF,
 		group: 'F',
 		participation: 7,
-		enabled: true
+		enabled: false
 	},
 	SUEDE: {
 		code: 'se',
