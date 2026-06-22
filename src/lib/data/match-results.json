@@ -732,5 +732,75 @@
 				}
 			}
 		]
+	},
+	"2026-06-21T12:00:00|ATLANTA": {
+		"result": {
+			"resolution": "regular",
+			"winner": 1
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 4
+				}
+			},
+			{
+				"score": {
+					"regularTime": 0
+				}
+			}
+		]
+	},
+	"2026-06-21T12:00:00|LOS_ANGELES": {
+		"result": {
+			"resolution": "regular"
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 0
+				}
+			},
+			{
+				"score": {
+					"regularTime": 0
+				}
+			}
+		]
+	},
+	"2026-06-21T18:00:00|MIAMI": {
+		"result": {
+			"resolution": "regular"
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 2
+				}
+			},
+			{
+				"score": {
+					"regularTime": 2
+				}
+			}
+		]
+	},
+	"2026-06-21T18:00:00|VANCOUVER": {
+		"result": {
+			"resolution": "regular",
+			"winner": 2
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 1
+				}
+			},
+			{
+				"score": {
+					"regularTime": 3
+				}
+			}
+		]
 	}
 }
