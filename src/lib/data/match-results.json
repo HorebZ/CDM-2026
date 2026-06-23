@@ -824,5 +824,41 @@
 				}
 			}
 		]
+	},
+	"2026-06-22T17:00:00|PHILADELPHIE": {
+		"result": {
+			"resolution": "regular",
+			"winner": 1
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 3
+				}
+			},
+			{
+				"score": {
+					"regularTime": 0
+				}
+			}
+		]
+	},
+	"2026-06-22T20:00:00|NEW_YORK": {
+		"result": {
+			"resolution": "regular",
+			"winner": 1
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 3
+				}
+			},
+			{
+				"score": {
+					"regularTime": 2
+				}
+			}
+		]
 	}
 }
