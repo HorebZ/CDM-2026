@@ -1593,7 +1593,7 @@ const SIXTEENTH_FINAL_MATCHES: Match[] = [
 		stadiumId: STADIUM_IDS.ARLINGTON,
 		sides: [
 			{
-				label: 'TBD',
+				nationId: NATION_IDS.ARGENTINE,
 				score: { regularTime: 0 },
 				stats: { yellowCards: 0, redCards: 0 }
 			},

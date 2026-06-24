@@ -914,6 +914,24 @@
 			}
 		]
 	},
+	"2026-06-23T19:00:00|TORONTO": {
+		"result": {
+			"resolution": "regular",
+			"winner": 2
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 0
+				}
+			},
+			{
+				"score": {
+					"regularTime": 1
+				}
+			}
+		]
+	},
 	"2026-06-23T20:00:00|GUADALAJARA": {
 		"result": {
 			"resolution": "regular",

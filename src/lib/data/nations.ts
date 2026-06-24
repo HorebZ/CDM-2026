@@ -347,7 +347,7 @@ const GROUP_J = {
 		confederation: CONFEDERATIONS.AFC,
 		group: 'J',
 		participation: 1,
-		enabled: true
+		enabled: false
 	}
 } as const satisfies Record<string, Nation>;
 
@@ -409,7 +409,7 @@ const GROUP_L = {
 		confederation: CONFEDERATIONS.CONCACAF,
 		group: 'L',
 		participation: 2,
-		enabled: true
+		enabled: false
 	},
 	GHANA: {
 		code: 'gh',
