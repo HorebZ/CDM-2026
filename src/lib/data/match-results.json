@@ -949,5 +949,121 @@
 				}
 			}
 		]
+	},
+	"2026-06-24T12:00:00|VANCOUVER": {
+		"result": {
+			"resolution": "regular",
+			"winner": 1
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 2
+				}
+			},
+			{
+				"score": {
+					"regularTime": 1
+				}
+			}
+		]
+	},
+	"2026-06-24T15:00:00|SEATTLE": {
+		"result": {
+			"resolution": "regular",
+			"winner": 1
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 3
+				}
+			},
+			{
+				"score": {
+					"regularTime": 1
+				}
+			}
+		]
+	},
+	"2026-06-24T18:00:00|ATLANTA": {
+		"result": {
+			"resolution": "regular",
+			"winner": 1
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 4
+				}
+			},
+			{
+				"score": {
+					"regularTime": 2
+				}
+			}
+		]
+	},
+	"2026-06-24T18:00:00|MIAMI": {
+		"result": {
+			"resolution": "regular",
+			"winner": 2
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 0
+				}
+			},
+			{
+				"score": {
+					"regularTime": 3
+				}
+			}
+		]
+	},
+	"2026-06-24T19:00:00|MEXICO": {
+		"result": {
+			"resolution": "regular",
+			"winner": 2
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 0
+				},
+				"stats": {
+					"yellowCards": 0,
+					"redCards": 0
+				}
+			},
+			{
+				"score": {
+					"regularTime": 3
+				},
+				"stats": {
+					"yellowCards": 0,
+					"redCards": 0
+				}
+			}
+		]
+	},
+	"2026-06-24T19:00:00|MONTERREY": {
+		"result": {
+			"resolution": "regular",
+			"winner": 1
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 1
+				}
+			},
+			{
+				"score": {
+					"regularTime": 0
+				}
+			}
+		]
 	}
 }
