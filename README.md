@@ -11,6 +11,12 @@ Countdown, contenders & winner tracker
 <a href="https://pages.cloudflare.com"><img src="https://img.shields.io/badge/Cloudflare-6b7280?logo=cloudflare&logoColor=ffffff&color=F38020" alt="Cloudflare Pages" /></a>
 <a href="https://tailwindcss.com"><img src="https://img.shields.io/badge/Tailwind_CSS-6b7280?logo=tailwindcss&logoColor=ffffff&color=06b6d4" alt="Tailwind CSS" /></a>
 
+<br />
+
+**Enjoying the tracker?** [Star this repo](https://github.com/HorebZ/CDM-2026) on GitHub — it helps others discover it.
+
+<a href="https://github.com/HorebZ/CDM-2026/stargazers"><img src="https://img.shields.io/github/stars/HorebZ/CDM-2026?label=stars&logo=github&color=6b7280" alt="GitHub stars" /></a>
+
 </div>
 
 A SvelteKit web app dedicated to the 2026 FIFA World Cup — a fan-made passion project, built by a football fan for football fans.
