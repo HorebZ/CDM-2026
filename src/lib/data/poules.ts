@@ -408,48 +408,48 @@ const POULE_H = {
 
 const POULE_I = {
 	FRANCE: {
-		played: 2,
-		won: 2,
+		played: 3,
+		won: 3,
 		drawn: 0,
 		lost: 0,
-		goalsFor: 6,
-		goalsAgainst: 1,
-		goalDifference: 5,
-		points: 6,
-		fairPlayPoints: 0
+		goalsFor: 10,
+		goalsAgainst: 2,
+		goalDifference: 8,
+		points: 9,
+		fairPlayPoints: -1
 	},
 	NORVEGE: {
-		played: 2,
+		played: 3,
 		won: 2,
 		drawn: 0,
-		lost: 0,
-		goalsFor: 7,
-		goalsAgainst: 3,
-		goalDifference: 4,
+		lost: 1,
+		goalsFor: 8,
+		goalsAgainst: 7,
+		goalDifference: 1,
 		points: 6,
-		fairPlayPoints: 0
+		fairPlayPoints: -1
 	},
 	SENEGAL: {
-		played: 2,
-		won: 0,
+		played: 3,
+		won: 1,
 		drawn: 0,
 		lost: 2,
-		goalsFor: 3,
+		goalsFor: 8,
 		goalsAgainst: 6,
-		goalDifference: -3,
-		points: 0,
-		fairPlayPoints: 0
+		goalDifference: 2,
+		points: 3,
+		fairPlayPoints: -2
 	},
 	IRAK: {
-		played: 2,
+		played: 3,
 		won: 0,
 		drawn: 0,
-		lost: 2,
+		lost: 3,
 		goalsFor: 1,
-		goalsAgainst: 7,
-		goalDifference: -6,
+		goalsAgainst: 12,
+		goalDifference: -11,
 		points: 0,
-		fairPlayPoints: 0
+		fairPlayPoints: -8
 	}
 } as const satisfies Record<string, PouleTeamStanding>;
 

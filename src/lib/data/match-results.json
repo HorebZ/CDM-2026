@@ -1171,5 +1171,45 @@
 				}
 			}
 		]
+	},
+	"2026-06-26T15:00:00|BOSTON": {
+		"result": {
+			"resolution": "regular",
+			"winner": 2
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 1
+				}
+			},
+			{
+				"score": {
+					"regularTime": 4
+				}
+			}
+		]
+	},
+	"2026-06-26T15:00:00|TORONTO": {
+		"result": {
+			"resolution": "regular",
+			"winner": 1
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 5
+				}
+			},
+			{
+				"score": {
+					"regularTime": 0
+				},
+				"stats": {
+					"yellowCards": 0,
+					"redCards": 1
+				}
+			}
+		]
 	}
 }
