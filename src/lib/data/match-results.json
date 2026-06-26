@@ -1137,6 +1137,24 @@
 			}
 		]
 	},
+	"2026-06-25T19:00:00|LOS_ANGELES": {
+		"result": {
+			"resolution": "regular",
+			"winner": 1
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 3
+				}
+			},
+			{
+				"score": {
+					"regularTime": 2
+				}
+			}
+		]
+	},
 	"2026-06-25T19:00:00|SANTA_CLARA": {
 		"result": {
 			"resolution": "regular"

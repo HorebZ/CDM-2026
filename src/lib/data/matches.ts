@@ -1359,12 +1359,12 @@ const SIXTEENTH_FINAL_MATCHES: Match[] = [
 		stadiumId: STADIUM_IDS.LOS_ANGELES,
 		sides: [
 			{
-				label: 'TBD',
+				nationId: NATION_IDS.AFRIQUE_DU_SUD,
 				score: { regularTime: 0 },
 				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
-				label: 'TBD',
+				nationId: NATION_IDS.CANADA,
 				score: { regularTime: 0 },
 				stats: { yellowCards: 0, redCards: 0 }
 			}
@@ -1377,12 +1377,12 @@ const SIXTEENTH_FINAL_MATCHES: Match[] = [
 		stadiumId: STADIUM_IDS.HOUSTON,
 		sides: [
 			{
-				label: 'TBD',
+				nationId: NATION_IDS.BRESIL,
 				score: { regularTime: 0 },
 				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
-				label: 'TBD',
+				nationId: NATION_IDS.JAPON,
 				score: { regularTime: 0 },
 				stats: { yellowCards: 0, redCards: 0 }
 			}
@@ -1413,12 +1413,12 @@ const SIXTEENTH_FINAL_MATCHES: Match[] = [
 		stadiumId: STADIUM_IDS.MONTERREY,
 		sides: [
 			{
-				label: 'TBD',
+				nationId: NATION_IDS.PAYS_BAS,
 				score: { regularTime: 0 },
 				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
-				label: 'TBD',
+				nationId: NATION_IDS.MAROC,
 				score: { regularTime: 0 },
 				stats: { yellowCards: 0, redCards: 0 }
 			}
@@ -1431,7 +1431,7 @@ const SIXTEENTH_FINAL_MATCHES: Match[] = [
 		stadiumId: STADIUM_IDS.ARLINGTON,
 		sides: [
 			{
-				label: 'TBD',
+				nationId: NATION_IDS.COTE_IVOIRE,
 				score: { regularTime: 0 },
 				stats: { yellowCards: 0, redCards: 0 }
 			},
@@ -1526,7 +1526,7 @@ const SIXTEENTH_FINAL_MATCHES: Match[] = [
 				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
-				label: 'TBD',
+				nationId: NATION_IDS.BOSNIE,
 				score: { regularTime: 0 },
 				stats: { yellowCards: 0, redCards: 0 }
 			}
@@ -1575,7 +1575,7 @@ const SIXTEENTH_FINAL_MATCHES: Match[] = [
 		stadiumId: STADIUM_IDS.VANCOUVER,
 		sides: [
 			{
-				label: 'TBD',
+				nationId: NATION_IDS.SUISSE,
 				score: { regularTime: 0 },
 				stats: { yellowCards: 0, redCards: 0 }
 			},
@@ -1593,7 +1593,7 @@ const SIXTEENTH_FINAL_MATCHES: Match[] = [
 		stadiumId: STADIUM_IDS.ARLINGTON,
 		sides: [
 			{
-				nationId: NATION_IDS.ARGENTINE,
+				nationId: NATION_IDS.AUSTRALIE,
 				score: { regularTime: 0 },
 				stats: { yellowCards: 0, redCards: 0 }
 			},
@@ -1611,7 +1611,7 @@ const SIXTEENTH_FINAL_MATCHES: Match[] = [
 		stadiumId: STADIUM_IDS.MIAMI,
 		sides: [
 			{
-				label: 'TBD',
+				nationId: NATION_IDS.ARGENTINE,
 				score: { regularTime: 0 },
 				stats: { yellowCards: 0, redCards: 0 }
 			},
