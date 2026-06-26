@@ -18,3 +18,8 @@ export const SITE_CONFIG: SiteConfig = {
 export function getFlagUrl(code: string): string {
 	return `https://flagcdn.com/h240/${code.toLowerCase()}.webp`;
 }
+
+/** Version légère pour les petits drapeaux (tableau, badges compacts). */
+export function getFlagUrlSmall(code: string): string {
+	return `https://flagcdn.com/w40/${code.toLowerCase()}.webp`;
+}
