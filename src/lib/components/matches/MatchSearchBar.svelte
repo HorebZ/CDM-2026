@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import { getFlagUrl } from '$lib/config/site.js';
 	import { nationSearch, type NationSearchResult } from '$lib/search/nations-index.js';
 	import type { GroupId } from '$lib/types/index.js';
@@ -97,6 +98,31 @@
 </script>
 
 <div class="mx-auto mb-6 flex w-[min(100%,var(--shell-width))] flex-col gap-2.5">
+	<div class="flex items-center justify-end">
+		<a
+			class="inline-flex items-center gap-1.5 text-[12px] font-bold text-text-muted no-underline transition-colors duration-150 hover:text-text-primary"
+			href={resolve('/tableau')}
+		>
+			Tableau éliminatoire
+			<svg
+				width="12"
+				height="12"
+				viewBox="0 0 12 12"
+				fill="none"
+				xmlns="http://www.w3.org/2000/svg"
+				aria-hidden="true"
+			>
+				<path
+					d="M2.5 6H9.5M9.5 6L6.5 3M9.5 6L6.5 9"
+					stroke="currentColor"
+					stroke-width="1.5"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
+			</svg>
+		</a>
+	</div>
+
 	<div class="relative flex items-center">
 		<span
 			class="pointer-events-none absolute left-3 z-[1] flex items-center text-text-muted"

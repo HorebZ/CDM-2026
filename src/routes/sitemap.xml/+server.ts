@@ -5,6 +5,7 @@ export const prerender = true;
 
 const PAGES = [
 	{ path: '/', changefreq: 'daily', priority: '1.0' },
+	{ path: '/tableau', changefreq: 'daily', priority: '0.9' },
 	...TV_COUNTRY_ROUTE_ENTRIES.map(({ nationCode }) => ({
 		path: `/tv/${nationCode}`,
 		changefreq: 'daily' as const,
