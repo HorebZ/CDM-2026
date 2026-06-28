@@ -1211,5 +1211,185 @@
 				}
 			}
 		]
+	},
+	"2026-06-26T18:00:00|GUADALAJARA": {
+		"result": {
+			"resolution": "regular",
+			"winner": 2
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 0
+				},
+				"stats": {
+					"yellowCards": 0,
+					"redCards": 1
+				}
+			},
+			{
+				"score": {
+					"regularTime": 1
+				}
+			}
+		]
+	},
+	"2026-06-26T19:00:00|HOUSTON": {
+		"result": {
+			"resolution": "regular"
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 0
+				}
+			},
+			{
+				"score": {
+					"regularTime": 0
+				}
+			}
+		]
+	},
+	"2026-06-26T20:00:00|SEATTLE": {
+		"result": {
+			"resolution": "regular"
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 1
+				}
+			},
+			{
+				"score": {
+					"regularTime": 1
+				}
+			}
+		]
+	},
+	"2026-06-26T20:00:00|VANCOUVER": {
+		"result": {
+			"resolution": "regular",
+			"winner": 2
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 1
+				}
+			},
+			{
+				"score": {
+					"regularTime": 5
+				}
+			}
+		]
+	},
+	"2026-06-27T17:00:00|NEW_YORK": {
+		"result": {
+			"resolution": "regular",
+			"winner": 2
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 0
+				}
+			},
+			{
+				"score": {
+					"regularTime": 2
+				}
+			}
+		]
+	},
+	"2026-06-27T17:00:00|PHILADELPHIE": {
+		"result": {
+			"resolution": "regular",
+			"winner": 1
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 2
+				}
+			},
+			{
+				"score": {
+					"regularTime": 1
+				}
+			}
+		]
+	},
+	"2026-06-27T19:30:00|ATLANTA": {
+		"result": {
+			"resolution": "regular",
+			"winner": 1
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 3
+				}
+			},
+			{
+				"score": {
+					"regularTime": 1
+				}
+			}
+		]
+	},
+	"2026-06-27T19:30:00|MIAMI": {
+		"result": {
+			"resolution": "regular"
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 0
+				}
+			},
+			{
+				"score": {
+					"regularTime": 0
+				}
+			}
+		]
+	},
+	"2026-06-27T21:00:00|ARLINGTON": {
+		"result": {
+			"resolution": "regular",
+			"winner": 2
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 1
+				}
+			},
+			{
+				"score": {
+					"regularTime": 3
+				}
+			}
+		]
+	},
+	"2026-06-27T21:00:00|KANSAS_CITY": {
+		"result": {
+			"resolution": "regular"
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 3
+				}
+			},
+			{
+				"score": {
+					"regularTime": 3
+				}
+			}
+		]
 	}
 }
