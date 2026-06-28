@@ -1400,7 +1400,7 @@ const SIXTEENTH_FINAL_MATCHES: Match[] = [
 				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
-				label: 'TBD',
+				nationId: NATION_IDS.PARAGUAY,
 				score: { regularTime: 0 },
 				stats: { yellowCards: 0, redCards: 0 }
 			}
@@ -1454,7 +1454,7 @@ const SIXTEENTH_FINAL_MATCHES: Match[] = [
 				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
-				label: 'TBD',
+				nationId: NATION_IDS.SUEDE,
 				score: { regularTime: 0 },
 				stats: { yellowCards: 0, redCards: 0 }
 			}
@@ -1472,7 +1472,7 @@ const SIXTEENTH_FINAL_MATCHES: Match[] = [
 				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
-				label: 'TBD',
+				nationId: NATION_IDS.EQUATEUR,
 				score: { regularTime: 0 },
 				stats: { yellowCards: 0, redCards: 0 }
 			}
@@ -1485,12 +1485,12 @@ const SIXTEENTH_FINAL_MATCHES: Match[] = [
 		stadiumId: STADIUM_IDS.ATLANTA,
 		sides: [
 			{
-				label: 'TBD',
+				nationId: NATION_IDS.ANGLETERRE,
 				score: { regularTime: 0 },
 				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
-				label: 'TBD',
+				nationId: NATION_IDS.RDC,
 				score: { regularTime: 0 },
 				stats: { yellowCards: 0, redCards: 0 }
 			}
@@ -1503,12 +1503,12 @@ const SIXTEENTH_FINAL_MATCHES: Match[] = [
 		stadiumId: STADIUM_IDS.SEATTLE,
 		sides: [
 			{
-				label: 'TBD',
+				nationId: NATION_IDS.BELGIQUE,
 				score: { regularTime: 0 },
 				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
-				label: 'TBD',
+				nationId: NATION_IDS.SENEGAL,
 				score: { regularTime: 0 },
 				stats: { yellowCards: 0, redCards: 0 }
 			}
@@ -1539,12 +1539,12 @@ const SIXTEENTH_FINAL_MATCHES: Match[] = [
 		stadiumId: STADIUM_IDS.LOS_ANGELES,
 		sides: [
 			{
-				label: 'TBD',
+				nationId: NATION_IDS.ESPAGNE,
 				score: { regularTime: 0 },
 				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
-				label: 'TBD',
+				nationId: NATION_IDS.AUTRICHE,
 				score: { regularTime: 0 },
 				stats: { yellowCards: 0, redCards: 0 }
 			}
@@ -1557,12 +1557,12 @@ const SIXTEENTH_FINAL_MATCHES: Match[] = [
 		stadiumId: STADIUM_IDS.TORONTO,
 		sides: [
 			{
-				label: 'TBD',
+				nationId: NATION_IDS.PORTUGAL,
 				score: { regularTime: 0 },
 				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
-				label: 'TBD',
+				nationId: NATION_IDS.CROATIE,
 				score: { regularTime: 0 },
 				stats: { yellowCards: 0, redCards: 0 }
 			}
@@ -1580,7 +1580,7 @@ const SIXTEENTH_FINAL_MATCHES: Match[] = [
 				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
-				label: 'TBD',
+				nationId: NATION_IDS.ALGERIE,
 				score: { regularTime: 0 },
 				stats: { yellowCards: 0, redCards: 0 }
 			}
@@ -1598,7 +1598,7 @@ const SIXTEENTH_FINAL_MATCHES: Match[] = [
 				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
-				label: 'TBD',
+				nationId: NATION_IDS.EGYPTE,
 				score: { regularTime: 0 },
 				stats: { yellowCards: 0, redCards: 0 }
 			}
@@ -1616,7 +1616,7 @@ const SIXTEENTH_FINAL_MATCHES: Match[] = [
 				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
-				label: 'TBD',
+				nationId: NATION_IDS.CAP_VERT,
 				score: { regularTime: 0 },
 				stats: { yellowCards: 0, redCards: 0 }
 			}
@@ -1629,12 +1629,12 @@ const SIXTEENTH_FINAL_MATCHES: Match[] = [
 		stadiumId: STADIUM_IDS.KANSAS_CITY,
 		sides: [
 			{
-				label: 'TBD',
+				nationId: NATION_IDS.COLOMBIE,
 				score: { regularTime: 0 },
 				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
-				label: 'TBD',
+				nationId: NATION_IDS.GHANA,
 				score: { regularTime: 0 },
 				stats: { yellowCards: 0, redCards: 0 }
 			}

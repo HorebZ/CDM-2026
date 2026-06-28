@@ -34,7 +34,7 @@ describe('tv-country', () => {
 
 		const matches = getTvCountryMatches(result);
 
-		expect(matches).toHaveLength(3);
+		expect(matches).toHaveLength(4);
 		for (const match of matches) {
 			expect(match.sides.some((side) => side.nationId === NATION_IDS.FRANCE)).toBe(true);
 		}

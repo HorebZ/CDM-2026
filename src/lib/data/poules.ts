@@ -313,96 +313,96 @@ const POULE_F = {
 } as const satisfies Record<string, PouleTeamStanding>;
 
 const POULE_G = {
-	EGYPTE: {
-		played: 2,
+	BELGIQUE: {
+		played: 3,
 		won: 1,
-		drawn: 1,
+		drawn: 2,
 		lost: 0,
-		goalsFor: 4,
+		goalsFor: 6,
 		goalsAgainst: 2,
+		goalDifference: 4,
+		points: 5,
+		fairPlayPoints: -7
+	},
+	EGYPTE: {
+		played: 3,
+		won: 1,
+		drawn: 2,
+		lost: 0,
+		goalsFor: 5,
+		goalsAgainst: 3,
 		goalDifference: 2,
-		points: 4,
-		fairPlayPoints: 0
+		points: 5,
+		fairPlayPoints: -6
 	},
 	IRAN: {
-		played: 2,
+		played: 3,
 		won: 0,
-		drawn: 2,
+		drawn: 3,
 		lost: 0,
-		goalsFor: 2,
-		goalsAgainst: 2,
+		goalsFor: 3,
+		goalsAgainst: 3,
 		goalDifference: 0,
-		points: 2,
-		fairPlayPoints: 0
-	},
-	BELGIQUE: {
-		played: 2,
-		won: 0,
-		drawn: 2,
-		lost: 0,
-		goalsFor: 1,
-		goalsAgainst: 1,
-		goalDifference: 0,
-		points: 2,
-		fairPlayPoints: -3
+		points: 3,
+		fairPlayPoints: -6
 	},
 	NEW_ZEALAND: {
-		played: 2,
+		played: 3,
 		won: 0,
 		drawn: 1,
-		lost: 1,
-		goalsFor: 3,
-		goalsAgainst: 5,
-		goalDifference: -2,
+		lost: 2,
+		goalsFor: 4,
+		goalsAgainst: 10,
+		goalDifference: -6,
 		points: 1,
-		fairPlayPoints: 0
+		fairPlayPoints: -4
 	}
 } as const satisfies Record<string, PouleTeamStanding>;
 
 const POULE_H = {
 	ESPAGNE: {
-		played: 2,
-		won: 1,
+		played: 3,
+		won: 2,
 		drawn: 1,
 		lost: 0,
-		goalsFor: 4,
+		goalsFor: 5,
 		goalsAgainst: 0,
-		goalDifference: 4,
-		points: 4,
-		fairPlayPoints: 0
-	},
-	URUGUAY: {
-		played: 2,
-		won: 0,
-		drawn: 2,
-		lost: 0,
-		goalsFor: 3,
-		goalsAgainst: 3,
-		goalDifference: 0,
-		points: 2,
-		fairPlayPoints: 0
+		goalDifference: 5,
+		points: 7,
+		fairPlayPoints: -2
 	},
 	CAP_VERT: {
-		played: 2,
+		played: 3,
 		won: 0,
-		drawn: 2,
+		drawn: 3,
 		lost: 0,
 		goalsFor: 2,
 		goalsAgainst: 2,
 		goalDifference: 0,
+		points: 3,
+		fairPlayPoints: -4
+	},
+	URUGUAY: {
+		played: 3,
+		won: 0,
+		drawn: 2,
+		lost: 1,
+		goalsFor: 3,
+		goalsAgainst: 4,
+		goalDifference: -1,
 		points: 2,
-		fairPlayPoints: 0
+		fairPlayPoints: -9
 	},
 	ARABIE_SAOUDITE: {
-		played: 2,
+		played: 3,
 		won: 0,
-		drawn: 1,
+		drawn: 2,
 		lost: 1,
 		goalsFor: 1,
 		goalsAgainst: 5,
 		goalDifference: -4,
-		points: 1,
-		fairPlayPoints: 0
+		points: 2,
+		fairPlayPoints: -6
 	}
 } as const satisfies Record<string, PouleTeamStanding>;
 
@@ -455,142 +455,142 @@ const POULE_I = {
 
 const POULE_J = {
 	ARGENTINE: {
-		played: 2,
-		won: 2,
+		played: 3,
+		won: 3,
 		drawn: 0,
 		lost: 0,
-		goalsFor: 5,
-		goalsAgainst: 0,
-		goalDifference: 5,
-		points: 6,
-		fairPlayPoints: 0
+		goalsFor: 8,
+		goalsAgainst: 1,
+		goalDifference: 7,
+		points: 9,
+		fairPlayPoints: -2
 	},
 	AUTRICHE: {
-		played: 2,
+		played: 3,
 		won: 1,
-		drawn: 0,
+		drawn: 1,
 		lost: 1,
-		goalsFor: 3,
-		goalsAgainst: 3,
+		goalsFor: 6,
+		goalsAgainst: 6,
 		goalDifference: 0,
-		points: 3,
-		fairPlayPoints: 0
+		points: 4,
+		fairPlayPoints: -3
 	},
 	ALGERIE: {
-		played: 2,
+		played: 3,
 		won: 1,
-		drawn: 0,
+		drawn: 1,
 		lost: 1,
-		goalsFor: 2,
-		goalsAgainst: 4,
+		goalsFor: 5,
+		goalsAgainst: 7,
 		goalDifference: -2,
-		points: 3,
-		fairPlayPoints: 0
+		points: 4,
+		fairPlayPoints: -1
 	},
 	JORDANIE: {
-		played: 2,
+		played: 3,
 		won: 0,
 		drawn: 0,
-		lost: 2,
-		goalsFor: 2,
-		goalsAgainst: 5,
-		goalDifference: -3,
+		lost: 3,
+		goalsFor: 3,
+		goalsAgainst: 8,
+		goalDifference: -5,
 		points: 0,
-		fairPlayPoints: 0
+		fairPlayPoints: -3
 	}
 } as const satisfies Record<string, PouleTeamStanding>;
 
 const POULE_K = {
 	COLOMBIE: {
-		played: 2,
+		played: 3,
 		won: 2,
-		drawn: 0,
+		drawn: 1,
 		lost: 0,
 		goalsFor: 4,
 		goalsAgainst: 1,
 		goalDifference: 3,
-		points: 6,
-		fairPlayPoints: 0
+		points: 7,
+		fairPlayPoints: -4
 	},
 	PORTUGAL: {
-		played: 2,
+		played: 3,
 		won: 1,
-		drawn: 1,
+		drawn: 2,
 		lost: 0,
 		goalsFor: 6,
 		goalsAgainst: 1,
 		goalDifference: 5,
-		points: 4,
-		fairPlayPoints: 0
+		points: 5,
+		fairPlayPoints: -4
 	},
 	RDC: {
-		played: 2,
-		won: 0,
+		played: 3,
+		won: 1,
 		drawn: 1,
 		lost: 1,
-		goalsFor: 1,
-		goalsAgainst: 2,
-		goalDifference: -1,
-		points: 1,
-		fairPlayPoints: 0
+		goalsFor: 4,
+		goalsAgainst: 3,
+		goalDifference: 1,
+		points: 4,
+		fairPlayPoints: -4
 	},
 	OUZBEKISTAN: {
-		played: 2,
+		played: 3,
 		won: 0,
 		drawn: 0,
-		lost: 2,
-		goalsFor: 1,
-		goalsAgainst: 8,
-		goalDifference: -7,
+		lost: 3,
+		goalsFor: 2,
+		goalsAgainst: 11,
+		goalDifference: -9,
 		points: 0,
-		fairPlayPoints: 0
+		fairPlayPoints: -4
 	}
 } as const satisfies Record<string, PouleTeamStanding>;
 
 const POULE_L = {
 	ANGLETERRE: {
-		played: 2,
-		won: 1,
+		played: 3,
+		won: 2,
 		drawn: 1,
 		lost: 0,
-		goalsFor: 4,
+		goalsFor: 6,
 		goalsAgainst: 2,
-		goalDifference: 2,
-		points: 4,
-		fairPlayPoints: 0
-	},
-	GHANA: {
-		played: 2,
-		won: 1,
-		drawn: 1,
-		lost: 0,
-		goalsFor: 1,
-		goalsAgainst: 0,
-		goalDifference: 1,
-		points: 4,
-		fairPlayPoints: 0
+		goalDifference: 4,
+		points: 7,
+		fairPlayPoints: -2
 	},
 	CROATIE: {
-		played: 2,
-		won: 1,
+		played: 3,
+		won: 2,
 		drawn: 0,
 		lost: 1,
-		goalsFor: 3,
-		goalsAgainst: 4,
-		goalDifference: -1,
-		points: 3,
-		fairPlayPoints: 0
+		goalsFor: 5,
+		goalsAgainst: 5,
+		goalDifference: 0,
+		points: 6,
+		fairPlayPoints: -2
+	},
+	GHANA: {
+		played: 3,
+		won: 1,
+		drawn: 1,
+		lost: 1,
+		goalsFor: 2,
+		goalsAgainst: 2,
+		goalDifference: 0,
+		points: 4,
+		fairPlayPoints: -3
 	},
 	PANAMA: {
-		played: 2,
+		played: 3,
 		won: 0,
 		drawn: 0,
-		lost: 2,
+		lost: 3,
 		goalsFor: 0,
-		goalsAgainst: 2,
-		goalDifference: -2,
+		goalsAgainst: 4,
+		goalDifference: -4,
 		points: 0,
-		fairPlayPoints: 0
+		fairPlayPoints: -5
 	}
 } as const satisfies Record<string, PouleTeamStanding>;
 
