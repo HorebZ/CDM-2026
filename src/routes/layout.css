@@ -22,22 +22,24 @@
 	--shell-width: 920px;
 }
 
-html,
+html {
+	overflow-x: hidden;
+	overscroll-behavior: none;
+	background-color: var(--color-surface);
+}
+
 body {
-	height: 100%;
-	background: var(--color-surface);
+	min-height: 100vh;
+	overscroll-behavior: none;
+	background-color: var(--color-surface);
 	color: var(--color-text-primary);
 	font-family: var(--font-display);
 	font-style: italic;
 	overflow-x: hidden;
-}
-
-body {
 	background:
 		radial-gradient(circle at 0% 50%, rgba(123, 111, 189, 0.16) 0%, rgba(123, 111, 189, 0) 32%),
 		radial-gradient(circle at 100% 50%, rgba(195, 197, 255, 0.14) 0%, rgba(195, 197, 255, 0) 30%),
 		radial-gradient(ellipse 80% 60% at 50% 42%, #111120 0%, #08080f 62%, #050509 100%);
-	min-height: 100vh;
 }
 
 a {
