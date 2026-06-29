@@ -191,7 +191,7 @@ const GROUP_F = {
 		confederation: CONFEDERATIONS.AFC,
 		group: 'F',
 		participation: 8,
-		enabled: true
+		enabled: false
 	},
 	TUNISIE: {
 		code: 'tn',

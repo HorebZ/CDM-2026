@@ -1409,5 +1409,23 @@
 				}
 			}
 		]
+	},
+	"2026-06-29T12:00:00|HOUSTON": {
+		"result": {
+			"resolution": "regular",
+			"winner": 1
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 2
+				}
+			},
+			{
+				"score": {
+					"regularTime": 1
+				}
+			}
+		]
 	}
 }
