@@ -1391,5 +1391,23 @@
 				}
 			}
 		]
+	},
+	"2026-06-28T12:00:00|LOS_ANGELES": {
+		"result": {
+			"resolution": "regular",
+			"winner": 2
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 0
+				}
+			},
+			{
+				"score": {
+					"regularTime": 1
+				}
+			}
+		]
 	}
 }
