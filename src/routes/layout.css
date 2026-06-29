@@ -24,13 +24,12 @@
 
 html {
 	overflow-x: hidden;
-	overscroll-behavior: none;
+	overscroll-behavior-y: none;
 	background-color: var(--color-surface);
 }
 
 body {
 	min-height: 100vh;
-	overscroll-behavior: none;
 	background-color: var(--color-surface);
 	color: var(--color-text-primary);
 	font-family: var(--font-display);
