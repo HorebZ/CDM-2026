@@ -12,7 +12,7 @@
 	const smallFinalDisplay = getSmallFinalDisplay();
 </script>
 
-<div class="overflow-x-auto pb-2">
+<div class="overflow-x-auto overscroll-x-contain pb-2">
 	<div class="mx-auto flex w-max items-start gap-0 px-1">
 		{#each columns as column, columnIndex (column.phase)}
 			<BracketViewColumn {column} />
@@ -31,6 +31,8 @@
 {#if smallFinalDisplay}
 	<div class="mx-auto mt-8 flex w-full max-w-[220px] flex-col items-center gap-2">
 		<h2 class="text-[11px] font-bold tracking-[0.08em] text-white uppercase">Petite finale</h2>
-		<BracketViewMatchCard display={smallFinalDisplay} />
+		<div class="w-full pt-4">
+			<BracketViewMatchCard display={smallFinalDisplay} />
+		</div>
 	</div>
 {/if}
