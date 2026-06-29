@@ -1650,7 +1650,7 @@ const EIGHTH_FINAL_MATCHES: Match[] = [
 		stadiumId: STADIUM_IDS.HOUSTON,
 		sides: [
 			{
-				label: 'TBD',
+				nationId: NATION_IDS.CANADA,
 				score: { regularTime: 0 },
 				stats: { yellowCards: 0, redCards: 0 }
 			},

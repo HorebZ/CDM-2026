@@ -24,7 +24,7 @@ const GROUP_A = {
 		confederation: CONFEDERATIONS.CAF,
 		group: 'A',
 		participation: 4,
-		enabled: true
+		enabled: false
 	},
 	TCHEQUIE: {
 		code: 'cz',

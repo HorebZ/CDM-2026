@@ -9,12 +9,12 @@ import {
 	type BracketColumnPhase
 } from '$lib/data/bracket-order.js';
 import type { Match, MatchPhase, MatchResultKey } from '$lib/types/index.js';
-import { isMatchDatePassed } from '$lib/utils/date.js';
+import { getMatchDates, isMatchDatePassed } from '$lib/utils/date.js';
 
 export { BRACKET_COLUMN_PHASES, type BracketColumnPhase };
 
 export const BRACKET_GRID_ROWS = 16;
-export const BRACKET_GRID_MIN_HEIGHT = 896;
+export const BRACKET_GRID_MIN_HEIGHT = 1152;
 export const BRACKET_GRID_GAP = 4;
 export const BRACKET_CONNECTOR_WIDTH = 28;
 
@@ -38,6 +38,8 @@ export interface BracketMatchDisplay {
 	side1: BracketMatchSideDisplay;
 	side2: BracketMatchSideDisplay;
 	hasScore: boolean;
+	/** Date et heure du coup d'envoi dans le fuseau de l'utilisateur. */
+	dateLabel: string;
 }
 
 export interface BracketSlot {
@@ -59,7 +61,8 @@ const KNOCKOUT_MATCHES_BY_KEY = new Map(
 );
 
 function buildMatchDisplay(match: Match): BracketMatchDisplay {
-	const isMatchPassed = isMatchDatePassed(match.localDate, STADIUMS[match.stadiumId].timezone);
+	const timezone = STADIUMS[match.stadiumId].timezone;
+	const isMatchPassed = isMatchDatePassed(match.localDate, timezone);
 	const winner = isMatchPassed ? match.result?.winner : undefined;
 
 	const buildSide = (sideIndex: 0 | 1): BracketMatchSideDisplay => {
@@ -82,7 +85,8 @@ function buildMatchDisplay(match: Match): BracketMatchDisplay {
 	return {
 		side1,
 		side2,
-		hasScore: isMatchPassed && typeof side1.score === 'number' && typeof side2.score === 'number'
+		hasScore: isMatchPassed && typeof side1.score === 'number' && typeof side2.score === 'number',
+		dateLabel: getMatchDates(match.localDate, timezone).userDate
 	};
 }
 
