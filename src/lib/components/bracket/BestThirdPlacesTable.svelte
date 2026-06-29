@@ -13,7 +13,9 @@
 		</h2>
 	</header>
 
-	<div class="overflow-x-auto rounded-[12px] border border-ring-subtle bg-surface-card/40">
+	<div
+		class="overflow-x-auto overscroll-x-contain rounded-[12px] border border-ring-subtle bg-surface-card/40"
+	>
 		<table class="w-full min-w-[560px] border-collapse text-left">
 			<thead>
 				<tr
