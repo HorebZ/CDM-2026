@@ -11,12 +11,7 @@
 </script>
 
 <div class="flex shrink-0 flex-col gap-3">
-	<h2
-		class={[
-			'text-center text-[11px] font-bold tracking-[0.08em] text-text-muted uppercase',
-			column.phase === 'final' && 'text-[#ffd700]'
-		]}
-	>
+	<h2 class="text-center text-[11px] font-bold tracking-[0.08em] text-white uppercase">
 		{column.label}
 	</h2>
 

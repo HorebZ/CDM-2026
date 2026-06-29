@@ -30,7 +30,7 @@
 
 {#if smallFinalDisplay}
 	<div class="mx-auto mt-8 flex w-full max-w-[220px] flex-col items-center gap-2">
-		<h2 class="text-[11px] font-bold tracking-[0.08em] text-text-muted uppercase">Petite finale</h2>
+		<h2 class="text-[11px] font-bold tracking-[0.08em] text-white uppercase">Petite finale</h2>
 		<BracketViewMatchCard display={smallFinalDisplay} />
 	</div>
 {/if}
