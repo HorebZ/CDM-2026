@@ -148,7 +148,7 @@ const GROUP_E = {
 		confederation: CONFEDERATIONS.UEFA,
 		group: 'E',
 		participation: 21,
-		enabled: true
+		enabled: false
 	},
 	EQUATEUR: {
 		code: 'ec',
@@ -183,7 +183,7 @@ const GROUP_F = {
 		confederation: CONFEDERATIONS.UEFA,
 		group: 'F',
 		participation: 12,
-		enabled: true
+		enabled: false
 	},
 	JAPON: {
 		code: 'jp',

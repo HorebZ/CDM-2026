@@ -33,8 +33,7 @@
 		"sides": [
 			{
 				"score": {
-					"regularTime": 2,
-					"yellowCards": 1
+					"regularTime": 2
 				}
 			},
 			{
@@ -1430,34 +1429,40 @@
 	},
 	"2026-06-29T16:30:00|BOSTON": {
 		"result": {
-			"resolution": "regular"
+			"resolution": "penalties",
+			"winner": 2
 		},
 		"sides": [
 			{
 				"score": {
-					"regularTime": 1
+					"regularTime": 1,
+					"penalties": 3
 				}
 			},
 			{
 				"score": {
-					"regularTime": 1
+					"regularTime": 1,
+					"penalties": 4
 				}
 			}
 		]
 	},
 	"2026-06-29T19:00:00|MONTERREY": {
 		"result": {
-			"resolution": "regular"
+			"resolution": "penalties",
+			"winner": 2
 		},
 		"sides": [
 			{
 				"score": {
-					"regularTime": 1
+					"regularTime": 1,
+					"penalties": 2
 				}
 			},
 			{
 				"score": {
-					"regularTime": 1
+					"regularTime": 1,
+					"penalties": 3
 				}
 			}
 		]
