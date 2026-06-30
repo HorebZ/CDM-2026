@@ -6,7 +6,9 @@ import existingResultsData from '../src/lib/data/match-results.json';
 import { NATIONS, type NationId } from '../src/lib/data/nations.js';
 import { STADIUMS } from '../src/lib/data/stadiums.js';
 import type {
+	GroupId,
 	Match,
+	MatchPhase,
 	MatchResult,
 	MatchResultEntry,
 	MatchResultsMap,
@@ -14,14 +16,13 @@ import type {
 } from '../src/lib/types/index.js';
 import { fromLocal } from '../src/lib/utils/date.js';
 
-const DEFAULT_SOURCE_URLS = [
-	'https://fr.wikipedia.org/wiki/Coupe_du_monde_de_football_2026',
-	...Array.from(
-		{ length: 12 },
-		(_, index) =>
-			`https://fr.wikipedia.org/wiki/Groupe_${String.fromCharCode(65 + index)}_de_la_Coupe_du_monde_de_football_2026`
-	)
-];
+const WIKIPEDIA_MAIN_URL = 'https://fr.wikipedia.org/wiki/Coupe_du_monde_de_football_2026';
+const WIKIPEDIA_KNOCKOUT_URL =
+	'https://fr.wikipedia.org/wiki/Phase_%C3%A0_%C3%A9limination_directe_de_la_Coupe_du_monde_de_football_2026';
+
+function getWikipediaGroupUrl(group: GroupId): string {
+	return `https://fr.wikipedia.org/wiki/Groupe_${group}_de_la_Coupe_du_monde_de_football_2026`;
+}
 
 const USER_AGENT = 'CDM-2026 result updater (https://cdm-2026.pages.dev)';
 
@@ -146,14 +147,35 @@ function cleanCellText(value: string): string {
 		.trim();
 }
 
+function looksLikeDateScore(value: string): boolean {
+	return /^\d{2}\s*[-–−—]\s*\d{2}$/.test(value.trim()) && !value.includes('(');
+}
+
 function parseScore(value: string): {
 	homeScore: number;
 	awayScore: number;
 	homePenalties?: number;
 	awayPenalties?: number;
 } | null {
+	if (looksLikeDateScore(value)) {
+		return null;
+	}
+
+	const inlinePenaltiesMatch = value.match(
+		/^\s*(\d+)\s*\(\s*(\d+)\s*\)\s*[-–−—]\s*(\d+)\s*\(\s*(\d+)\s*\)\s*$/i
+	);
+
+	if (inlinePenaltiesMatch) {
+		return {
+			homeScore: Number(inlinePenaltiesMatch[1]),
+			awayScore: Number(inlinePenaltiesMatch[3]),
+			homePenalties: Number(inlinePenaltiesMatch[2]),
+			awayPenalties: Number(inlinePenaltiesMatch[4])
+		};
+	}
+
 	const scoreMatch = value.match(
-		/^\s*(\d)\s*[-–−—]\s*(\d)(?:\s*a\.?\s*p\.?)?(?:\s*\(\s*\d\s*[-–−—]\s*\d\s*(?:t\.?\s*a\.?\s*b\.?|tab|pen|pén)\.?\s*\))?\s*$/i
+		/^\s*(\d+)\s*[-–−—]\s*(\d+)(?:\s*a\.?\s*p\.?)?(?:\s*\(\s*\d+\s*[-–−—]\s*\d+\s*(?:t\.?\s*a\.?\s*b\.?|tab|pen|pén)\.?\s*\))?\s*$/i
 	);
 
 	if (!scoreMatch) {
@@ -161,7 +183,7 @@ function parseScore(value: string): {
 	}
 
 	const penaltiesMatch = value.match(
-		/\((\d)\s*[-–−—]\s*(\d)\s*(?:t\.?\s*a\.?\s*b\.?|tab|pen|pén)\.?\)/i
+		/\((\d+)\s*[-–−—]\s*(\d+)\s*(?:t\.?\s*a\.?\s*b\.?|tab|pen|pén)\.?\)/i
 	);
 
 	return {
@@ -292,6 +314,105 @@ function getMatchNationId(match: Match, sideIndex: 0 | 1): NationId | null {
 	return match.sides[sideIndex].nationId ?? null;
 }
 
+function isKnockoutPhase(phase: MatchPhase): boolean {
+	return phase !== 'group';
+}
+
+function isStoredResultComplete(match: Match, storedResult: MatchResultEntry): boolean {
+	const hasAllStats = storedResult.sides.every((side) => side.stats);
+
+	if (!hasAllStats) {
+		return false;
+	}
+
+	if (storedResult.result.resolution === 'penalties') {
+		return storedResult.sides.every((side) => side.score.penalties !== undefined);
+	}
+
+	const [homeScore, awayScore] = storedResult.sides.map((side) => side.score.regularTime);
+
+	if (homeScore === awayScore && isKnockoutPhase(match.phase)) {
+		return false;
+	}
+
+	return true;
+}
+
+function candidateNeedsTemplate(candidate: CandidateMatch): boolean {
+	return candidate.storedResult?.sides.some((side) => !side.stats) ?? true;
+}
+
+function getSourceUrlsForCandidates(candidates: CandidateMatch[]): string[] {
+	const urls = new Set<string>([WIKIPEDIA_MAIN_URL]);
+	const groups = new Set<GroupId>();
+	let hasKnockout = false;
+
+	for (const candidate of candidates) {
+		const { match } = candidate;
+
+		if (match.group) {
+			groups.add(match.group);
+		}
+
+		if (isKnockoutPhase(match.phase)) {
+			hasKnockout = true;
+		}
+
+		if (candidateNeedsTemplate(candidate)) {
+			const templateUrl = getWikipediaMatchTemplateUrl(match);
+
+			if (templateUrl) {
+				urls.add(templateUrl);
+			}
+		}
+	}
+
+	for (const group of groups) {
+		urls.add(getWikipediaGroupUrl(group));
+	}
+
+	if (hasKnockout) {
+		urls.add(WIKIPEDIA_KNOCKOUT_URL);
+	}
+
+	return [...urls];
+}
+
+function getParsedResultQuality(result: ParsedWikipediaResult): number {
+	let quality = 0;
+
+	if (result.homePenalties !== undefined && result.awayPenalties !== undefined) {
+		quality += 2;
+	}
+
+	if (hasParsedStats(result)) {
+		quality += 1;
+	}
+
+	return quality;
+}
+
+function getParsedResultPairKey(result: ParsedWikipediaResult): string {
+	return [result.homeNationId, result.awayNationId].sort().join('|');
+}
+
+function entriesAreEqual(
+	storedResult: MatchResultEntry,
+	nextResult: MatchResultEntry,
+	ignoreStats: boolean
+): boolean {
+	const serialize = (entry: MatchResultEntry) =>
+		JSON.stringify({
+			result: entry.result,
+			sides: entry.sides.map((side) => ({
+				score: side.score,
+				...(ignoreStats ? {} : { stats: side.stats })
+			}))
+		});
+
+	return serialize(storedResult) === serialize(nextResult);
+}
+
 function isMatchPassed(match: Match, now: Date): boolean {
 	return (
 		fromLocal(match.localDate, STADIUMS[match.stadiumId].timezone).epochMilliseconds < now.getTime()
@@ -308,13 +429,12 @@ function getCandidateMatches(
 		const homeNationId = getMatchNationId(match, 0);
 		const awayNationId = getMatchNationId(match, 1);
 		const storedResult = existingResults[getMatchResultKey(match)];
-		const hasMissingStoredStats = storedResult?.sides.some((side) => !side.stats);
 
 		if (
 			!homeNationId ||
 			!awayNationId ||
 			!isMatchPassed(match, now) ||
-			(!force && storedResult && !hasMissingStoredStats)
+			(!force && storedResult && isStoredResultComplete(match, storedResult))
 		) {
 			return [];
 		}
@@ -465,29 +585,25 @@ export async function updateMatchResults({
 	force = false,
 	now = new Date(),
 	existingResults = toMatchResultsMap(existingResultsData),
-	sourceUrls = DEFAULT_SOURCE_URLS,
+	sourceUrls,
 	fetchHtml = defaultFetchHtml,
 	writeResults = defaultWriteResults
 }: UpdateMatchResultsOptions = {}): Promise<UpdateMatchResultsSummary> {
 	const candidates = getCandidateMatches(MATCHES, now, force, existingResults);
-	const resolvedSourceUrls =
-		sourceUrls === DEFAULT_SOURCE_URLS
-			? [
-					...sourceUrls,
-					...candidates
-						.map(({ match }) => getWikipediaMatchTemplateUrl(match))
-						.filter((url): url is string => Boolean(url))
-				]
-			: sourceUrls;
+	const resolvedSourceUrls = sourceUrls ?? getSourceUrlsForCandidates(candidates);
 	const parsedResults = (
 		await Promise.all(
 			resolvedSourceUrls.map(async (sourceUrl) => {
 				try {
 					return parseWikipediaResults(await fetchHtml(sourceUrl), sourceUrl);
 				} catch (error) {
-					console.warn(
-						`Source Wikipédia ignorée: ${sourceUrl} (${error instanceof Error ? error.message : String(error)})`
-					);
+					const message = error instanceof Error ? error.message : String(error);
+					const isMissingTemplate =
+						sourceUrl.includes('/Mod%C3%A8le:') && message.includes('404');
+
+					if (!isMissingTemplate) {
+						console.warn(`Source Wikipédia ignorée: ${sourceUrl} (${message})`);
+					}
 
 					return [];
 				}
@@ -503,18 +619,21 @@ export async function updateMatchResults({
 		const matchingResults = parsedResults.filter((result) =>
 			matchesParsedResult(candidate, result)
 		);
-		const uniqueResultsByScore = new Map<string, ParsedWikipediaResult>();
+		const uniqueResultsByMatch = new Map<string, ParsedWikipediaResult>();
 
 		for (const result of matchingResults) {
-			const comparableKey = getComparableResultKey(candidate, result);
-			const existingResult = uniqueResultsByScore.get(comparableKey);
+			const pairKey = getParsedResultPairKey(result);
+			const existingResult = uniqueResultsByMatch.get(pairKey);
 
-			if (!existingResult || (!hasParsedStats(existingResult) && hasParsedStats(result))) {
-				uniqueResultsByScore.set(comparableKey, result);
+			if (
+				!existingResult ||
+				getParsedResultQuality(result) > getParsedResultQuality(existingResult)
+			) {
+				uniqueResultsByMatch.set(pairKey, result);
 			}
 		}
 
-		const uniqueResults = Array.from(uniqueResultsByScore.values());
+		const uniqueResults = Array.from(uniqueResultsByMatch.values());
 		const label = getMatchLabel(candidate.match);
 
 		if (uniqueResults.length === 0) {
@@ -528,10 +647,17 @@ export async function updateMatchResults({
 		}
 
 		const parsedResult = uniqueResults[0];
-		if (candidate.storedResult && !force && !hasParsedStats(parsedResult)) {
+		const nextEntry = buildResultEntry(candidate, parsedResult);
+
+		if (
+			candidate.storedResult &&
+			!force &&
+			entriesAreEqual(candidate.storedResult, nextEntry, !hasParsedStats(parsedResult))
+		) {
 			continue;
 		}
-		nextResults[candidate.key] = buildResultEntry(candidate, parsedResult);
+
+		nextResults[candidate.key] = nextEntry;
 		updated.push({ key: candidate.key, label, sourceUrl: parsedResult.sourceUrl });
 	}
 
