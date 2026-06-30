@@ -164,7 +164,7 @@ const GROUP_E = {
 		confederation: CONFEDERATIONS.CAF,
 		group: 'E',
 		participation: 4,
-		enabled: true
+		enabled: false
 	},
 	CURACAO: {
 		code: 'cw',
