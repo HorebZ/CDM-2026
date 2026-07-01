@@ -1496,5 +1496,23 @@
 				}
 			}
 		]
+	},
+	"2026-06-30T19:00:00|MEXICO": {
+		"result": {
+			"resolution": "regular",
+			"winner": 1
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 2
+				}
+			},
+			{
+				"score": {
+					"regularTime": 0
+				}
+			}
+		]
 	}
 }
