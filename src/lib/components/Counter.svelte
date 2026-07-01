@@ -39,7 +39,7 @@
 	{#if showSingleFlag}
 		<div class="counter-single flex flex-col items-center gap-3 text-center">
 			<img
-				class="counter-flag block rounded-[4px] border-[1.5px] border-[#ffd700] object-cover shadow-[0_0_10px_2px_rgba(255,215,0,0.35)]"
+				class="counter-flag block rounded-[4px] border-[1.5px] border-gold object-cover shadow-[0_0_10px_2px_color-mix(in_srgb,var(--color-gold)_35%,transparent)]"
 				src={getFlagUrl(enabledNations[0].code)}
 				alt={enabledNations[0].name}
 				width={120}

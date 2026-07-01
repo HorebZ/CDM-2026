@@ -39,7 +39,7 @@
 					<tr
 						class={[
 							'border-b border-ring-subtle/70 text-[12px] last:border-b-0',
-							standing.isQualified ? 'bg-[rgba(255,215,0,0.04)]' : 'bg-transparent'
+							standing.isQualified ? 'bg-gold/[0.04]' : 'bg-transparent'
 						]}
 					>
 						<td class="px-3 py-2.5 font-black text-text-primary tabular-nums">
@@ -48,7 +48,7 @@
 						<td class="px-3 py-2.5">
 							<div class="flex min-w-0 items-center gap-2">
 								<img
-									class="h-4 w-6 shrink-0 rounded-[2px] border border-[rgba(255,255,255,0.12)] object-cover"
+									class="h-4 w-6 shrink-0 rounded-[2px] border border-ring-medium object-cover"
 									src={getFlagUrlSmall(nation.code)}
 									alt=""
 									width={24}

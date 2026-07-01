@@ -69,17 +69,17 @@
 	{#if showPopup}
 		<div
 			id="site-info-popup"
-			class="absolute bottom-[calc(100%+12px)] left-0 z-120 w-auto max-w-[min(420px,calc(100vw-48px))] min-w-[min(360px,calc(100vw-48px))] animate-[infoTooltipFadeIn_0.5s_ease] rounded-[10px] border border-[rgba(255,255,255,0.12)] bg-[#151522] px-4 py-[14px] whitespace-normal shadow-[0_8px_24px_rgba(0,0,0,0.5),0_0_0_1px_rgba(255,255,255,0.04)] max-[560px]:max-w-[min(360px,calc(100vw-36px))] max-[560px]:min-w-[min(320px,calc(100vw-36px))] max-[420px]:max-w-[min(320px,calc(100vw-28px))] max-[420px]:min-w-[min(280px,calc(100vw-28px))]"
+			class="absolute bottom-[calc(100%+12px)] left-0 z-120 w-auto max-w-[min(420px,calc(100vw-48px))] min-w-[min(360px,calc(100vw-48px))] animate-[infoTooltipFadeIn_0.5s_ease] rounded-[10px] border border-ring-medium bg-tooltip-bg px-4 py-[14px] whitespace-normal shadow-[0_8px_24px_rgba(0,0,0,0.5),0_0_0_1px_rgba(255,255,255,0.04)] max-[560px]:max-w-[min(360px,calc(100vw-36px))] max-[560px]:min-w-[min(320px,calc(100vw-36px))] max-[420px]:max-w-[min(320px,calc(100vw-28px))] max-[420px]:min-w-[min(280px,calc(100vw-28px))]"
 			role="tooltip"
 			onmouseenter={openPopup}
 			onmouseleave={handleMouseLeave}
 		>
 			<span
-				class="absolute top-full left-[34px] h-0 w-0 border-[6px] border-transparent border-t-[rgba(255,255,255,0.12)]"
+				class="absolute top-full left-[34px] h-0 w-0 border-[6px] border-transparent border-t-ring-medium"
 				aria-hidden="true"
 			></span>
 			<span
-				class="absolute top-full left-[35px] h-0 w-0 border-[5px] border-transparent border-t-[#151522]"
+				class="absolute top-full left-[35px] h-0 w-0 border-[5px] border-transparent border-t-tooltip-bg"
 				aria-hidden="true"
 			></span>
 

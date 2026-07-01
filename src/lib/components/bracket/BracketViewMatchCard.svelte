@@ -9,8 +9,7 @@
 
 	const { display, highlight = false }: Props = $props();
 
-	const flagClasses =
-		'h-4 w-6 shrink-0 rounded-[2px] border border-[rgba(255,255,255,0.12)] object-cover';
+	const flagClasses = 'h-4 w-6 shrink-0 rounded-[2px] border border-ring-medium object-cover';
 	const placeholderClasses =
 		'inline-flex h-4 min-w-6 shrink-0 items-center justify-center rounded-[2px] border border-dashed border-[rgba(255,255,255,0.18)] bg-[rgba(255,255,255,0.04)] px-1 text-[9px] leading-none font-bold tracking-[0.04em] text-[rgba(255,255,255,0.75)] uppercase';
 	const nameClasses = 'min-w-0 truncate text-[11px] font-semibold text-text-primary';
@@ -23,7 +22,7 @@
 	<span
 		class={[
 			'absolute bottom-full left-2.5 mb-0.5 max-w-[calc(100%-10px)] truncate text-[10px] font-bold tracking-[0.03em] text-text-muted',
-			highlight && 'text-[#ffd700]'
+			highlight && 'text-gold'
 		]}
 	>
 		{display.dateLabel}
@@ -33,7 +32,7 @@
 		class={[
 			'grid h-[52px] w-full grid-cols-[auto_1fr_auto] items-center gap-x-2 gap-y-1 overflow-hidden rounded-[8px] border px-2.5 py-2',
 			highlight
-				? 'border-[rgba(255,215,0,0.45)] bg-[rgba(255,215,0,0.04)] shadow-[0_0_16px_rgba(255,215,0,0.08)]'
+				? 'border-gold/45 bg-gold/[0.04] shadow-[0_0_16px_color-mix(in_srgb,var(--color-gold)_8%,transparent)]'
 				: 'border-ring-subtle bg-surface-card'
 		]}
 	>
@@ -57,7 +56,7 @@
 			class={[
 				nameClasses,
 				'col-start-2',
-				team.isWinner && 'text-[#ffd700]',
+				team.isWinner && 'text-gold',
 				team.isLoser && 'text-text-muted opacity-50'
 			]}
 		>

@@ -48,7 +48,7 @@
 			<path
 				d={path}
 				fill="none"
-				stroke="rgba(255,255,255,0.12)"
+				stroke="var(--color-ring-medium)"
 				stroke-width="1.5"
 				stroke-linecap="square"
 				stroke-linejoin="miter"

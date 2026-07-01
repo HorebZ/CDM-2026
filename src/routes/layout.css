@@ -8,9 +8,15 @@
 	--color-surface: #08080f;
 	--color-surface-card: #0d0d1a;
 	--color-ring-subtle: rgba(255, 255, 255, 0.07);
+	--color-ring-medium: rgba(255, 255, 255, 0.12);
 	--color-ring-active: rgba(255, 255, 255, 0.18);
 	--color-text-primary: #f0f0f0;
 	--color-text-muted: rgba(240, 240, 240, 0.45);
+
+	/* Or « vainqueur / finale » — teinte de marque unique */
+	--color-gold: #ffd700;
+	/* Fond des tooltips / infobulles */
+	--color-tooltip-bg: #151522;
 
 	--font-display: 'Montserrat Alternates', sans-serif;
 }

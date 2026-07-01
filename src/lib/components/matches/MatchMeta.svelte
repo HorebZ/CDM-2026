@@ -42,7 +42,7 @@
 		<span
 			class={[
 				'text-[11px] font-bold tracking-[0.06em] text-text-muted uppercase max-[800px]:hidden',
-				phase === 'final' && 'text-[#ffd700]'
+				phase === 'final' && 'text-gold'
 			]}
 		>
 			{phaseLabel ?? PHASE_LABELS[phase]}
@@ -52,7 +52,7 @@
 		<span
 			class={[
 				'hidden justify-self-end text-[11px] font-bold tracking-[0.06em] text-text-muted uppercase max-[800px]:col-start-3 max-[800px]:row-start-1 max-[800px]:inline-flex',
-				phase === 'final' && 'text-[#ffd700]'
+				phase === 'final' && 'text-gold'
 			]}
 		>
 			{mobileLabel}

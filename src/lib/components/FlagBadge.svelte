@@ -61,8 +61,8 @@
 	.flag-badge--celebrating {
 		animation: celebrate-jump 0.85s ease-in-out infinite;
 		animation-delay: var(--jump-delay, 0ms);
-		border-color: #ffd700;
-		box-shadow: 0 0 10px 2px rgba(255, 215, 0, 0.35);
+		border-color: var(--color-gold);
+		box-shadow: 0 0 10px 2px color-mix(in srgb, var(--color-gold) 35%, transparent);
 	}
 
 	.flag-badge::after {

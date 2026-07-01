@@ -67,7 +67,7 @@
 					<td class="max-w-0 px-2 py-2">
 						<div class="flex min-w-0 items-center gap-1.5 overflow-hidden">
 							<img
-								class="h-3.5 w-[21px] shrink-0 rounded-[2px] border border-[rgba(255,255,255,0.12)] object-cover"
+								class="h-3.5 w-[21px] shrink-0 rounded-[2px] border border-ring-medium object-cover"
 								src={getFlagUrlSmall(nation.code)}
 								alt=""
 								width={21}

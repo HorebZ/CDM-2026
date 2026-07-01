@@ -11,7 +11,7 @@
 </script>
 
 <Tooltip>
-	<div class="size-13 shrink-0 overflow-hidden rounded-full border border-[rgba(255,255,255,0.1)]">
+	<div class="size-13 shrink-0 overflow-hidden rounded-full border border-ring-medium">
 		<img
 			src={getFlagUrl(nation.code)}
 			alt=""

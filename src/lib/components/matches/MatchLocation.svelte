@@ -25,7 +25,7 @@
 	}: Props = $props();
 
 	const flagClasses =
-		'block h-[14px] w-[22px] shrink-0 rounded-[2px] border border-[rgba(255,255,255,0.1)] object-cover';
+		'block h-[14px] w-[22px] shrink-0 rounded-[2px] border border-ring-medium object-cover';
 </script>
 
 <TooltipTrigger

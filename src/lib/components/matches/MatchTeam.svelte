@@ -18,7 +18,7 @@
 	const { side, nation, label, align, isWinner, isLoser, isMatchPassed }: Props = $props();
 	const containerClasses = 'flex flex-1 items-center gap-[5px]';
 	const flagClasses =
-		'block h-[21px] w-8 shrink-0 rounded-[3px] border-[1.5px] border-[rgba(255,255,255,0.12)] object-cover transition-[border-color,filter]';
+		'block h-[21px] w-8 shrink-0 rounded-[3px] border-[1.5px] border-ring-medium object-cover transition-[border-color,filter]';
 	const placeholderClasses =
 		'inline-flex h-[21px] min-w-8 shrink-0 items-center justify-center rounded-[3px] border-[1.5px] border-dashed border-[rgba(255,255,255,0.18)] bg-[rgba(255,255,255,0.04)] px-1.5 text-[10px] leading-none font-bold uppercase tracking-[0.04em] text-[rgba(255,255,255,0.75)] transition-[filter]';
 
@@ -44,7 +44,8 @@
 				<img
 					class={[
 						flagClasses,
-						isWinner && 'border-[#ffd700] shadow-[0_0_8px_1px_rgba(255,215,0,0.35)]',
+						isWinner &&
+							'border-gold shadow-[0_0_8px_1px_color-mix(in_srgb,var(--color-gold)_35%,transparent)]',
 						isLoser && 'grayscale-80'
 					]}
 					src={getFlagUrl(nation.code)}
