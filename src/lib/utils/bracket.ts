@@ -8,7 +8,7 @@ import {
 	SMALL_FINAL_FIFA_MATCH_NUMBER,
 	type BracketColumnPhase
 } from '$lib/data/bracket-order.js';
-import type { Match, MatchPhase, MatchResultKey } from '$lib/types/index.js';
+import type { Match, MatchPhase, MatchResultKey, Nation } from '$lib/types/index.js';
 import { getMatchDates, isMatchDatePassed } from '$lib/utils/date.js';
 
 export { BRACKET_COLUMN_PHASES, type BracketColumnPhase };
@@ -29,6 +29,7 @@ export const BRACKET_COLUMN_LABELS: Record<BracketColumnPhase, string> = {
 export interface BracketMatchSideDisplay {
 	label: string;
 	flagCode?: string;
+	nation?: Nation;
 	score?: number;
 	penalties?: number;
 	isWinner: boolean;
@@ -74,6 +75,7 @@ function buildMatchDisplay(match: Match): BracketMatchDisplay {
 		return {
 			label: nation?.name ?? side.label ?? 'TBD',
 			flagCode: nation?.code,
+			nation: nation ?? undefined,
 			score: side.score?.regularTime,
 			penalties: match.result?.resolution === 'penalties' ? side.score?.penalties : undefined,
 			isWinner: winner === teamIndex,

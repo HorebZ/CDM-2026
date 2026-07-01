@@ -218,7 +218,7 @@ const GROUP_G = {
 		confederation: CONFEDERATIONS.UEFA,
 		group: 'G',
 		participation: 15,
-		enabled: false
+		enabled: true
 	},
 	IRAN: {
 		code: 'ir',
@@ -296,7 +296,7 @@ const GROUP_I = {
 		confederation: CONFEDERATIONS.CAF,
 		group: 'I',
 		participation: 4,
-		enabled: true
+		enabled: false
 	},
 	NORVEGE: {
 		code: 'no',
