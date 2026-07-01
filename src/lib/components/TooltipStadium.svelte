@@ -16,7 +16,7 @@
 
 <Tooltip className="min-w-[260px]">
 	<div
-		class="flag-badge relative size-13 shrink-0 overflow-hidden rounded-full border-[1.5px] border-ring-subtle bg-[rgba(255,255,255,0.02)] p-0"
+		class="flag-ring relative size-13 shrink-0 overflow-hidden rounded-full border-[1.5px] border-ring-subtle bg-[rgba(255,255,255,0.02)] p-0"
 	>
 		<img
 			class="block size-full object-cover"
@@ -36,21 +36,3 @@
 		>
 	</div>
 </Tooltip>
-
-<style>
-	img {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-		display: block;
-	}
-
-	.flag-badge::after {
-		content: '';
-		position: absolute;
-		inset: 0;
-		border-radius: 9999px;
-		box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
-		pointer-events: none;
-	}
-</style>

@@ -13,6 +13,7 @@
 <Tooltip>
 	<div class="size-13 shrink-0 overflow-hidden rounded-full border border-ring-medium">
 		<img
+			class="block size-full object-cover"
 			src={getFlagUrl(nation.code)}
 			alt=""
 			width={48}
@@ -31,12 +32,3 @@
 		>
 	</div>
 </Tooltip>
-
-<style>
-	img {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-		display: block;
-	}
-</style>

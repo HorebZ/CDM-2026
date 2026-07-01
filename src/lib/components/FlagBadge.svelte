@@ -26,7 +26,7 @@
 	{#snippet trigger()}
 		<div
 			class={[
-				'flag-badge relative size-(--flag-size) shrink-0 overflow-hidden rounded-full border-[1.5px] border-ring-subtle bg-[rgba(255,255,255,0.02)] p-0 duration-300 group-hover:border-ring-active',
+				'flag-ring relative size-(--flag-size) shrink-0 overflow-hidden rounded-full border-[1.5px] border-ring-subtle bg-[rgba(255,255,255,0.02)] p-0 duration-300 group-hover:border-ring-active',
 				celebrating
 					? 'flag-badge--celebrating'
 					: 'transition-[border-color,transform] group-hover:scale-[1.08]',
@@ -63,15 +63,6 @@
 		animation-delay: var(--jump-delay, 0ms);
 		border-color: var(--color-gold);
 		box-shadow: 0 0 10px 2px color-mix(in srgb, var(--color-gold) 35%, transparent);
-	}
-
-	.flag-badge::after {
-		content: '';
-		position: absolute;
-		inset: 0;
-		border-radius: 9999px;
-		box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
-		pointer-events: none;
 	}
 
 	@keyframes celebrate-jump {
