@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { getFlagUrlSmall } from '$lib/config/site.js';
-	import type { BracketMatchDisplay } from '$lib/utils/bracket.js';
+	import type { BracketMatchDisplay, BracketMatchSideDisplay } from '$lib/utils/bracket.js';
 
 	interface Props {
 		display: BracketMatchDisplay;
@@ -37,80 +37,46 @@
 				: 'border-ring-subtle bg-surface-card'
 		]}
 	>
-		{#if display.side1.flagCode}
-			<img
-				class={[flagClasses, 'col-start-1', display.side1.isLoser && 'grayscale-80']}
-				src={getFlagUrlSmall(display.side1.flagCode)}
-				alt=""
-				width={24}
-				height={16}
-				loading="lazy"
-				decoding="async"
-			/>
-			<span
-				class={[
-					nameClasses,
-					'col-start-2',
-					display.side1.isWinner && 'text-[#ffd700]',
-					display.side1.isLoser && 'text-text-muted opacity-50'
-				]}
-			>
-				{display.side1.label}
-			</span>
-		{:else}
-			<span
-				class={[placeholderClasses, 'col-start-1', display.side1.isLoser && 'grayscale-80']}
-				aria-label={display.side1.label}
-			>
-				{display.side1.label}
-			</span>
-		{/if}
-		<span class={display.hasScore ? scoreClasses : noScoreClasses}>
-			{#if display.hasScore}
-				{#if display.side1.penalties !== undefined}<span class={penaltyClasses}
-						>({display.side1.penalties})</span
-					>{' '}{/if}{display.side1.score}
-			{:else}
-				-
-			{/if}
-		</span>
-
-		{#if display.side2.flagCode}
-			<img
-				class={[flagClasses, 'col-start-1', display.side2.isLoser && 'grayscale-80']}
-				src={getFlagUrlSmall(display.side2.flagCode)}
-				alt=""
-				width={24}
-				height={16}
-				loading="lazy"
-				decoding="async"
-			/>
-			<span
-				class={[
-					nameClasses,
-					'col-start-2',
-					display.side2.isWinner && 'text-[#ffd700]',
-					display.side2.isLoser && 'text-text-muted opacity-50'
-				]}
-			>
-				{display.side2.label}
-			</span>
-		{:else}
-			<span
-				class={[placeholderClasses, 'col-start-1', display.side2.isLoser && 'grayscale-80']}
-				aria-label={display.side2.label}
-			>
-				{display.side2.label}
-			</span>
-		{/if}
-		<span class={display.hasScore ? scoreClasses : noScoreClasses}>
-			{#if display.hasScore}
-				{#if display.side2.penalties !== undefined}<span class={penaltyClasses}
-						>({display.side2.penalties})</span
-					>{' '}{/if}{display.side2.score}
-			{:else}
-				-
-			{/if}
-		</span>
+		{@render side(display.side1)}
+		{@render side(display.side2)}
 	</article>
 </div>
+
+{#snippet side(team: BracketMatchSideDisplay)}
+	{#if team.flagCode}
+		<img
+			class={[flagClasses, 'col-start-1', team.isLoser && 'grayscale-80']}
+			src={getFlagUrlSmall(team.flagCode)}
+			alt=""
+			width={24}
+			height={16}
+			loading="lazy"
+			decoding="async"
+		/>
+		<span
+			class={[
+				nameClasses,
+				'col-start-2',
+				team.isWinner && 'text-[#ffd700]',
+				team.isLoser && 'text-text-muted opacity-50'
+			]}
+		>
+			{team.label}
+		</span>
+	{:else}
+		<span
+			class={[placeholderClasses, 'col-start-1', team.isLoser && 'grayscale-80']}
+			aria-label={team.label}
+		>
+			{team.label}
+		</span>
+	{/if}
+	<span class={display.hasScore ? scoreClasses : noScoreClasses}>
+		{#if display.hasScore}
+			{#if team.penalties !== undefined}<span class={penaltyClasses}>({team.penalties})</span
+				>{' '}{/if}{team.score}
+		{:else}
+			-
+		{/if}
+	</span>
+{/snippet}
