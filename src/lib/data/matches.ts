@@ -1673,7 +1673,7 @@ const EIGHTH_FINAL_MATCHES: Match[] = [
 				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
-				label: 'TBD',
+				nationId: NATION_IDS.FRANCE,
 				score: { regularTime: 0 },
 				stats: { yellowCards: 0, redCards: 0 }
 			}
@@ -1704,12 +1704,12 @@ const EIGHTH_FINAL_MATCHES: Match[] = [
 		stadiumId: STADIUM_IDS.MEXICO,
 		sides: [
 			{
-				label: 'TBD',
+				nationId: NATION_IDS.MEXIQUE,
 				score: { regularTime: 0 },
 				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
-				label: 'TBD',
+				nationId: NATION_IDS.ANGLETERRE,
 				score: { regularTime: 0 },
 				stats: { yellowCards: 0, redCards: 0 }
 			}

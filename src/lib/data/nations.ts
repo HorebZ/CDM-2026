@@ -156,7 +156,7 @@ const GROUP_E = {
 		confederation: CONFEDERATIONS.CONMEBOL,
 		group: 'E',
 		participation: 5,
-		enabled: true
+		enabled: false
 	},
 	COTE_IVOIRE: {
 		code: 'ci',
@@ -218,7 +218,7 @@ const GROUP_G = {
 		confederation: CONFEDERATIONS.UEFA,
 		group: 'G',
 		participation: 15,
-		enabled: true
+		enabled: false
 	},
 	IRAN: {
 		code: 'ir',
@@ -378,11 +378,11 @@ const GROUP_K = {
 	},
 	RDC: {
 		code: 'cd',
-		name: 'République démocratique du Congo',
+		name: 'RD Congo',
 		confederation: CONFEDERATIONS.CAF,
 		group: 'K',
 		participation: 2,
-		enabled: true
+		enabled: false
 	}
 } as const satisfies Record<string, Nation>;
 

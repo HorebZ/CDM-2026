@@ -1511,6 +1511,28 @@
 			{
 				"score": {
 					"regularTime": 0
+				},
+				"stats": {
+					"yellowCards": 0,
+					"redCards": 1
+				}
+			}
+		]
+	},
+	"2026-07-01T12:00:00|ATLANTA": {
+		"result": {
+			"resolution": "regular",
+			"winner": 1
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 2
+				}
+			},
+			{
+				"score": {
+					"regularTime": 1
 				}
 			}
 		]
