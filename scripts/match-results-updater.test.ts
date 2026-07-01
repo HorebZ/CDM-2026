@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { NATION_IDS } from './nations';
-import { parseWikipediaResults, updateMatchResults } from '../../../scripts/update-match-results';
+import { NATION_IDS } from '../src/lib/data/nations';
+import { parseWikipediaResults, updateMatchResults } from './update-match-results';
 
 describe('parseWikipediaResults', () => {
 	it('ignore les dates qui ressemblent à un score', () => {
@@ -229,6 +229,121 @@ describe('updateMatchResults', () => {
 			sides: [
 				{ score: { regularTime: 1, penalties: 3 } },
 				{ score: { regularTime: 1, penalties: 4 } }
+			]
+		});
+	});
+
+	it("n'écrase pas un résultat aux tirs au but avec un score de temps réglementaire", async () => {
+		expect.hasAssertions();
+
+		let written = false;
+		const summary = await updateMatchResults({
+			now: new Date('2026-06-30T12:00:00Z'),
+			existingResults: {
+				'2026-06-29T16:30:00|BOSTON': {
+					result: { resolution: 'penalties', winner: 2 },
+					sides: [
+						{ score: { regularTime: 1, penalties: 3 } },
+						{ score: { regularTime: 1, penalties: 4 } }
+					]
+				}
+			},
+			sourceUrls: ['https://example.test/knockout'],
+			fetchHtml: async () => `<table>
+				<tr>
+					<td>74</td>
+					<td>Allemagne</td>
+					<td>1 - 1</td>
+					<td>Paraguay</td>
+				</tr>
+			</table>`,
+			writeResults: async () => {
+				written = true;
+			}
+		});
+
+		expect(summary.updated).toEqual([]);
+		expect(summary.unchanged).toBe(true);
+		expect(written).toBe(false);
+	});
+
+	it("n'écrase pas un vainqueur déjà enregistré", async () => {
+		expect.hasAssertions();
+
+		let written = false;
+		const summary = await updateMatchResults({
+			now: new Date('2026-06-19T18:00:00Z'),
+			existingResults: {
+				'2026-06-18T12:00:00|ATLANTA': {
+					result: { resolution: 'regular', winner: 1 },
+					sides: [{ score: { regularTime: 2 } }, { score: { regularTime: 0 } }]
+				}
+			},
+			sourceUrls: ['https://example.test/group-a'],
+			fetchHtml: async () => `<table>
+				<tr>
+					<td>Tchéquie</td>
+					<td>1 - 0</td>
+					<td>Afrique du Sud</td>
+				</tr>
+			</table>`,
+			writeResults: async () => {
+				written = true;
+			}
+		});
+
+		expect(summary.updated).toEqual([]);
+		expect(written).toBe(false);
+	});
+
+	it('complète les statistiques sans toucher au score décidé', async () => {
+		expect.hasAssertions();
+
+		let writtenContent = '';
+		await updateMatchResults({
+			now: new Date('2026-06-19T18:00:00Z'),
+			existingResults: {
+				'2026-06-18T12:00:00|ATLANTA': {
+					result: { resolution: 'regular', winner: 1 },
+					sides: [{ score: { regularTime: 2 } }, { score: { regularTime: 0 } }]
+				}
+			},
+			sourceUrls: ['https://example.test/group-a'],
+			fetchHtml: async () => `<table>
+				<tr>
+					<td>Tchéquie</td>
+					<td>1 - 0</td>
+					<td>Afrique du Sud</td>
+				</tr>
+			</table>
+			<table>
+				<tr><th>TCHÉQUIE :</th></tr>
+				<tr>
+					<td>04</td>
+					<td>Joueur</td>
+					<td><img alt="Carton jaune" /></td>
+				</tr>
+			</table>
+			<table>
+				<tr><th>AFRIQUE DU SUD :</th></tr>
+				<tr>
+					<td>05</td>
+					<td>Joueur</td>
+					<td><img alt="Carton rouge" /></td>
+				</tr>
+			</table>`,
+			writeResults: async (content) => {
+				writtenContent = content;
+			}
+		});
+
+		const results = JSON.parse(writtenContent);
+
+		expect(results['2026-06-18T12:00:00|ATLANTA']).toEqual({
+			result: { resolution: 'regular', winner: 1 },
+			sides: [
+				{ score: { regularTime: 2 }, stats: { yellowCards: 1, redCards: 0 } },
+				{ score: { regularTime: 0 }, stats: { yellowCards: 0, redCards: 1 } }
 			]
 		});
 	});

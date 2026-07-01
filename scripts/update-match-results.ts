@@ -505,6 +505,35 @@ function hasParsedStats(result: ParsedWikipediaResult): boolean {
 	return Boolean(result.homeStats || result.awayStats);
 }
 
+function isResultDecided(entry: MatchResultEntry): boolean {
+	return (
+		entry.result.winner !== undefined ||
+		entry.result.resolution === 'penalties' ||
+		entry.sides.some((side) => side.score.penalties !== undefined)
+	);
+}
+
+function preserveDecidedResult(
+	storedResult: MatchResultEntry,
+	nextEntry: MatchResultEntry
+): MatchResultEntry {
+	if (!isResultDecided(storedResult)) {
+		return nextEntry;
+	}
+
+	return {
+		result: storedResult.result,
+		sides: storedResult.sides.map((side, index) => {
+			const stats = side.stats ?? nextEntry.sides[index]?.stats;
+
+			return {
+				score: side.score,
+				...(stats ? { stats } : {})
+			};
+		})
+	};
+}
+
 function getComparableResultKey(candidate: CandidateMatch, result: ParsedWikipediaResult): string {
 	const entry = buildResultEntry(candidate, result);
 
@@ -647,7 +676,11 @@ export async function updateMatchResults({
 		}
 
 		const parsedResult = uniqueResults[0];
-		const nextEntry = buildResultEntry(candidate, parsedResult);
+		const builtEntry = buildResultEntry(candidate, parsedResult);
+		const nextEntry =
+			candidate.storedResult && !force
+				? preserveDecidedResult(candidate.storedResult, builtEntry)
+				: builtEntry;
 
 		if (
 			candidate.storedResult &&
