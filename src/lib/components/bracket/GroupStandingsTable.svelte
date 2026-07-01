@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { getFlagUrlSmall } from '$lib/config/site.js';
+	import FlagImage from '../FlagImage.svelte';
 	import { NATIONS } from '$lib/data/nations.js';
 	import { getGroupStandingsWithQualification } from '$lib/utils/group-standings.js';
 	import type { GroupId } from '$lib/types/index.js';
@@ -66,14 +66,13 @@
 					</td>
 					<td class="max-w-0 px-2 py-2">
 						<div class="flex min-w-0 items-center gap-1.5 overflow-hidden">
-							<img
-								class="h-3.5 w-[21px] shrink-0 rounded-[2px] border border-ring-medium object-cover"
-								src={getFlagUrlSmall(nation.code)}
+							<FlagImage
+								code={nation.code}
 								alt=""
+								small
 								width={21}
 								height={14}
-								loading="lazy"
-								decoding="async"
+								class="h-3.5 w-[21px] rounded-[2px] border"
 							/>
 							<span
 								class="min-w-0 flex-1 truncate font-semibold text-text-primary"

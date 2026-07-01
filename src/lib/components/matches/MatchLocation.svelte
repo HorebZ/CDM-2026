@@ -1,4 +1,5 @@
 <script lang="ts">
+	import FlagImage from '$lib/components/FlagImage.svelte';
 	import TooltipStadium from '$lib/components/TooltipStadium.svelte';
 	import TooltipTrigger from '$lib/components/TooltipTrigger.svelte';
 
@@ -23,9 +24,6 @@
 		flagUrl,
 		tv = false
 	}: Props = $props();
-
-	const flagClasses =
-		'block h-[14px] w-[22px] shrink-0 rounded-[2px] border border-ring-medium object-cover';
 </script>
 
 <TooltipTrigger
@@ -48,13 +46,12 @@
 						{cityName}
 					</span>
 				{/if}
-				<img
-					class={flagClasses}
-					src={flagUrl}
+				<FlagImage
+					code={countryCode}
 					alt={countryCode}
 					width={28}
 					height={18}
-					loading="lazy"
+					class="block h-[14px] w-[22px] rounded-[2px] border"
 				/>
 			</div>
 			{#if tv}

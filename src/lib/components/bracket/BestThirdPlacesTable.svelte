@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { getFlagUrlSmall } from '$lib/config/site.js';
+	import FlagImage from '../FlagImage.svelte';
 	import { NATIONS } from '$lib/data/nations.js';
 	import { getBestThirdPlaces } from '$lib/utils/group-standings.js';
 
@@ -47,14 +47,13 @@
 						</td>
 						<td class="px-3 py-2.5">
 							<div class="flex min-w-0 items-center gap-2">
-								<img
-									class="h-4 w-6 shrink-0 rounded-[2px] border border-ring-medium object-cover"
-									src={getFlagUrlSmall(nation.code)}
+								<FlagImage
+									code={nation.code}
 									alt=""
+									small
 									width={24}
 									height={16}
-									loading="lazy"
-									decoding="async"
+									class="h-4 w-6 rounded-[2px] border"
 								/>
 								<span class="truncate font-semibold text-text-primary">
 									{nation.name}

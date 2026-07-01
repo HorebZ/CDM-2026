@@ -1,6 +1,7 @@
 <script lang="ts">
-	import { getFlagUrl } from '$lib/config/site.js';
 	import type { MatchSide, Nation } from '$lib/types/index.js';
+	import FlagImage from '../FlagImage.svelte';
+	import FlagPlaceholder from '../FlagPlaceholder.svelte';
 	import TooltipNation from '../TooltipNation.svelte';
 	import TooltipTrigger from '../TooltipTrigger.svelte';
 	import MatchCardStat from './MatchCardStat.svelte';
@@ -17,10 +18,6 @@
 
 	const { side, nation, label, align, isWinner, isLoser, isMatchPassed }: Props = $props();
 	const containerClasses = 'flex flex-1 items-center gap-[5px]';
-	const flagClasses =
-		'block h-[21px] w-8 shrink-0 rounded-[3px] border-[1.5px] border-ring-medium object-cover transition-[border-color,filter]';
-	const placeholderClasses =
-		'inline-flex h-[21px] min-w-8 shrink-0 items-center justify-center rounded-[3px] border-[1.5px] border-dashed border-[rgba(255,255,255,0.18)] bg-[rgba(255,255,255,0.04)] px-1.5 text-[10px] leading-none font-bold uppercase tracking-[0.04em] text-[rgba(255,255,255,0.75)] transition-[filter]';
 
 	const showRedCards = $derived(isMatchPassed && side.stats.redCards > 0);
 </script>
@@ -41,18 +38,14 @@
 	{#if nation}
 		<TooltipTrigger className="relative block h-[21px] w-8 shrink-0" role="group">
 			{#snippet trigger()}
-				<img
-					class={[
-						flagClasses,
-						isWinner &&
-							'border-gold shadow-[0_0_8px_1px_color-mix(in_srgb,var(--color-gold)_35%,transparent)]',
-						isLoser && 'grayscale-80'
-					]}
-					src={getFlagUrl(nation.code)}
+				<FlagImage
+					code={nation.code}
 					alt={label}
+					winner={isWinner}
+					loser={isLoser}
 					width={32}
 					height={21}
-					loading="lazy"
+					class="block h-[21px] w-8 rounded-[3px] border-[1.5px] transition-[border-color,filter]"
 				/>
 			{/snippet}
 
@@ -61,9 +54,11 @@
 			{/snippet}
 		</TooltipTrigger>
 	{:else}
-		<span class={[placeholderClasses, isLoser && 'grayscale-80']} aria-label={label}>
+		<FlagPlaceholder
 			{label}
-		</span>
+			loser={isLoser}
+			class="h-[21px] min-w-8 rounded-[3px] border-[1.5px] px-1.5 text-[10px] leading-none transition-[filter]"
+		/>
 	{/if}
 
 	{#if align === 'right'}

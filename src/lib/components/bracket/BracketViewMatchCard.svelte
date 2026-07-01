@@ -1,6 +1,7 @@
 <script lang="ts">
-	import { getFlagUrlSmall } from '$lib/config/site.js';
 	import type { BracketMatchDisplay, BracketMatchSideDisplay } from '$lib/utils/bracket.js';
+	import FlagImage from '../FlagImage.svelte';
+	import FlagPlaceholder from '../FlagPlaceholder.svelte';
 
 	interface Props {
 		display: BracketMatchDisplay;
@@ -9,9 +10,6 @@
 
 	const { display, highlight = false }: Props = $props();
 
-	const flagClasses = 'h-4 w-6 shrink-0 rounded-[2px] border border-ring-medium object-cover';
-	const placeholderClasses =
-		'inline-flex h-4 min-w-6 shrink-0 items-center justify-center rounded-[2px] border border-dashed border-[rgba(255,255,255,0.18)] bg-[rgba(255,255,255,0.04)] px-1 text-[9px] leading-none font-bold tracking-[0.04em] text-[rgba(255,255,255,0.75)] uppercase';
 	const nameClasses = 'min-w-0 truncate text-[11px] font-semibold text-text-primary';
 	const scoreClasses = 'col-start-3 shrink-0 text-[11px] font-black text-text-primary';
 	const noScoreClasses = 'col-start-3 shrink-0 text-[11px] font-bold text-text-muted';
@@ -43,14 +41,14 @@
 
 {#snippet side(team: BracketMatchSideDisplay)}
 	{#if team.flagCode}
-		<img
-			class={[flagClasses, 'col-start-1', team.isLoser && 'grayscale-80']}
-			src={getFlagUrlSmall(team.flagCode)}
+		<FlagImage
+			code={team.flagCode}
 			alt=""
+			small
+			loser={team.isLoser}
 			width={24}
 			height={16}
-			loading="lazy"
-			decoding="async"
+			class="col-start-1 h-4 w-6 rounded-[2px] border"
 		/>
 		<span
 			class={[
@@ -63,12 +61,11 @@
 			{team.label}
 		</span>
 	{:else}
-		<span
-			class={[placeholderClasses, 'col-start-1', team.isLoser && 'grayscale-80']}
-			aria-label={team.label}
-		>
-			{team.label}
-		</span>
+		<FlagPlaceholder
+			label={team.label}
+			loser={team.isLoser}
+			class="col-start-1 h-4 min-w-6 rounded-[2px] border px-1 text-[9px] leading-none"
+		/>
 	{/if}
 	<span class={display.hasScore ? scoreClasses : noScoreClasses}>
 		{#if display.hasScore}
