@@ -1429,40 +1429,34 @@
 	},
 	"2026-06-29T16:30:00|BOSTON": {
 		"result": {
-			"resolution": "penalties",
-			"winner": 2
+			"resolution": "regular"
 		},
 		"sides": [
 			{
 				"score": {
-					"regularTime": 1,
-					"penalties": 3
+					"regularTime": 1
 				}
 			},
 			{
 				"score": {
-					"regularTime": 1,
-					"penalties": 4
+					"regularTime": 1
 				}
 			}
 		]
 	},
 	"2026-06-29T19:00:00|MONTERREY": {
 		"result": {
-			"resolution": "penalties",
-			"winner": 2
+			"resolution": "regular"
 		},
 		"sides": [
 			{
 				"score": {
-					"regularTime": 1,
-					"penalties": 2
+					"regularTime": 1
 				}
 			},
 			{
 				"score": {
-					"regularTime": 1,
-					"penalties": 3
+					"regularTime": 1
 				}
 			}
 		]
@@ -1481,6 +1475,24 @@
 			{
 				"score": {
 					"regularTime": 2
+				}
+			}
+		]
+	},
+	"2026-06-30T17:00:00|NEW_YORK": {
+		"result": {
+			"resolution": "regular",
+			"winner": 1
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 3
+				}
+			},
+			{
+				"score": {
+					"regularTime": 0
 				}
 			}
 		]
