@@ -16,6 +16,7 @@
 	const nameClasses = 'min-w-0 truncate text-[11px] font-semibold text-text-primary';
 	const scoreClasses = 'col-start-3 shrink-0 text-[11px] font-black text-text-primary';
 	const noScoreClasses = 'col-start-3 shrink-0 text-[11px] font-bold text-text-muted';
+	const penaltyClasses = 'font-bold text-text-muted';
 </script>
 
 <div class="relative w-full min-w-[148px]">
@@ -51,7 +52,7 @@
 					nameClasses,
 					'col-start-2',
 					display.side1.isWinner && 'text-[#ffd700]',
-					display.side1.isLoser && 'text-text-muted'
+					display.side1.isLoser && 'text-text-muted opacity-50'
 				]}
 			>
 				{display.side1.label}
@@ -65,7 +66,13 @@
 			</span>
 		{/if}
 		<span class={display.hasScore ? scoreClasses : noScoreClasses}>
-			{display.hasScore ? display.side1.score : '-'}
+			{#if display.hasScore}
+				{#if display.side1.penalties !== undefined}<span class={penaltyClasses}
+						>({display.side1.penalties})</span
+					>{' '}{/if}{display.side1.score}
+			{:else}
+				-
+			{/if}
 		</span>
 
 		{#if display.side2.flagCode}
@@ -83,7 +90,7 @@
 					nameClasses,
 					'col-start-2',
 					display.side2.isWinner && 'text-[#ffd700]',
-					display.side2.isLoser && 'text-text-muted'
+					display.side2.isLoser && 'text-text-muted opacity-50'
 				]}
 			>
 				{display.side2.label}
@@ -97,7 +104,13 @@
 			</span>
 		{/if}
 		<span class={display.hasScore ? scoreClasses : noScoreClasses}>
-			{display.hasScore ? display.side2.score : '-'}
+			{#if display.hasScore}
+				{#if display.side2.penalties !== undefined}<span class={penaltyClasses}
+						>({display.side2.penalties})</span
+					>{' '}{/if}{display.side2.score}
+			{:else}
+				-
+			{/if}
 		</span>
 	</article>
 </div>

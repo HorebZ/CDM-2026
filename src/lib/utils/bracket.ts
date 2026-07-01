@@ -30,6 +30,7 @@ export interface BracketMatchSideDisplay {
 	label: string;
 	flagCode?: string;
 	score?: number;
+	penalties?: number;
 	isWinner: boolean;
 	isLoser: boolean;
 }
@@ -74,6 +75,7 @@ function buildMatchDisplay(match: Match): BracketMatchDisplay {
 			label: nation?.name ?? side.label ?? 'TBD',
 			flagCode: nation?.code,
 			score: side.score?.regularTime,
+			penalties: match.result?.resolution === 'penalties' ? side.score?.penalties : undefined,
 			isWinner: winner === teamIndex,
 			isLoser: winner !== undefined && winner !== teamIndex
 		};
