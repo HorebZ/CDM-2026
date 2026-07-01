@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { MATCHES } from '$lib/data/matches.js';
 import { NATION_IDS, NATIONS } from '$lib/data/nations.js';
 import {
 	TV_COUNTRY_ROUTE_ENTRIES,
@@ -34,7 +35,13 @@ describe('tv-country', () => {
 
 		const matches = getTvCountryMatches(result);
 
-		expect(matches).toHaveLength(4);
+		// Le nombre de matchs de la France évolue au fil de sa qualification :
+		// on le dérive de la donnée source plutôt que de le figer.
+		const franceMatches = MATCHES.filter((match) =>
+			match.sides.some((side) => side.nationId === NATION_IDS.FRANCE)
+		);
+		expect(franceMatches.length).toBeGreaterThan(0);
+		expect(matches).toHaveLength(franceMatches.length);
 		for (const match of matches) {
 			expect(match.sides.some((side) => side.nationId === NATION_IDS.FRANCE)).toBe(true);
 		}
