@@ -2,6 +2,8 @@
 	import type { BracketMatchDisplay, BracketMatchSideDisplay } from '$lib/utils/bracket.js';
 	import FlagImage from '../FlagImage.svelte';
 	import FlagPlaceholder from '../FlagPlaceholder.svelte';
+	import TooltipNation from '../TooltipNation.svelte';
+	import TooltipTrigger from '../TooltipTrigger.svelte';
 
 	interface Props {
 		display: BracketMatchDisplay;
@@ -28,7 +30,7 @@
 
 	<article
 		class={[
-			'grid h-[52px] w-full grid-cols-[auto_1fr_auto] items-center gap-x-2 gap-y-1 overflow-hidden rounded-[8px] border px-2.5 py-2',
+			'grid h-[52px] w-full grid-cols-[auto_1fr_auto] content-center items-center gap-x-2 gap-y-1 rounded-[8px] border px-2.5 py-2',
 			highlight
 				? 'border-gold/45 bg-gold/[0.04] shadow-[0_0_16px_color-mix(in_srgb,var(--color-gold)_8%,transparent)]'
 				: 'border-ring-subtle bg-surface-card'
@@ -40,16 +42,25 @@
 </div>
 
 {#snippet side(team: BracketMatchSideDisplay)}
-	{#if team.flagCode}
-		<FlagImage
-			code={team.flagCode}
-			alt=""
-			small
-			loser={team.isLoser}
-			width={24}
-			height={16}
-			class="col-start-1 h-4 w-6 rounded-[2px] border"
-		/>
+	{@const nation = team.nation}
+	{#if nation}
+		<TooltipTrigger className="relative col-start-1 block h-4 w-4 shrink-0" role="group">
+			{#snippet trigger()}
+				<FlagImage
+					code={nation.code}
+					alt={team.label}
+					small
+					loser={team.isLoser}
+					width={16}
+					height={16}
+					class="block h-4 w-4 rounded-full border"
+				/>
+			{/snippet}
+
+			{#snippet tooltip()}
+				<TooltipNation {nation} />
+			{/snippet}
+		</TooltipTrigger>
 		<span
 			class={[
 				nameClasses,
