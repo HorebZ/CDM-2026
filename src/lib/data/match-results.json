@@ -1570,6 +1570,10 @@
 			{
 				"score": {
 					"regularTime": 2
+				},
+				"stats": {
+					"yellowCards": 0,
+					"redCards": 1
 				}
 			},
 			{
