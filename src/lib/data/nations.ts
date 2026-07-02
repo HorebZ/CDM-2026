@@ -331,7 +331,7 @@ const GROUP_J = {
 		confederation: CONFEDERATIONS.UEFA,
 		group: 'J',
 		participation: 8,
-		enabled: true
+		enabled: false
 	},
 	ALGERIE: {
 		code: 'dz',

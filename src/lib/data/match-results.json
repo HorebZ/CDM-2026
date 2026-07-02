@@ -1578,5 +1578,23 @@
 				}
 			}
 		]
+	},
+	"2026-07-02T12:00:00|LOS_ANGELES": {
+		"result": {
+			"resolution": "regular",
+			"winner": 1
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 3
+				}
+			},
+			{
+				"score": {
+					"regularTime": 0
+				}
+			}
+		]
 	}
 }
