@@ -1560,5 +1560,23 @@
 				}
 			}
 		]
+	},
+	"2026-07-01T17:00:00|SANTA_CLARA": {
+		"result": {
+			"resolution": "regular",
+			"winner": 1
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 2
+				}
+			},
+			{
+				"score": {
+					"regularTime": 0
+				}
+			}
+		]
 	}
 }
