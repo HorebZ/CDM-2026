@@ -30,7 +30,7 @@
 
 	<article
 		class={[
-			'grid h-[52px] w-full grid-cols-[auto_1fr_auto] content-center items-center gap-x-2 gap-y-1 rounded-[8px] border px-2.5 py-2',
+			'grid h-[52px] w-full grid-cols-[16px_1fr_auto] content-center items-center gap-x-2 gap-y-1 rounded-[8px] border px-2.5 py-2',
 			highlight
 				? 'border-gold/45 bg-gold/[0.04] shadow-[0_0_16px_color-mix(in_srgb,var(--color-gold)_8%,transparent)]'
 				: 'border-ring-subtle bg-surface-card'
@@ -75,7 +75,7 @@
 		<FlagPlaceholder
 			label={team.label}
 			loser={team.isLoser}
-			class="col-start-1 h-4 min-w-6 rounded-[2px] border px-1 text-[9px] leading-none"
+			class="col-start-1 h-4 w-max justify-self-start rounded-[2px] border px-1 text-[9px] leading-none"
 		/>
 	{/if}
 	<span class={display.hasScore ? scoreClasses : noScoreClasses}>
