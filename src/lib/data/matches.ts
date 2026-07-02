@@ -1740,7 +1740,7 @@ const EIGHTH_FINAL_MATCHES: Match[] = [
 		stadiumId: STADIUM_IDS.SEATTLE,
 		sides: [
 			{
-				label: 'TBD',
+				nationId: NATION_IDS.USA,
 				score: { regularTime: 0 },
 				stats: { yellowCards: 0, redCards: 0 }
 			},

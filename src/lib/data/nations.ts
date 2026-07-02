@@ -67,7 +67,7 @@ const GROUP_B = {
 		confederation: CONFEDERATIONS.UEFA,
 		group: 'B',
 		participation: 2,
-		enabled: true
+		enabled: false
 	}
 } as const satisfies Record<string, Nation>;
 
