@@ -1618,5 +1618,23 @@
 				}
 			}
 		]
+	},
+	"2026-07-02T20:00:00|VANCOUVER": {
+		"result": {
+			"resolution": "regular",
+			"winner": 1
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 2
+				}
+			},
+			{
+				"score": {
+					"regularTime": 0
+				}
+			}
+		]
 	}
 }
