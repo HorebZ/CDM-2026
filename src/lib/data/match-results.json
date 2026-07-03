@@ -1600,5 +1600,23 @@
 				}
 			}
 		]
+	},
+	"2026-07-02T19:00:00|TORONTO": {
+		"result": {
+			"resolution": "regular",
+			"winner": 1
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 2
+				}
+			},
+			{
+				"score": {
+					"regularTime": 1
+				}
+			}
+		]
 	}
 }
