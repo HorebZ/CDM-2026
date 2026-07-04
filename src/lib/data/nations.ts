@@ -121,7 +121,7 @@ const GROUP_D = {
 		confederation: CONFEDERATIONS.AFC,
 		group: 'D',
 		participation: 7,
-		enabled: true
+		enabled: false
 	},
 	PARAGUAY: {
 		code: 'py',
@@ -277,7 +277,7 @@ const GROUP_H = {
 		confederation: CONFEDERATIONS.CAF,
 		group: 'H',
 		participation: 1,
-		enabled: true
+		enabled: false
 	}
 } as const satisfies Record<string, Nation>;
 
@@ -339,7 +339,7 @@ const GROUP_J = {
 		confederation: CONFEDERATIONS.CAF,
 		group: 'J',
 		participation: 5,
-		enabled: true
+		enabled: false
 	},
 	JORDANIE: {
 		code: 'jo',
@@ -401,7 +401,7 @@ const GROUP_L = {
 		confederation: CONFEDERATIONS.UEFA,
 		group: 'L',
 		participation: 7,
-		enabled: true
+		enabled: false
 	},
 	PANAMA: {
 		code: 'pa',
@@ -417,7 +417,7 @@ const GROUP_L = {
 		confederation: CONFEDERATIONS.CAF,
 		group: 'L',
 		participation: 5,
-		enabled: true
+		enabled: false
 	}
 } as const satisfies Record<string, Nation>;
 

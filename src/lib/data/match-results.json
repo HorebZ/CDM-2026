@@ -1639,17 +1639,20 @@
 	},
 	"2026-07-03T13:00:00|ARLINGTON": {
 		"result": {
-			"resolution": "regular"
+			"resolution": "penalties",
+			"winner": 2
 		},
 		"sides": [
 			{
 				"score": {
-					"regularTime": 1
+					"regularTime": 1,
+					"penalties": 2
 				}
 			},
 			{
 				"score": {
-					"regularTime": 1
+					"regularTime": 1,
+					"penalties": 4
 				}
 			}
 		]
@@ -1668,6 +1671,24 @@
 			{
 				"score": {
 					"regularTime": 2
+				}
+			}
+		]
+	},
+	"2026-07-03T20:30:00|KANSAS_CITY": {
+		"result": {
+			"resolution": "regular",
+			"winner": 1
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 1
+				}
+			},
+			{
+				"score": {
+					"regularTime": 0
 				}
 			}
 		]
