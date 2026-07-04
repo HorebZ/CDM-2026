@@ -53,10 +53,22 @@ body {
 	font-family: var(--font-display);
 	font-style: italic;
 	overflow-x: hidden;
-	background:
-		radial-gradient(circle at 0% 50%, rgba(123, 111, 189, 0.16) 0%, rgba(123, 111, 189, 0) 32%),
-		radial-gradient(circle at 100% 50%, rgba(195, 197, 255, 0.14) 0%, rgba(195, 197, 255, 0) 30%),
-		radial-gradient(ellipse 80% 60% at 50% 42%, #111120 0%, #08080f 62%, #050509 100%);
+}
+
+@utility hero-glow {
+	isolation: isolate;
+
+	&::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		z-index: -1;
+		pointer-events: none;
+		background:
+			radial-gradient(circle at 0% 50%, rgba(123, 111, 189, 0.16) 0%, rgba(123, 111, 189, 0) 32%),
+			radial-gradient(circle at 100% 50%, rgba(195, 197, 255, 0.14) 0%, rgba(195, 197, 255, 0) 30%),
+			radial-gradient(ellipse 80% 60% at 50% 55%, #111120 0%, #08080f 62%, #050509 100%);
+	}
 }
 
 a {

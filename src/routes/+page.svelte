@@ -27,7 +27,7 @@
 
 <div class="flex flex-col items-center">
 	<section
-		class="relative flex min-h-screen w-full flex-col items-center justify-center px-6 pt-11 pb-20 max-[800px]:pt-9"
+		class="hero-glow relative flex min-h-screen w-full flex-col items-center justify-center px-6 pt-11 pb-20 max-[800px]:pt-9"
 	>
 		<main
 			class="flex w-[min(100%,var(--shell-width))] flex-col items-center gap-[52px] max-[800px]:gap-10"
