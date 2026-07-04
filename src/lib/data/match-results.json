@@ -1692,5 +1692,23 @@
 				}
 			}
 		]
+	},
+	"2026-07-04T12:00:00|HOUSTON": {
+		"result": {
+			"resolution": "regular",
+			"winner": 2
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 0
+				}
+			},
+			{
+				"score": {
+					"regularTime": 3
+				}
+			}
+		]
 	}
 }

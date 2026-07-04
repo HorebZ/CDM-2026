@@ -43,7 +43,7 @@ const GROUP_B = {
 		confederation: CONFEDERATIONS.CONCACAF,
 		group: 'B',
 		participation: 3,
-		enabled: true
+		enabled: false
 	},
 	SUISSE: {
 		code: 'ch',
