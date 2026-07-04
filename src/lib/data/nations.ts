@@ -129,7 +129,7 @@ const GROUP_D = {
 		confederation: CONFEDERATIONS.CONMEBOL,
 		group: 'D',
 		participation: 9,
-		enabled: true
+		enabled: false
 	},
 	TURQUIE: {
 		code: 'tr',

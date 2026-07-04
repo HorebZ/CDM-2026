@@ -1797,7 +1797,7 @@ const QUARTER_MATCHES: Match[] = [
 		stadiumId: STADIUM_IDS.BOSTON,
 		sides: [
 			{
-				label: 'TBD',
+				nationId: NATION_IDS.FRANCE,
 				score: { regularTime: 0 },
 				stats: { yellowCards: 0, redCards: 0 }
 			},

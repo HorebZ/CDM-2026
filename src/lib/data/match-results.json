@@ -1710,5 +1710,23 @@
 				}
 			}
 		]
+	},
+	"2026-07-04T17:00:00|PHILADELPHIE": {
+		"result": {
+			"resolution": "regular",
+			"winner": 2
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 0
+				}
+			},
+			{
+				"score": {
+					"regularTime": 1
+				}
+			}
+		]
 	}
 }
