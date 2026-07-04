@@ -1636,5 +1636,40 @@
 				}
 			}
 		]
+	},
+	"2026-07-03T13:00:00|ARLINGTON": {
+		"result": {
+			"resolution": "regular"
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 1
+				}
+			},
+			{
+				"score": {
+					"regularTime": 1
+				}
+			}
+		]
+	},
+	"2026-07-03T18:00:00|MIAMI": {
+		"result": {
+			"resolution": "regular",
+			"winner": 1
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 3
+				}
+			},
+			{
+				"score": {
+					"regularTime": 2
+				}
+			}
+		]
 	}
 }
