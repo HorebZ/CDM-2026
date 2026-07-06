@@ -358,7 +358,7 @@ const GROUP_K = {
 		confederation: CONFEDERATIONS.UEFA,
 		group: 'K',
 		participation: 9,
-		enabled: true
+		enabled: false
 	},
 	COLOMBIE: {
 		code: 'co',
