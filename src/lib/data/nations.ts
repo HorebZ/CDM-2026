@@ -8,7 +8,7 @@ const GROUP_A = {
 		confederation: CONFEDERATIONS.CONCACAF,
 		group: 'A',
 		participation: 18,
-		enabled: true
+		enabled: false
 	},
 	COREE_DU_SUD: {
 		code: 'kr',
@@ -78,7 +78,7 @@ const GROUP_C = {
 		confederation: CONFEDERATIONS.CONMEBOL,
 		group: 'C',
 		participation: 23,
-		enabled: true
+		enabled: false
 	},
 	MAROC: {
 		code: 'ma',

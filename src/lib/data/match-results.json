@@ -1746,5 +1746,27 @@
 				}
 			}
 		]
+	},
+	"2026-07-05T18:00:00|MEXICO": {
+		"result": {
+			"resolution": "regular",
+			"winner": 2
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 2
+				}
+			},
+			{
+				"score": {
+					"regularTime": 3
+				},
+				"stats": {
+					"yellowCards": 0,
+					"redCards": 1
+				}
+			}
+		]
 	}
 }
