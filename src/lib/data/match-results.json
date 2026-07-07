@@ -1786,5 +1786,23 @@
 				}
 			}
 		]
+	},
+	"2026-07-06T17:00:00|SEATTLE": {
+		"result": {
+			"resolution": "regular",
+			"winner": 2
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 1
+				}
+			},
+			{
+				"score": {
+					"regularTime": 4
+				}
+			}
+		]
 	}
 }
