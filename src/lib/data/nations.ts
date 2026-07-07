@@ -113,7 +113,7 @@ const GROUP_D = {
 		confederation: CONFEDERATIONS.CONCACAF,
 		group: 'D',
 		participation: 12,
-		enabled: true
+		enabled: false
 	},
 	AUSTRALIE: {
 		code: 'au',
