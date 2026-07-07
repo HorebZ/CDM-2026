@@ -234,7 +234,7 @@ const GROUP_G = {
 		confederation: CONFEDERATIONS.CAF,
 		group: 'G',
 		participation: 4,
-		enabled: true
+		enabled: false
 	},
 	NEW_ZEALAND: {
 		code: 'nz',
