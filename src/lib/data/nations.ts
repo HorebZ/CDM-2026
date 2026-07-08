@@ -366,7 +366,7 @@ const GROUP_K = {
 		confederation: CONFEDERATIONS.CONMEBOL,
 		group: 'K',
 		participation: 7,
-		enabled: true
+		enabled: false
 	},
 	OUZBEKISTAN: {
 		code: 'uz',
