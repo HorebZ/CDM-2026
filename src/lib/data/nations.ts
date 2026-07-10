@@ -86,7 +86,7 @@ const GROUP_C = {
 		confederation: CONFEDERATIONS.CAF,
 		group: 'C',
 		participation: 7,
-		enabled: true
+		enabled: false
 	},
 	ECOSSE: {
 		code: 'gb-sct',
