@@ -1860,5 +1860,23 @@
 				}
 			}
 		]
+	},
+	"2026-07-10T12:00:00|LOS_ANGELES": {
+		"result": {
+			"resolution": "regular",
+			"winner": 1
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 2
+				}
+			},
+			{
+				"score": {
+					"regularTime": 1
+				}
+			}
+		]
 	}
 }

@@ -218,7 +218,7 @@ const GROUP_G = {
 		confederation: CONFEDERATIONS.UEFA,
 		group: 'G',
 		participation: 15,
-		enabled: true
+		enabled: false
 	},
 	IRAN: {
 		code: 'ir',
