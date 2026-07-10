@@ -1842,5 +1842,23 @@
 				}
 			}
 		]
+	},
+	"2026-07-09T16:00:00|BOSTON": {
+		"result": {
+			"resolution": "regular",
+			"winner": 1
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 2
+				}
+			},
+			{
+				"score": {
+					"regularTime": 0
+				}
+			}
+		]
 	}
 }
