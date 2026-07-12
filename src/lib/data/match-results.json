@@ -1896,5 +1896,27 @@
 				}
 			}
 		]
+	},
+	"2026-07-11T20:00:00|KANSAS_CITY": {
+		"result": {
+			"resolution": "regular",
+			"winner": 1
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 3
+				}
+			},
+			{
+				"score": {
+					"regularTime": 1
+				},
+				"stats": {
+					"yellowCards": 0,
+					"redCards": 1
+				}
+			}
+		]
 	}
 }

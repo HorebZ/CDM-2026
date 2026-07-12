@@ -1890,12 +1890,12 @@ const SEMI_MATCHES: Match[] = [
 		stadiumId: STADIUM_IDS.ATLANTA,
 		sides: [
 			{
-				label: 'TBD',
+				nationId: NATION_IDS.ANGLETERRE,
 				score: { regularTime: 0 },
 				stats: { yellowCards: 0, redCards: 0 }
 			},
 			{
-				label: 'TBD',
+				nationId: NATION_IDS.ARGENTINE,
 				score: { regularTime: 0 },
 				stats: { yellowCards: 0, redCards: 0 }
 			}

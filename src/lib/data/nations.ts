@@ -51,7 +51,7 @@ const GROUP_B = {
 		confederation: CONFEDERATIONS.UEFA,
 		group: 'B',
 		participation: 13,
-		enabled: true
+		enabled: false
 	},
 	QATAR: {
 		code: 'qa',
@@ -304,7 +304,7 @@ const GROUP_I = {
 		confederation: CONFEDERATIONS.UEFA,
 		group: 'I',
 		participation: 4,
-		enabled: true
+		enabled: false
 	},
 	IRAK: {
 		code: 'iq',
