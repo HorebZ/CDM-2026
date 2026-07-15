@@ -1911,7 +1911,7 @@ const SMALL_FINAL_MATCHES: Match[] = [
 		stadiumId: STADIUM_IDS.MIAMI,
 		sides: [
 			{
-				label: 'TBD',
+				nationId: NATION_IDS.FRANCE,
 				score: { regularTime: 0 },
 				stats: { yellowCards: 0, redCards: 0 }
 			},
@@ -1932,7 +1932,7 @@ const FINAL_MATCHES: Match[] = [
 		stadiumId: STADIUM_IDS.NEW_YORK,
 		sides: [
 			{
-				label: 'TBD',
+				nationId: NATION_IDS.ESPAGNE,
 				score: { regularTime: 0 },
 				stats: { yellowCards: 0, redCards: 0 }
 			},
