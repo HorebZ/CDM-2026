@@ -393,7 +393,7 @@ const GROUP_L = {
 		confederation: CONFEDERATIONS.UEFA,
 		group: 'L',
 		participation: 17,
-		enabled: true
+		enabled: false
 	},
 	CROATIE: {
 		code: 'hr',
