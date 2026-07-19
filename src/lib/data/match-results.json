@@ -1954,5 +1954,23 @@
 				}
 			}
 		]
+	},
+	"2026-07-18T17:00:00|MIAMI": {
+		"result": {
+			"resolution": "regular",
+			"winner": 2
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 4
+				}
+			},
+			{
+				"score": {
+					"regularTime": 6
+				}
+			}
+		]
 	}
 }
