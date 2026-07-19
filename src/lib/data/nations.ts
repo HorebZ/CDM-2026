@@ -323,7 +323,7 @@ const GROUP_J = {
 		confederation: CONFEDERATIONS.CONMEBOL,
 		group: 'J',
 		participation: 19,
-		enabled: true
+		enabled: false
 	},
 	AUTRICHE: {
 		code: 'at',

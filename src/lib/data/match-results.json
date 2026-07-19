@@ -1972,5 +1972,27 @@
 				}
 			}
 		]
+	},
+	"2026-07-19T15:00:00|NEW_YORK": {
+		"result": {
+			"resolution": "regular",
+			"winner": 1
+		},
+		"sides": [
+			{
+				"score": {
+					"regularTime": 1
+				}
+			},
+			{
+				"score": {
+					"regularTime": 0
+				},
+				"stats": {
+					"yellowCards": 0,
+					"redCards": 1
+				}
+			}
+		]
 	}
 }
